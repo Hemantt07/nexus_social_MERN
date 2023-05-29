@@ -22,7 +22,7 @@ export default function Topbar(){
                     </div>
                     <div className="item">
                         <ChatBubbleIcon/>
-                        <span className="counter">1</span>
+                        <span className="counter">9+</span>
                     </div>
                     <div className="item">
                         <NotificationsNoneIcon/>
