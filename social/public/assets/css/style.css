@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Roboto';
     --blue : #6CA6CD;
     --bubble-gum: #FF92BB;
     --paliviolet: #8B475D;
@@ -11,3 +11,64 @@
     --ivory-black : #292421;
     --jonathan-apple: #FAEDEA;
 }
+
+body {
+    overflow-x: hidden;
+}
+
+.careReact {
+    width: 40px;
+    height: 40px;
+    background: url(./images/reacts.png);
+    background-position: -213px -287px;
+    background-size: 272px;
+}
+
+.heartReact {
+    width: 40px;
+    height: 40px;
+    background: url(../images/reacts.png);
+    background-position: -166px -287px;
+    background-size: 272px;
+}
+
+.likeReact {
+    width: 40px;
+    height: 40px;
+    background: url(../images/reacts.png);
+    background-position: -119px -287px;
+    background-size: 272px;
+}
+
+.sadReact {
+    width: 40px;
+    height: 40px;
+    background: url(../images/reacts.png);
+    background-position: -73px -287px;
+    background-size: 272px;
+}
+
+.wowReact {
+    width: 40px;
+    height: 40px;
+    background: url(../images/reacts.png);
+    background-position: -25px -287px;
+    background-size: 272px;
+}
+
+.hahaReact {
+    width: 40px;
+    height: 40px;
+    background: url(../images/reacts.png);
+    background-position: -164px -251px;
+    background-size: 272px;
+}
+
+.angryReact {
+    width: 40px;
+    height: 40px;
+    background: url(../images/reacts.png);
+    background-position: -212px -250px;
+    background-size: 272px;
+}
+

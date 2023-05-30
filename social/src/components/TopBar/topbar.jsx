@@ -1,33 +1,41 @@
 import './topbar.css';
-import SearchIcon from '@mui/icons-material/Search';
-import PersonIcon from '@mui/icons-material/Person';
-import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import { Favorite, ChatBubble, Search, Person } from '@mui/icons-material';
 
 export default function Topbar(){
     return (
-        <div className='topbar'>
-            <div className="topbarLeft">
-                <span className="logo">Socinetic</span>
+        <div className='topbar row'>
+            <div className="topbarLeft col-md-2">
+                <span className="logo">Nexus Social</span>
             </div>
-            <div className="topbarCenter">
-                <SearchIcon/>
-                <input type="text" placeholder='Search' className="search" />
+            <div className="topbarCenter col-md-6">
+                <button type="submit" className='searchBtn'>
+                    <Search className='searchIcon'/>
+                </button>
+                <input type="text" placeholder='Search Nexus Social...' className="search" />
             </div>
-            <div className="topbarRight">
-                <div className="topBarLinks">
+            <div className="topbarRight col-md-4">
+                <div className="topbarLinks">
+
+                    <div className="item">Home</div>
+                    <div className="item">Explore</div>
+                </div>
+                <div className="topBarIcons">
                     <div className="item">
-                        <PersonIcon/>
+                        <Person/>
                         <span className="counter">1</span>
                     </div>
                     <div className="item">
-                        <ChatBubbleIcon/>
+                        <ChatBubble/>
                         <span className="counter">9+</span>
                     </div>
                     <div className="item">
-                        <NotificationsNoneIcon/>
+                        <Favorite/>
                         <span className="counter">1</span>
                     </div>
+                </div>
+
+                <div className="profile">
+                    <img src="assets/images/profile.png" alt="" />
                 </div>
             </div>
         </div>

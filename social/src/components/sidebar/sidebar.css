@@ -1,0 +1,84 @@
+.sideBar {
+    background: #775862;
+    color: #E0DFDB;
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #E0DFDB;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #8B475D;
+}
+
+.sideBar .sidebarWrapper {
+    padding: 20px 10px
+}
+
+.sideBar .sidebarWrapper .sidebarList {
+    list-style: none;
+    margin: 0%;
+    padding-left: 15px;
+}
+
+.sideBar .sidebarWrapper .sidebarList .item {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sideBar .sidebarWrapper .sidebarList .item .icon{
+    font-size: 28px;
+    margin-right: 10px;
+}
+
+.sideBar .sidebarWrapper .sidebarList .item .text{
+    font-size: 17px;
+    line-height: 100%;
+}
+
+.sideBar .sidebarWrapper .sideButton {
+    border: none;
+    width: fit-content;
+    margin-left: 15px;
+    padding: 10px 40px;
+    background: #8B475D;
+    color: #E0DFDB;
+    border-radius: 5px;
+}
+
+.sideBar .sidebarWrapper .sidebarHr {
+    margin: 20px 0;
+    margin-left: 10px;
+}
+
+.sideBar .sidebarWrapper .friendsList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sideBar .sidebarWrapper .friendsList .friendImg {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin: 0 10px;
+    border-radius: 50%;
+}
+
+.sideBar .sidebarWrapper .friendsList .friend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
