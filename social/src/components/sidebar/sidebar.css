@@ -49,13 +49,20 @@
 }
 
 .sideBar .sidebarWrapper .sideButton {
+    display: flex;
+    align-items: center;
     border: none;
     width: fit-content;
     margin-left: 15px;
-    padding: 10px 40px;
+    padding: 10px 30px;
     background: #8B475D;
     color: #E0DFDB;
     border-radius: 5px;
+}
+
+.sideBar .sidebarWrapper .sideButton .text {
+    font-size: 16px;
+    line-height: 10px;
 }
 
 .sideBar .sidebarWrapper .sidebarHr {

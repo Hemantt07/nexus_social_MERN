@@ -1,5 +1,5 @@
 import "./sidebar.css";
-import { MoreHoriz, Replay, SportsEsports, Bookmark, Group, PlayCircle, ChatBubble, RssFeed } from '@mui/icons-material';
+import { MoreVert, Replay, SportsEsports, Bookmark, Group, PlayCircle, ChatBubble, RssFeed } from '@mui/icons-material';
 
 export default function Sidebar() {
   return (
@@ -45,11 +45,11 @@ export default function Sidebar() {
         </ul>
 
         <button className="sideButton">
-            <MoreHoriz className="icon"/>
+            <MoreVert className="icon"/>
             <span className="text">More</span>
         </button><hr className="sidebarHr" />
 
-        <ul className="friendsList">
+        {/* <ul className="friendsList">
 
         <li className="friend">
             <img src="assets/images/profile2.jpeg" alt="" className="friendImg" />
@@ -81,7 +81,7 @@ export default function Sidebar() {
             <span className="text">Sumisha</span>
           </li>
 
-        </ul>
+        </ul> */}
 
       </div>
     </div>
