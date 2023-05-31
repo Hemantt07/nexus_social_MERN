@@ -1,3 +1,6 @@
+import { ExpandLessSharp } from '@mui/icons-material'
+import { Tooltip } from '@mui/material'
+
 import "./Home.css";
 import Topbar from "../../components/TopBar/topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -14,8 +17,11 @@ export default function Home(){
             <Sidebar/>
             <Feed/> 
             <Rightbar/>
+            
         </div>
-
+            {/* <Tooltip title="Back to Top">
+                <div id="backToTop"><ExpandLessSharp className='icon'/></div>
+            </Tooltip> */}
         </>
     );
 }

@@ -1,0 +1,110 @@
+.post {
+    width: 100%;
+    box-shadow: 0 2px 11px -3px rgb(0 0 0 / 69%);
+    border-radius: 10px;
+    margin: 30px 0;
+}
+
+.post .postWrapper {
+    padding: 15px 20px;
+}
+
+.post .postWrapper .postTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post .postWrapper .postTop .topLeft .userDP {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.post .postWrapper .postTop .topLeft .userName {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 100%;
+    margin-right: 10px;
+}
+
+.post .postWrapper .postTop .topLeft .date {
+    font-size: 13px;
+    line-height: 100%;
+    color: #6c6969;
+}
+
+.post .postWrapper .postTop .topLeft {
+    display: flex;
+    align-items: center;
+}
+
+.post .postWrapper .postTop .topRight .icon {
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.post .postWrapper .postCenter {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.post .postWrapper .postCenter .postCaption {
+    padding: 10px 5px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.post .postWrapper .postCenter .postImg img {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: cover;
+}
+
+.post .postWrapper .postBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+}
+
+.post .postWrapper .postBottom .bottomLeft {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    padding: 10px 0px;
+    cursor: pointer;
+}
+
+.post .postWrapper .postBottom .bottomLeft .reactionsCount {
+    font-size: 16px;
+    line-height: 8px;
+    margin-left: 5px 0;
+    color: #000000b5;
+}
+
+.post .postWrapper .postBottom .bottomLeft div {
+    margin-left: -11px;
+    width: 25px;
+    height: 25px;
+}
+
+.post .postWrapper .postBottom .bottomRight {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    color: #000000b5;
+    cursor: pointer;
+}
+
+.post .postWrapper .postBottom .bottomRight .commentCount {
+    font-size: 16px;
+}
+
+.post .postWrapper .postBottom .bottomRight .icon {
+    margin-right: 5px;
+}

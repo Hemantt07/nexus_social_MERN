@@ -17,58 +17,53 @@ body {
 }
 
 .careReact {
-    width: 40px;
-    height: 40px;
+    width: 33px;
+    height: 33px;
     background: url(./images/reacts.png);
     background-position: -213px -287px;
     background-size: 272px;
+    border-radius: 50%;
 }
 
 .heartReact {
-    width: 40px;
-    height: 40px;
-    background: url(../images/reacts.png);
-    background-position: -166px -287px;
-    background-size: 272px;
-}
-
-.likeReact {
-    width: 40px;
-    height: 40px;
-    background: url(../images/reacts.png);
-    background-position: -119px -287px;
-    background-size: 272px;
-}
-
-.sadReact {
-    width: 40px;
-    height: 40px;
-    background: url(../images/reacts.png);
-    background-position: -73px -287px;
-    background-size: 272px;
-}
-
-.wowReact {
-    width: 40px;
-    height: 40px;
-    background: url(../images/reacts.png);
-    background-position: -25px -287px;
-    background-size: 272px;
+    width: 33px;
+    height: 33px;
+    background: url(../images/reactions/heart.png);
+    background-size: cover;
+    border-radius: 50%;
 }
 
 .hahaReact {
-    width: 40px;
-    height: 40px;
-    background: url(../images/reacts.png);
-    background-position: -164px -251px;
-    background-size: 272px;
+    width: 33px;
+    height: 33px;
+    background: url(../images/reactions/haha.png);
+    background-size: cover;
+    border-radius: 50%;
 }
 
+.sadReact {
+    width: 33px;
+    height: 33px;
+    background: url(../images/reactions/sad.png);
+    background-size: cover;
+    border-radius: 50%;
+}
+
+.wowReact {
+    width: 33px;
+    height: 33px;
+    background: url(../images/reactions/wow.png);
+    background-size: cover;
+    border-radius: 50%;
+}
+
+
 .angryReact {
-    width: 40px;
-    height: 40px;
+    width: 33px;
+    height: 33px;
     background: url(../images/reacts.png);
     background-position: -212px -250px;
     background-size: 272px;
+    border-radius: 50%;
 }
 
