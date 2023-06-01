@@ -1,6 +1,5 @@
-import Share from "../share/Share"
-import Post from "../post/Post";
-import "./feed.css"
+import Share from "./share"
+import Post from "./post";
 
 export default function Feed() {
   return (

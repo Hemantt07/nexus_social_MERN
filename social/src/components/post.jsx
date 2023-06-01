@@ -1,4 +1,3 @@
-import "./post.css"
 import { MoreVert, QuestionAnswer } from '@mui/icons-material';
 
 export default function Post() {

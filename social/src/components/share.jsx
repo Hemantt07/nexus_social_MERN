@@ -1,4 +1,3 @@
-import "./share.css"
 import { Send, LocalOffer, EmojiEmotions, LocationOn, PermMedia } from '@mui/icons-material';
 
 export default function Share() {

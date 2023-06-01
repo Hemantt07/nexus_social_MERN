@@ -1,5 +1,4 @@
-import './topbar.css';
-import { Favorite, ChatBubble, Search, Person } from '@mui/icons-material';
+import { Favorite, ChatBubble, Search, Person, Brightness6 } from '@mui/icons-material';
 
 export default function Topbar(){
     return (
@@ -20,6 +19,9 @@ export default function Topbar(){
                     <div className="item">Explore</div>
                 </div>
                 <div className="topBarIcons">
+                    <div className="item">
+                        <Brightness6/>
+                    </div>
                     <div className="item">
                         <Person/>
                         <span className="counter">1</span>

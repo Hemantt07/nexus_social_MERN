@@ -1,5 +1,4 @@
-import StoriesCarousel from "../storiesCarousel/StoriesCarousel"
-import "./rightbar.css"
+import StoriesCarousel from "./storiesCarousel"
 import { Close } from '@mui/icons-material';
 
 export default function Rightbar() {
@@ -7,7 +6,7 @@ export default function Rightbar() {
     <div className="rightBar col-4">
       <div className="rightBarWrapper">
 
-        <div className="stories row"><StoriesCarousel/></div>
+        <div className="stories"><StoriesCarousel/></div>
 
         <div className="adv">
           <img src="assets/images/ad1.jpeg" alt="ad1" />

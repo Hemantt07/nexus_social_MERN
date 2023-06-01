@@ -14,6 +14,23 @@
 
 body {
     overflow-x: hidden;
+    background-color: #121212;
+}
+
+/* Home*/
+#backToTop {
+    position: fixed;
+    right: 14px;
+    bottom: 15px;
+    background: #8B475D;
+    color: #E0DFDB;
+    padding: 0px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#backToTop .icon {
+    font-size: 35px;
 }
 
 .careReact {
@@ -67,3 +84,638 @@ body {
     border-radius: 50%;
 }
 
+/* Feed */
+
+.feed {padding: 0;}
+
+.feed .feedWrapper {
+    padding: 20px;
+
+}
+
+/* TopBar */
+
+.topbar {
+    padding: 10px 0;
+    background: #282828;
+    color: #E0DFDB;
+    height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 0 3px 0px #404040;
+}
+
+.topbarLeft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topbarCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.topbarCenter .searchBtn {
+    position: absolute;
+    color: #E0DFDB;
+    left: 25px;
+    top: 50%;
+    border: none;
+    background: transparent;
+    transform: translateY(-50%);
+}
+
+.topbarCenter .searchBtn .searchIcon {
+    font-size: 30px;
+}
+
+.topbarCenter .search {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    border-radius: 100px;
+    font-size: 18px;
+    background-color: #404040;
+    color: #E0DFDB;
+    padding-left: 50px;
+}
+
+.topbarCenter .search::placeholder {
+    color: #E0DFDB;
+    opacity: 1;
+}
+
+.topbarCenter .search:-ms-input-placeholder {
+    color: #E0DFDB;
+}
+
+.topbarCenter .search::-ms-input-placeholder {
+    color: #E0DFDB;
+}
+
+.topbarCenter input.search:focus-visible {
+    outline: none;
+}
+
+.topbarLeft .logo {
+    font-size: 26px;
+    color: #8B475D;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.topbarRight .topbarLinks ,
+.topbarRight .topBarIcons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.topbarRight .topbarLinks .item {
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.topbarRight .topBarIcons .item {
+    padding: 0 10px;
+    position: relative;
+    cursor: pointer;
+}
+
+.topbarRight .topBarIcons .item .counter {
+    position: absolute;
+    top: -7px;
+    right: 3px;
+    background: #8B475D;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 18px;
+    border-radius: 24px;
+}
+
+.topbarRight {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 0;
+}
+
+.profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #8B475D;
+    margin-left: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.profile img {
+    width: 100%;
+    height: auto;
+}
+
+/* SideBar */
+
+.sideBar {
+    background: #282828;
+    color: #E0DFDB;
+    height: calc(100vh - 70px);
+    overflow-y: hidden;
+    padding: 0;
+    position: sticky;
+    top: 70px;
+}
+
+::-webkit-scrollbar {
+    width: 2px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #E0DFDB;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #8B475D;
+}
+
+.sideBar .sidebarWrapper {
+    padding: 20px 10px
+}
+
+.sideBar .sidebarWrapper .sidebarList {
+    list-style: none;
+    margin: 0%;
+    padding-left: 40px;
+}
+
+.sideBar .sidebarWrapper .sidebarList .item {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sideBar .sidebarWrapper .sidebarList .item .icon{
+    font-size: 28px;
+    margin-right: 10px;
+}
+
+.sideBar .sidebarWrapper .sidebarList .item .text{
+    font-size: 17px;
+    line-height: 100%;
+}
+
+.sideBar .sidebarWrapper .sideButton {
+    display: flex;
+    align-items: center;
+    border: none;
+    width: fit-content;
+    margin-left: 15px;
+    padding: 10px 30px;
+    background: #8B475D;
+    color: #E0DFDB;
+    border-radius: 5px;
+}
+
+.sideBar .sidebarWrapper .sideButton .text {
+    font-size: 16px;
+    line-height: 10px;
+}
+
+.sideBar .sidebarWrapper .sidebarHr {
+    margin: 20px 0;
+    margin-left: 10px;
+}
+
+.sideBar .sidebarWrapper .friendsList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sideBar .sidebarWrapper .friendsList .friendImg {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin: 0 10px;
+    border-radius: 50%;
+}
+
+.sideBar .sidebarWrapper .friendsList .friend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+
+/* Share */
+
+.share {
+    width: 100%;
+    height: 180px;
+    -webkit-box-shadow : 0 2px 11px -3px rgb(0 0 0 / 69%);
+    box-shadow: 0 2px 11px -3px rgb(0 0 0 / 69%);
+    border-radius: 10px;
+    background-color: #282828;
+    color: #E0DFDB;
+}
+
+.share .shareWrapper {
+    padding: 15px;
+}
+
+.share .shareWrapper .shareTop {
+    display: flex;
+    align-items: center;
+}
+
+.share .shareWrapper .shareTop .shareProfileImg img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.share .shareWrapper .shareTop  .shareInput {
+    width: 100%;
+    border: none;
+    background-color: #282828;
+    color: #fff;
+}
+
+.share .shareWrapper .shareTop .shareInput:focus-within {
+    outline: none;
+}
+
+.share .shareWrapper hr.shareHr {
+    margin: 20px 0;
+}
+
+.share .shareWrapper .shareBottom {
+    display: flex;
+}
+
+.share .shareWrapper .shareBottom .shareOptions {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.share .shareWrapper .shareBottom .shareOption {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: fit-content;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+.share .shareWrapper .shareBottom .shareOption .icon {
+    margin-right: 10px;
+    font-size: 28px;
+}
+
+.share .shareWrapper .shareBottom .shareOption .text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.share .shareWrapper .shareBottom .shareButton {
+    border: none;
+    color: #fff;
+    border-radius: 50px;
+    background: #8B475D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px 10px 26px;
+}
+
+.share .shareWrapper .shareBottom .shareButton span {
+    line-height: 10px;
+}
+
+.share .shareWrapper .shareBottom .shareButton .icon {
+    font-size: 23px;
+    margin-left: 10px;
+}
+
+/* Post */
+
+.post {
+    width: 100%;
+    box-shadow: 0 2px 11px -3px rgb(0 0 0 / 69%);
+    border-radius: 10px;
+    margin: 30px 0;
+    color: #E0DFDB;
+    background-color: #282828;
+}
+
+.post .postWrapper {
+    padding: 15px 20px;
+}
+
+.post .postWrapper .postTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post .postWrapper .postTop .topLeft .userDP {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.post .postWrapper .postTop .topLeft .userName {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 100%;
+    margin-right: 10px;
+    color: #E0DFDB;
+}
+
+.post .postWrapper .postTop .topLeft .date {
+    font-size: 13px;
+    line-height: 100%;
+    color: #818181;
+}
+
+.post .postWrapper .postTop .topLeft {
+    display: flex;
+    align-items: center;
+}
+
+.post .postWrapper .postTop .topRight .icon {
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.post .postWrapper .postCenter {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.post .postWrapper .postCenter .postCaption {
+    padding: 10px 5px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.post .postWrapper .postCenter .postImg img {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: cover;
+}
+
+.post .postWrapper .postBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    color: #E0DFDB;
+}
+
+.post .postWrapper .postBottom .bottomLeft {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    padding: 10px 0px;
+    cursor: pointer;
+}
+
+.post .postWrapper .postBottom .bottomLeft .reactionsCount {
+    font-size: 16px;
+    line-height: 8px;
+    margin-left: 5px;
+    color: #E0DFDB;
+}
+
+.post .postWrapper .postBottom .bottomLeft div {
+    margin-left: -11px;
+    width: 25px;
+    height: 25px;
+}
+
+.post .postWrapper .postBottom .bottomRight {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    color: #E0DFDB;
+    cursor: pointer;
+}
+
+.post .postWrapper .postBottom .bottomRight .commentCount {
+    font-size: 16px;
+}
+
+.post .postWrapper .postBottom .bottomRight .icon {
+    margin-right: 5px;
+}
+
+/* RightBar */
+
+.rightBar {
+    padding: 0;
+}
+
+.rightBar .rightBarWrapper {
+    padding: 20px 20px 0 0;
+}
+
+.rightBar .rightBarWrapper .stories {
+    margin: 0;
+    padding: 0;
+    flex-wrap: nowrap;
+}
+
+.rightBar .rightBarWrapper .stories .owl-carousel.owl-loaded {
+    padding: 0;
+}
+
+.rightBar .rightBarWrapper .stories .owl-theme .owl-dots {
+    display: none;
+}
+
+.rightBar .rightBarWrapper .adv {
+    margin: 30px 20px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.rightBar .rightBarWrapper .adv img {
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.rightBar .rightBarWrapper .adv .adText {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    background: #8f8f8f;
+    width: 100%;
+    padding: 10px;
+}
+
+.rightBar .rightBarWrapper .adv .adText .closeIcon {
+    position: absolute;
+    right: 5px;
+    cursor: pointer;
+}
+
+.friendOnline {
+    padding: 10px 15px;
+}
+
+.friendOnline .onlineFriendsList {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border-bottom: 1px solid #bebebe;
+}
+
+.friendOnline  .onlineFriendsList .friend {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #bebebe;
+    position: relative;
+}
+
+.friendOnline  .onlineFriendsList .friend .imgContainer {
+    position: relative;
+}
+
+.friendOnline .onlineFriendsList .friend img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.friendOnline .onlineFriendsList .friend .friendName {
+    margin: 0;
+    font-size: 16px;
+    color: #E0DFDB;
+}
+
+.friendOnline .head {
+    font-size: 23px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    padding: 0 10px;
+    color: #E0DFDB;
+}
+
+.friendOnline .onlineFriendsList .friend .onlineIcon {
+    width: 14px;
+    height: 14px;
+    background: limegreen;
+    position: absolute;
+    top: 0;
+    right: 9px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+/* Story */
+
+.story {
+    width: 120px;
+    height: 200px;
+    padding: 0px;
+    margin-right: 10px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid #8B475D;
+    cursor: pointer;
+}
+
+
+.story .storyImg {
+    height: 100%;
+}
+
+.story .storyImg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story .content .profileImg {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px dashed #fff;
+}
+
+.story .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(0 0 0 / 54%);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    flex-direction: column;
+}
+
+.story .content .userName {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 10px 0 5px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.rightBar .rightBarWrapper .stories .owl-prev {
+    position: absolute;
+    left: -18px;
+    top: 85px;
+    background: transparent;
+    margin: 0;
+}
+
+.rightBar .rightBarWrapper .stories button span {
+    font-size: 60px;
+    line-height: 22px;
+    color: #000;
+}
+
+.rightBar .rightBarWrapper .stories .owl-next {
+    position: absolute;
+    right: -7px;
+    top: 85px;
+    background: transparent;
+    margin: 0;
+}

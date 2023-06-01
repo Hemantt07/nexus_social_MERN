@@ -1,4 +1,3 @@
-import "./sidebar.css";
 import { MoreVert, Replay, SportsEsports, Bookmark, Group, PlayCircle, ChatBubble, RssFeed } from '@mui/icons-material';
 
 export default function Sidebar() {

@@ -1,4 +1,3 @@
-import "./story.css"
 
 export default function () {
   return (
