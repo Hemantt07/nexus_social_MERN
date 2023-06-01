@@ -1,11 +1,10 @@
 import { ExpandLessSharp } from '@mui/icons-material'
 import { Tooltip } from '@mui/material'
 
-import "./Home.css";
-import Topbar from "../../components/TopBar/topbar";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Feed from "../../components/Feed/feed";
-import Rightbar from "../../components/Rightbar/rightbar";
+import Topbar from "../../components/topbar";
+import Sidebar from "../../components/sidebar";
+import Feed from "../../components/feed";
+import Rightbar from "../../components/rightbar";
 
 export default function Home(){
     return (
