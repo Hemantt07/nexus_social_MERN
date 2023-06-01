@@ -215,6 +215,8 @@ body {
 .profile {
     width: 50px;
     height: 50px;
+    padding: 0;
+    margin: auto;
     border-radius: 50%;
     border: 1px solid #8B475D;
     margin-left: 20px;
@@ -486,8 +488,8 @@ body {
 .post .postWrapper .postCenter .postImg img {
     width: 100%;
     height: auto;
-    max-height: 280px;
-    object-fit: cover;
+    max-height: 500px;
+    object-fit: contain;
 }
 
 .post .postWrapper .postBottom {

@@ -2,7 +2,7 @@ import { MoreVert, Replay, SportsEsports, Bookmark, Group, PlayCircle, ChatBubbl
 
 export default function Sidebar() {
   return (
-    <div className="sideBar col-2">
+    <div className="sideBar col-md-2">
       <div className="sidebarWrapper">
         <ul className="sidebarList">
 
@@ -51,32 +51,32 @@ export default function Sidebar() {
         {/* <ul className="friendsList">
 
         <li className="friend">
-            <img src="assets/images/profile2.jpeg" alt="" className="friendImg" />
+            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
             <span className="text">Sumisha</span>
           </li>
 
           <li className="friend">
-            <img src="assets/images/profile2.jpeg" alt="" className="friendImg" />
+            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
             <span className="text">Sumisha</span>
           </li>
 
           <li className="friend">
-            <img src="assets/images/profile2.jpeg" alt="" className="friendImg" />
+            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
             <span className="text">Sumisha</span>
           </li>
 
           <li className="friend">
-            <img src="assets/images/profile2.jpeg" alt="" className="friendImg" />
+            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
             <span className="text">Sumisha</span>
           </li>
 
           <li className="friend">
-            <img src="assets/images/profile2.jpeg" alt="" className="friendImg" />
+            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
             <span className="text">Sumisha</span>
           </li>
 
           <li className="friend">
-            <img src="assets/images/profile2.jpeg" alt="" className="friendImg" />
+            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
             <span className="text">Sumisha</span>
           </li>
 

@@ -35,9 +35,8 @@ export default function Topbar(){
                         <span className="counter">1</span>
                     </div>
                 </div>
-
                 <div className="profile">
-                    <img src="assets/images/profile.png" alt="" />
+                    <img src="assets/images/profiles/profile.png" alt="" />
                 </div>
             </div>
         </div>

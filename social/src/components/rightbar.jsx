@@ -1,9 +1,11 @@
+import { Users } from "../post-data";
+import Online from "./online";
 import StoriesCarousel from "./storiesCarousel"
 import { Close } from '@mui/icons-material';
 
 export default function Rightbar() {
   return (
-    <div className="rightBar col-4">
+    <div className="rightBar col-md-4">
       <div className="rightBarWrapper">
 
         <div className="stories"><StoriesCarousel/></div>
@@ -20,29 +22,11 @@ export default function Rightbar() {
           <p className="head">Online Friends</p>
           <ul className="onlineFriendsList">
 
-            <li className="friend">
-              <div className="imgContainer">
-                <img src="assets/images/profile5.jpeg" alt="" />
-                <span className="onlineIcon"></span>
-              </div>
-              <p className="friendName">Riya Sankhyani</p>
-            </li>
-            
-            <li className="friend">
-              <div className="imgContainer">
-                <img src="assets/images/profile4.jpeg" alt="" />
-                <span className="onlineIcon"></span>
-              </div>
-              <p className="friendName">Riya Sankhyani</p>
-            </li>
-            
-            <li className="friend">
-              <div className="imgContainer">
-                <img src="assets/images/profile4.jpeg" alt="" />
-                <span className="onlineIcon"></span>
-              </div>
-              <p className="friendName">Riya Sankhyani</p>
-            </li>
+            { Users.map((user)=>(
+
+              <Online key={user.id} user={user} />
+
+            )) }
             
           </ul>
 
