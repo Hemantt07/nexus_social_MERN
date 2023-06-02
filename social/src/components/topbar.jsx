@@ -1,7 +1,13 @@
 import { Favorite, ChatBubble, Search, Person, Brightness6, TtyOutlined } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
+import { useEffect } from 'react';
 
 export default function Topbar(){
+
+    const switchMode = () => {
+        
+    }
+
     return (
         <div className='topbar row'>
             <div className="topbarLeft col-md-2">
@@ -22,7 +28,7 @@ export default function Topbar(){
                 <div className="topBarIcons">
                     <div className="item">
                         <Tooltip title="Dark/Light mode">
-                            <Brightness6/>
+                            <Brightness6 id="switchMode"/>
                         </Tooltip>
                     </div>
                     <div className="item">

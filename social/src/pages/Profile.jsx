@@ -22,7 +22,11 @@ export default function Profile() {
                     <div className="userProfile">
                         <img src="assets/images/posts/post8.jpeg" alt="cover-photo" className="cover" />
                         <img src="assets/images/profiles/profile.png" alt="profile" className="userDP" />
-                        <h3 className="name">Reshav Dhiman</h3>
+                        
+                        <div className="profileDetails">
+                            <h3 className="name">Reshav Dhiman</h3>
+                            <p className="about">Memes were my thing even before they existed on Instagram.</p>
+                        </div>
                         <Tooltip title="Settings">
                             <Settings className="settingsIcon"/>
                         </Tooltip>
@@ -34,7 +38,9 @@ export default function Profile() {
                     <Feed/>
                 </div>
                 <div className="rightBar col-md-5">
+
                     <Rightbar/>
+                    
                 </div>
                 
             </div>

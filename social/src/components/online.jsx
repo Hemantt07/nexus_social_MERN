@@ -1,4 +1,4 @@
-export default function ({user}) {
+export default function Online({user}) {
   return (
    
     <li className="friend">

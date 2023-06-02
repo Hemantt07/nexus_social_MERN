@@ -2,12 +2,16 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto';
+}
+
+body.dark-mode {
     --primary-bg: #121212;
     --secondary-bg: #282828;
     --primary-text: #E0DFDB;
-    --secondary-text: #fff;
-    --main-content: #8B475D;
+    --secondary-text: #404040;
+    --main-content: #8B475D; 
 }
+
 
 body {
     overflow-x: hidden;
@@ -101,7 +105,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 999;
-    box-shadow: 0 0 3px 0px #404040;
+    box-shadow: 0 0 3px 0px var(--secondary-text);
 }
 
 .topbarLeft {
@@ -137,7 +141,7 @@ body {
     border: none;
     border-radius: 100px;
     font-size: 18px;
-    background-color: #404040;
+    background-color: var(--secondary-text);
     color: var(--primary-text);
     padding-left: 50px;
 }
@@ -201,6 +205,7 @@ body {
     font-size: 13px;
     line-height: 18px;
     border-radius: 24px;
+    color: var(--primary-text);
 }
 
 .topbarRight {
@@ -362,7 +367,7 @@ body {
     width: 100%;
     border: none;
     background-color: var(--secondary-bg);
-    color: var(--secondary-text);
+    color: var(--primary-text);
 }
 
 .share .shareWrapper .shareTop .shareInput:focus-within {
@@ -377,6 +382,7 @@ body {
     display: flex;
     align-items: center;
     padding: 0 15px;
+    justify-content: space-between;
 }
 
 .share .shareWrapper .shareBottom .shareOption {
@@ -400,7 +406,7 @@ body {
 
 .share .shareWrapper .shareBottom .shareButton {
     border: none;
-    color: var(--secondary-text);
+    color: var(--primary-text);
     border-radius: 50px;
     background: var(--main-content);
     display: flex;
@@ -501,9 +507,17 @@ body {
 .post .postWrapper .postBottom .bottomLeft {
     display: flex;
     align-items: center;
-    margin-left: 10px;
     padding: 10px 0px;
     cursor: pointer;
+}
+
+.post .postWrapper .postBottom .bottomLeft .likeIcon {
+    font-size: 30px;
+    color: #ffa3a3;
+}
+
+.post .postWrapper .postBottom .bottomLeft .likeIcon.active{
+    color: #f41f1f;
 }
 
 .post .postWrapper .postBottom .bottomLeft .reactionsCount {
@@ -511,12 +525,6 @@ body {
     line-height: 8px;
     margin-left: 5px;
     color: var(--primary-text);
-}
-
-.post .postWrapper .postBottom .bottomLeft div {
-    margin-left: -11px;
-    width: 25px;
-    height: 25px;
 }
 
 .post .postWrapper .postBottom .bottomRight {
@@ -733,7 +741,7 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
-    margin-bottom: 100px;
+    margin-bottom: 70px;
 }
 
 .profile-section .userProfile .cover {
@@ -749,16 +757,25 @@ body {
     bottom: -47px;
     left: 20px;
     border-radius: 50%;
-    border: 3px solid var(--secondary-text);
+    border: 5px solid var(--primary-bg);
 }
 
-.profile-section .userProfile .name {
+.profile-section .userProfile .profileDetails {
     position: absolute;
     bottom: 0;
-    font-size: 29px;
     left: 230px;
-    font-weight: 300;
+}
+
+.profile-section .userProfile .profileDetails .name {
+    font-size: 29px;
+    font-weight: 500;
     color: var(--primary-text);
+}
+
+.profile-section .userProfile .profileDetails .about {
+    color: var(--primary-text);
+    font-weight: 300;
+    margin-bottom: 5px;
 }
 
 .profile-section .userProfile .settingsIcon {
@@ -766,4 +783,79 @@ body {
     bottom: 10px;
     right: 30px;
     cursor: pointer;
+}
+
+/* Profie RightBar */
+
+.rightBar .rightBarWrapper .rightBarTitle {
+    font-size: 28px;
+    font-weight: 300;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--primary-text);
+    width: fit-content;
+}
+
+.rightBar .rightBarWrapper .userInfo {
+    margin: 0;
+    padding: 15px 0;
+}
+
+.rightBar .rightBarWrapper .userInfo .key {
+    padding: 7px 10px 0;
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 23px
+}
+
+.rightBar .rightBarWrapper .userInfo  .value {
+    padding: 7px 10px 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 27px;
+}
+
+/* Yur Friends */
+
+.userfriend {
+    padding: 10px;
+    margin-top: 3rem;
+}
+
+.userfriend .head {
+   font-size: 28px;
+    font-weight: 300;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--primary-text);
+    width: fit-content;
+    margin-bottom: 15px;
+}
+
+.userfriend .friendlist {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.userfriend .friendlist .usersfriend {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.userfriend .friendlist .usersfriend img {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.userfriend .friendlist .usersfriend .friendName {
+   font-size: 16px;
+   font-weight: 400;
+   line-height: 22px;
+   text-align: center;
 }

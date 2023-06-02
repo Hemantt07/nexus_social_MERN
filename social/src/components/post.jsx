@@ -1,4 +1,4 @@
-import { MoreVert, QuestionAnswer } from '@mui/icons-material';
+import { Favorite, MoreVert, QuestionAnswer } from '@mui/icons-material';
 import { Users } from "../post-data";
 import { useState } from 'react';
 
@@ -6,8 +6,10 @@ export default function Post({post}) {
 
   const [like, setLike] = useState(post.like);
   const [isLiked, setIsLiked] = useState(false);
+  const [isActive, setActive] = useState(false);
 
   const likeHandler =()=>{
+    setActive( !isActive )
     setLike( isLiked ? like-1 : like+1 )
     setIsLiked( !isLiked )
   }
@@ -48,8 +50,7 @@ export default function Post({post}) {
             <div className="postBottom">
                 <div className="bottomLeft">
 
-                    <div className="heartReact" onClick={likeHandler} ></div>
-                    <div className="wowReact" onClick={likeHandler} ></div>
+                    <Favorite onClick={likeHandler} className={`likeIcon ${isActive ? "active" : null}`}/>
 
                     <span className="reactionsCount">{like}</span>
                 </div>
