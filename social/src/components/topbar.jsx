@@ -1,4 +1,5 @@
-import { Favorite, ChatBubble, Search, Person, Brightness6 } from '@mui/icons-material';
+import { Favorite, ChatBubble, Search, Person, Brightness6, TtyOutlined } from '@mui/icons-material';
+import { Tooltip } from '@mui/material';
 
 export default function Topbar(){
     return (
@@ -20,24 +21,35 @@ export default function Topbar(){
                 </div>
                 <div className="topBarIcons">
                     <div className="item">
-                        <Brightness6/>
+                        <Tooltip title="Dark/Light mode">
+                            <Brightness6/>
+                        </Tooltip>
                     </div>
                     <div className="item">
-                        <Person/>
+                        <Tooltip title="Friends">
+                            <Person/>
+                        </Tooltip>
                         <span className="counter">1</span>
                     </div>
                     <div className="item">
-                        <ChatBubble/>
+                        <Tooltip title="Chats">
+                            <ChatBubble/>
+                        </Tooltip>
                         <span className="counter">9+</span>
                     </div>
                     <div className="item">
-                        <Favorite/>
+                        <Tooltip title="Notifications">
+                            <Favorite/> 
+                        </Tooltip>
                         <span className="counter">1</span>
                     </div>
                 </div>
-                <div className="profile">
-                    <img src="assets/images/profiles/profile.png" alt="" />
-                </div>
+
+                <Tooltip title="Profile">
+                    <div className="profile">
+                        <img src="assets/images/profiles/profile.png" alt="" />
+                    </div>
+                </Tooltip>
             </div>
         </div>
     );

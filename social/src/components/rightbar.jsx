@@ -5,7 +5,6 @@ import { Close } from '@mui/icons-material';
 
 export default function Rightbar() {
   return (
-    <div className="rightBar col-md-4">
       <div className="rightBarWrapper">
 
         <div className="stories"><StoriesCarousel/></div>
@@ -32,6 +31,5 @@ export default function Rightbar() {
 
         </div>
       </div>
-    </div>
   )
 }

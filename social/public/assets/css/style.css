@@ -2,19 +2,17 @@
     margin: 0;
     padding: 0;
     font-family: 'Roboto';
-    --blue : #6CA6CD;
-    --bubble-gum: #FF92BB;
-    --paliviolet: #8B475D;
-    --pink-cloud: #F6A8B6;
-    --black-berry: #3A3A38;
-    --stainless-steel: #E0DFDB;
-    --ivory-black : #292421;
-    --jonathan-apple: #FAEDEA;
+    --primary-bg: #121212;
+    --secondary-bg: #282828;
+    --primary-text: #E0DFDB;
+    --secondary-text: #fff;
+    --main-content: #8B475D;
 }
 
 body {
     overflow-x: hidden;
-    background-color: #121212;
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
 }
 
 /* Home*/
@@ -22,8 +20,8 @@ body {
     position: fixed;
     right: 14px;
     bottom: 15px;
-    background: #8B475D;
-    color: #E0DFDB;
+    background: var(--main-content);
+    color: var(--primary-text);
     padding: 0px;
     border-radius: 50%;
     cursor: pointer;
@@ -97,8 +95,8 @@ body {
 
 .topbar {
     padding: 10px 0;
-    background: #282828;
-    color: #E0DFDB;
+    background: var(--secondary-bg);
+    color: var(--primary-text);
     height: 70px;
     position: sticky;
     top: 0;
@@ -121,7 +119,7 @@ body {
 
 .topbarCenter .searchBtn {
     position: absolute;
-    color: #E0DFDB;
+    color: var(--primary-text);
     left: 25px;
     top: 50%;
     border: none;
@@ -140,21 +138,21 @@ body {
     border-radius: 100px;
     font-size: 18px;
     background-color: #404040;
-    color: #E0DFDB;
+    color: var(--primary-text);
     padding-left: 50px;
 }
 
 .topbarCenter .search::placeholder {
-    color: #E0DFDB;
+    color: var(--primary-text);
     opacity: 1;
 }
 
 .topbarCenter .search:-ms-input-placeholder {
-    color: #E0DFDB;
+    color: var(--primary-text);
 }
 
 .topbarCenter .search::-ms-input-placeholder {
-    color: #E0DFDB;
+    color: var(--primary-text);
 }
 
 .topbarCenter input.search:focus-visible {
@@ -163,7 +161,7 @@ body {
 
 .topbarLeft .logo {
     font-size: 26px;
-    color: #8B475D;
+    color: var(--main-content);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -196,7 +194,7 @@ body {
     position: absolute;
     top: -7px;
     right: 3px;
-    background: #8B475D;
+    background: var(--main-content);
     width: 20px;
     height: 20px;
     text-align: center;
@@ -218,7 +216,7 @@ body {
     padding: 0;
     margin: auto;
     border-radius: 50%;
-    border: 1px solid #8B475D;
+    border: 1px solid var(--main-content);
     margin-left: 20px;
     overflow: hidden;
     cursor: pointer;
@@ -233,8 +231,8 @@ body {
 /* SideBar */
 
 .sideBar {
-    background: #282828;
-    color: #E0DFDB;
+    background: var(--secondary-bg);
+    color: var(--primary-text);
     height: calc(100vh - 70px);
     overflow-y: hidden;
     padding: 0;
@@ -247,11 +245,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #E0DFDB;
+    background-color: var(--primary-text);
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #8B475D;
+    background-color: var(--main-content);
 }
 
 .sideBar .sidebarWrapper {
@@ -287,10 +285,10 @@ body {
     align-items: center;
     border: none;
     width: fit-content;
-    margin-left: 15px;
+    margin-left: 40px;
     padding: 10px 30px;
-    background: #8B475D;
-    color: #E0DFDB;
+    background: var(--main-content);
+    color: var(--primary-text);
     border-radius: 5px;
 }
 
@@ -331,12 +329,11 @@ body {
 
 .share {
     width: 100%;
-    height: 180px;
     -webkit-box-shadow : 0 2px 11px -3px rgb(0 0 0 / 69%);
     box-shadow: 0 2px 11px -3px rgb(0 0 0 / 69%);
     border-radius: 10px;
-    background-color: #282828;
-    color: #E0DFDB;
+    background-color: var(--secondary-bg);
+    color: var(--primary-text);
 }
 
 .share .shareWrapper {
@@ -346,6 +343,11 @@ body {
 .share .shareWrapper .shareTop {
     display: flex;
     align-items: center;
+}
+
+.share .shareWrapper .shareBottom{
+    padding: 0;
+    margin: 0;
 }
 
 .share .shareWrapper .shareTop .shareProfileImg img {
@@ -359,8 +361,8 @@ body {
 .share .shareWrapper .shareTop  .shareInput {
     width: 100%;
     border: none;
-    background-color: #282828;
-    color: #fff;
+    background-color: var(--secondary-bg);
+    color: var(--secondary-text);
 }
 
 .share .shareWrapper .shareTop .shareInput:focus-within {
@@ -369,10 +371,6 @@ body {
 
 .share .shareWrapper hr.shareHr {
     margin: 20px 0;
-}
-
-.share .shareWrapper .shareBottom {
-    display: flex;
 }
 
 .share .shareWrapper .shareBottom .shareOptions {
@@ -386,7 +384,7 @@ body {
     align-items: center;
     justify-content: start;
     width: fit-content;
-    margin-right: 40px;
+    margin-right: 35px;
     cursor: pointer;
 }
 
@@ -402,9 +400,9 @@ body {
 
 .share .shareWrapper .shareBottom .shareButton {
     border: none;
-    color: #fff;
+    color: var(--secondary-text);
     border-radius: 50px;
-    background: #8B475D;
+    background: var(--main-content);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -427,8 +425,8 @@ body {
     box-shadow: 0 2px 11px -3px rgb(0 0 0 / 69%);
     border-radius: 10px;
     margin: 30px 0;
-    color: #E0DFDB;
-    background-color: #282828;
+    color: var(--primary-text);
+    background-color: var(--secondary-bg);
 }
 
 .post .postWrapper {
@@ -454,7 +452,7 @@ body {
     font-weight: 500;
     line-height: 100%;
     margin-right: 10px;
-    color: #E0DFDB;
+    color: var(--primary-text);
 }
 
 .post .postWrapper .postTop .topLeft .date {
@@ -497,7 +495,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 0 5px;
-    color: #E0DFDB;
+    color: var(--primary-text);
 }
 
 .post .postWrapper .postBottom .bottomLeft {
@@ -512,7 +510,7 @@ body {
     font-size: 16px;
     line-height: 8px;
     margin-left: 5px;
-    color: #E0DFDB;
+    color: var(--primary-text);
 }
 
 .post .postWrapper .postBottom .bottomLeft div {
@@ -525,7 +523,7 @@ body {
     display: flex;
     align-items: center;
     padding: 5px;
-    color: #E0DFDB;
+    color: var(--primary-text);
     cursor: pointer;
 }
 
@@ -578,7 +576,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    color: #fff;
+    color: var(--secondary-text);
     background: #8f8f8f;
     width: 100%;
     padding: 10px;
@@ -624,7 +622,7 @@ body {
 .friendOnline .onlineFriendsList .friend .friendName {
     margin: 0;
     font-size: 16px;
-    color: #E0DFDB;
+    color: var(--primary-text);
 }
 
 .friendOnline .head {
@@ -632,7 +630,7 @@ body {
     font-weight: 600;
     margin-bottom: 6px;
     padding: 0 10px;
-    color: #E0DFDB;
+    color: var(--primary-text);
 }
 
 .friendOnline .onlineFriendsList .friend .onlineIcon {
@@ -643,7 +641,7 @@ body {
     top: 0;
     right: 9px;
     border-radius: 50%;
-    border: 3px solid #fff;
+    border: 3px solid var(--secondary-text);
 }
 
 /* Story */
@@ -656,7 +654,7 @@ body {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
-    border: 3px solid #8B475D;
+    border: 3px solid var(--main-content);
     cursor: pointer;
 }
 
@@ -676,7 +674,7 @@ body {
     height: 60px;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px dashed #fff;
+    border: 2px dashed var(--secondary-text);
 }
 
 .story .content {
@@ -693,7 +691,7 @@ body {
 }
 
 .story .content .userName {
-    color: #ffffff;
+    color: var(--secondary-text)fff;
     font-size: 14px;
     padding: 10px 0 5px;
     font-weight: 500;
@@ -720,4 +718,52 @@ body {
     top: 85px;
     background: transparent;
     margin: 0;
+}
+
+/* Profile Page */
+
+.profile-right ,
+.profile-right .profile-section {
+    padding: 0px;
+}
+
+.profile-section .userProfile {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.profile-section .userProfile .cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-right .profile-section .userDP {
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    bottom: -47px;
+    left: 20px;
+    border-radius: 50%;
+    border: 3px solid var(--secondary-text);
+}
+
+.profile-section .userProfile .name {
+    position: absolute;
+    bottom: 0;
+    font-size: 29px;
+    left: 230px;
+    font-weight: 300;
+    color: var(--primary-text);
+}
+
+.profile-section .userProfile .settingsIcon {
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+    cursor: pointer;
 }

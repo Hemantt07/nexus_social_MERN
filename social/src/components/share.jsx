@@ -16,9 +16,9 @@ export default function Share() {
 
             </div>
                 <hr className="shareHr" />
-            <div className="shareBottom">
+            <div className="shareBottom row">
 
-                <div className="shareOptions">
+                <div className="shareOptions col-md-10">
 
                     <div className="shareOption">
                         <PermMedia htmlColor="#6CA6CD" className="icon" />
@@ -42,7 +42,7 @@ export default function Share() {
                     
                 </div>
 
-                <button className="shareButton">
+                <button className="shareButton col-md-2">
                     <span>Share</span>
                     <Send className="icon"/>
                 </button>

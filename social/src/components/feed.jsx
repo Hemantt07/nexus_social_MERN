@@ -4,7 +4,6 @@ import { Posts } from "../post-data";
 
 export default function Feed() {
   return (
-    <div className="feed col-md-6">
       <div className="feedWrapper">
         <Share/>
 
@@ -13,6 +12,5 @@ export default function Feed() {
         ))}
 
       </div>
-    </div>
   )
 }

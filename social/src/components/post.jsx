@@ -1,9 +1,16 @@
 import { MoreVert, QuestionAnswer } from '@mui/icons-material';
 import { Users } from "../post-data";
+import { useState } from 'react';
 
 export default function Post({post}) {
 
-  const user = Users.filter( u=>u.id===1 );
+  const [like, setLike] = useState(post.like);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const likeHandler =()=>{
+    setLike( isLiked ? like-1 : like+1 )
+    setIsLiked( !isLiked )
+  }
 
   return (
     <div className="post" id={`post${post.id}`}>
@@ -41,10 +48,10 @@ export default function Post({post}) {
             <div className="postBottom">
                 <div className="bottomLeft">
 
-                    <div className="heartReact"></div>
-                    <div className="wowReact"></div>
+                    <div className="heartReact" onClick={likeHandler} ></div>
+                    <div className="wowReact" onClick={likeHandler} ></div>
 
-                    <span className="reactionsCount">{post.like}</span>
+                    <span className="reactionsCount">{like}</span>
                 </div>
                 <div className="bottomRight">
                     <QuestionAnswer className="icon"/>
