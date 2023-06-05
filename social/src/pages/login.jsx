@@ -14,10 +14,15 @@ export default function Login() {
         </div>
 
         <div className="col-md-6 login-right">
-            <div className="login-form">
-                <input type="text" className="loginName" />
-                <input type="mail" className="loginMail" />
-                <button type="submit" className='loginButton'>Login</button>
+            <div className="login-form row">
+                <input type="text" className="loginMail col-12 mb-3" placeholder='Username or Email' />
+                <input type="mail" className="loginPassword col-12 mb-3" placeholder='Password' />
+                <button type="submit" className='loginButton mb-3'>Login</button>
+                <span className='forgotPass mb-3'>Forgot Password?</span>
+                <hr />
+                <button className="registerButton">
+                    Create New Account
+                </button>
             </div>
         </div>
 

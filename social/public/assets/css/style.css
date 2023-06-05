@@ -159,7 +159,7 @@ body {
     color: var(--primary-text);
 }
 
-.topbarCenter input.search:focus-visible {
+input:focus-visible {
     outline: none;
 }
 
@@ -890,4 +890,63 @@ body {
     color: var(--main-content);
     margin-left: 5px;
     text-decoration: line-through;
+}
+
+.login-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-right .login-form {
+    box-shadow: 0 0 3px 0px var(--secondary-bg);
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.login-right .login-form input {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 400;
+    background: var(--secondary-bg);
+    color: var(--primary-text);
+}
+
+.registerPage .login-right .login-form input {
+    width: 49%;
+}
+
+.login-right .login-form .registerButton ,
+.login-right .login-form .loginButton {
+    width: max-content;
+    font-size: 16px;
+    color: var(--primary-text);
+    background: var(--main-content);
+    border: none;
+    padding: 8px 30px;
+    border-radius: 5px;
+    margin: 0 auto 10px;
+    align-self: center;
+}
+
+.login-right .login-form .registerButton,
+.login-right .login-form .loginButton {
+    width: 100% ;
+    font-size: 20px;
+}
+
+.login-right .login-form .forgotPass {
+    margin-top: 20px;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+}
+
+.login-right .login-form hr {
+    background-color: var(--primary-text);
+    width: 100%;
 }
