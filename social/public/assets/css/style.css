@@ -644,12 +644,12 @@ body {
 .friendOnline .onlineFriendsList .friend .onlineIcon {
     width: 14px;
     height: 14px;
-    background: limegreen;
+    background: #16f316 ;
     position: absolute;
     top: 0;
     right: 9px;
     border-radius: 50%;
-    border: 3px solid var(--secondary-text);
+    border: 3px solid var(--primary-bg);
 }
 
 /* Story */
@@ -660,7 +660,7 @@ body {
     padding: 0px;
     margin-right: 10px;
     position: relative;
-    border-radius: 10px;
+    border-radius: 20px;
     overflow: hidden;
     border: 3px solid var(--main-content);
     cursor: pointer;
@@ -682,7 +682,7 @@ body {
     height: 60px;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px dashed var(--secondary-text);
+    border: 2px dashed var(--primary-text);
 }
 
 .story .content {
