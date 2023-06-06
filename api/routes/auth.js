@@ -3,7 +3,6 @@ const User = require('../models/Users');
 const bcrypt = require('bcrypt');
 
 // Register
-
 router.post("/register",async (req, res) => {
     try {
         // Genrate new password

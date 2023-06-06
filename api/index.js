@@ -5,10 +5,10 @@ const app = express();
 const dotenv = require("dotenv");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const { MongoClient } = require("mongodb");
+const { default: mongoose } = require("mongoose");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
-const { default: mongoose } = require("mongoose");
+const postsRoute = require("./routes/posts");
 
 dotenv.config();
 
@@ -24,6 +24,7 @@ app.use(morgan('common'));
 
 app.use('/api/users', userRoute);
 app.use('/api/auth', authRoute);
+app.use('/api/posts', postsRoute);
 
 const server = app.listen(8800, () => {
     const port = server.address().port;
