@@ -3,6 +3,10 @@ const { Router } = require('express');
 const User = require("../models/Users");
 const bcrypt = require('bcrypt');
 
+router.get("/", (req, res) => {
+    res.send("Its a user root");
+});
+
 // Update user
 router.put("/:id", async(req, res) => {
     if ( req.body.userId == req.params.id || req.body.isAdmin ) {
@@ -57,8 +61,8 @@ router.get("/:id", async(req, res) => {
 router.put("/:id/follow", async (req, res) => {
     if ( req.body.userId !== req.params.id ) {
         try {
-            const user = await User.findById(req.params.id);
-            const currentUser = await User.findById(req.body.userId);
+            const user = User.findById(req.params.id);
+            const currentUser = User.findById(req.body.userId);
             if (!user.followers.includes(req.body.userId)) {
                 await user.updateOne({ $push: { followers: req.body.userId } });
                 await currentUser.updateOne({ $push: { followings: req.params.id } });
@@ -69,7 +73,6 @@ router.put("/:id/follow", async (req, res) => {
         } catch (error) {
             res.status(500).json(error);
         }
-
     } else {
         res.status(403).json("You can't follow yourself");
     }
