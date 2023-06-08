@@ -10,9 +10,18 @@ I have added some changes to it
 ![Nexu Social](https://github.com/Hemantt07/Nexus-Social-React.js-app-/assets/118185650/8dcd9cb6-045f-4b46-839f-3a3d4b7565ab)
 
 
-# Used Scripts 
-Runs the app in the development mode.
+# Used Scripts
+Runs the app in the development mode. (React)
+
+npm install react-router-dom
+
+npm start
+
 Open http://localhost:3000 to view it in the browser.
+
+### For api
+
+npm install express mongoose dotenv morgan helmet bcryptjs --save
 
 # Learn React JS
 You can learn react from https://facebook.github.io/create-react-app/docs/getting-started
