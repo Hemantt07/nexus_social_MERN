@@ -3,64 +3,64 @@ import { Users } from "../post-data";
 import { useState } from 'react';
 
 export default function Post({post}) {
+    const [like, setLike] = useState(post.like);
+    const [isLiked, setIsLiked] = useState(false);
+    const [isActive, setActive] = useState(false);
+    
+    const likeHandler =()=>{
+        setActive( !isActive )
+        setLike( isLiked ? like-1 : like+1 )
+        setIsLiked( !isLiked )
+    }
+    
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    return (
+        <div className="post" id={`post${post.id}`}>
+            <div className="postWrapper">
+                <div className="postTop">
 
-  const [like, setLike] = useState(post.like);
-  const [isLiked, setIsLiked] = useState(false);
-  const [isActive, setActive] = useState(false);
+                    <div className="topLeft">
+                        <img 
+                            src={ PF+Users.filter(u=>u.id === post.userId)[0].profilePicture }
+                            alt="" className="userDP"
+                        />
+                        <span className="userName">
+                            { Users.filter(u=>u.id === post.userId)[0].username }
+                        </span>
+                        <span className="date">{post.date}</span>
+                    </div>
 
-  const likeHandler =()=>{
-    setActive( !isActive )
-    setLike( isLiked ? like-1 : like+1 )
-    setIsLiked( !isLiked )
-  }
+                    <div className="topRight">
+                        <MoreVert className="icon"/> 
+                    </div>
 
-  return (
-    <div className="post" id={`post${post.id}`}>
-        <div className="postWrapper">
-            <div className="postTop">
+                </div>
+                <div className="postCenter">
 
-                <div className="topLeft">
-                    <img 
-                        src={ Users.filter(u=>u.id === post.userId)[0].profilePicture }
-                        alt="" className="userDP"
-                    />
-                    <span className="userName">
-                        { Users.filter(u=>u.id === post.userId)[0].username }
-                    </span>
-                    <span className="date">{post.date}</span>
+                    <div className="postCaption">
+                        {post?.desc}
+                    </div>
+
+                    <div className="postImg">
+                        <img src={ PF+post.photo } alt={`post${post.id}`} />
+                    </div>
+
                 </div>
 
-                <div className="topRight">
-                    <MoreVert className="icon"/> 
+                <div className="postBottom">
+                    <div className="bottomLeft">
+
+                        <Favorite onClick={likeHandler} className={`likeIcon ${isActive ? "active" : null}`}/>
+
+                        <span className="reactionsCount">{like}</span>
+                    </div>
+                    <div className="bottomRight">
+                        <QuestionAnswer className="icon"/>
+                        <span className="commentCount">{post.comment} Comments</span>
+                    </div>
                 </div>
 
             </div>
-            <div className="postCenter">
-
-                <div className="postCaption">
-                    {post?.desc}
-                </div>
-
-                <div className="postImg">
-                    <img src={post.photo} alt={`post${post.id}`} />
-                </div>
-
-            </div>
-
-            <div className="postBottom">
-                <div className="bottomLeft">
-
-                    <Favorite onClick={likeHandler} className={`likeIcon ${isActive ? "active" : null}`}/>
-
-                    <span className="reactionsCount">{like}</span>
-                </div>
-                <div className="bottomRight">
-                    <QuestionAnswer className="icon"/>
-                    <span className="commentCount">{post.comment} Comments</span>
-                </div>
-            </div>
-
         </div>
-    </div>
-  )
+    )
 }

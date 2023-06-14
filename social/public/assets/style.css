@@ -19,6 +19,11 @@ body {
     color: var(--primary-text);
 }
 
+a {
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
 /* Home*/
 #backToTop {
     position: fixed;
@@ -522,8 +527,8 @@ input:focus-visible {
 
 .post .postWrapper .postBottom .bottomLeft .reactionsCount {
     font-size: 16px;
-    line-height: 8px;
-    margin-left: 5px;
+    line-height: 1;
+    margin: 5px 0 0 5px;
     color: var(--primary-text);
 }
 
@@ -817,7 +822,6 @@ input:focus-visible {
 /* Yur Friends */
 
 .userfriend {
-    padding: 10px;
     margin-top: 3rem;
 }
 

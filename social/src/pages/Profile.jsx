@@ -6,51 +6,53 @@ import Topbar from "../components/topbar";
 import { ExpandLessSharp, Settings } from "@mui/icons-material";
 
 export default function Profile() {
-  return (
-    <>
-        
-    <Topbar/>
-
-    <div className="profile-page row">
-        <Sidebar/>
-        
-        <div className="col-md-10">
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const user = 'iset';
+    return (
+        <>
             
-            <div className="profile-right row">
+        <Topbar/>
 
-                <div className="col-md-12 profile-section">
-                    <div className="userProfile">
-                        <img src="assets/images/posts/post8.jpeg" alt="cover-photo" className="cover" />
-                        <img src="assets/images/profiles/profile.png" alt="profile" className="userDP" />
-                        
-                        <div className="profileDetails">
-                            <h3 className="name">Reshav Dhiman</h3>
-                            <p className="about">Memes were my thing even before they existed on Instagram.</p>
+        <div className="profile-page row">
+            <Sidebar/>
+            
+            <div className="col-md-10">
+                
+                <div className="profile-right row">
+
+                    <div className="col-md-12 profile-section">
+                        <div className="userProfile">
+                            <img src={`${PF}images/posts/post8.jpeg`} alt="cover-photo" className="cover" />
+                            <img src={`${PF}images/profiles/profile.png`} alt="profile" className="userDP" />
+                            
+                            <div className="profileDetails">
+                                <h3 className="name">Reshav Dhiman</h3>
+                                <p className="about">Memes were my thing even before they existed on Instagram.</p>
+                            </div>
+                            <Tooltip title="Settings">
+                                <Settings className="settingsIcon"/>
+                            </Tooltip>
                         </div>
-                        <Tooltip title="Settings">
-                            <Settings className="settingsIcon"/>
-                        </Tooltip>
+                        
+                    </div>
+
+                    <div className="feed col-md-7">
+                        <Feed/>
+                    </div>
+                    <div className="rightBar col-md-5">
+
+                        <Rightbar user={user}/>
+                        
                     </div>
                     
                 </div>
-
-                <div className="feed col-md-7">
-                    <Feed/>
-                </div>
-                <div className="rightBar col-md-5">
-
-                    <Rightbar/>
-                    
-                </div>
-                
             </div>
+            
         </div>
-        
-    </div>
-        <Tooltip title="Back to Top">
-            <div id="backToTop"><ExpandLessSharp className='icon'/></div>
-        </Tooltip>
-    </>
+            <Tooltip title="Back to Top">
+                <div id="backToTop"><ExpandLessSharp className='icon'/></div>
+            </Tooltip>
+        </>
 
-  )
+    )
 }

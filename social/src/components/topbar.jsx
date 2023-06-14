@@ -1,17 +1,16 @@
-import { Favorite, ChatBubble, Search, Person, Brightness6, TtyOutlined } from '@mui/icons-material';
+import { Favorite, ChatBubble, Search, Person, Brightness6 } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
-import { useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 export default function Topbar(){
-
-    const switchMode = () => {
-        
-    }
+    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
     return (
         <div className='topbar row'>
             <div className="topbarLeft col-md-2">
-                <span className="logo">Nexus Social</span>
+                <Link to="/">
+                    <span className="logo">Nexus Social</span>
+                </Link>
             </div>
             <div className="topbarCenter col-md-6">
                 <button type="submit" className='searchBtn'>
@@ -52,9 +51,11 @@ export default function Topbar(){
                 </div>
 
                 <Tooltip title="Profile">
-                    <div className="profile">
-                        <img src="assets/images/profiles/profile.png" alt="" />
-                    </div>
+                    <Link to="/profile/:username">
+                        <div className="profile">
+                            <img src={`${PF}images/profiles/profile.png`} alt="" />
+                        </div>
+                    </Link>
                 </Tooltip>
             </div>
         </div>
