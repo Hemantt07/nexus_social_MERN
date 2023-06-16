@@ -6,12 +6,12 @@ import axios from "axios";
 export default function Feed() {
   const [posts, setPosts] = useState([]);
 
+  const fetchPosts = async () => {
+    const res = await axios.get('http://localhost:5000/posts/timeline/647f2e30bca1bc420d29cd2d');
+    setPosts(res.data);
+  };
+
   useEffect(()=>{
-    const fetchPosts = async () => {
-      const res = await axios.get('posts/timeline/647f2e30bca1bc420d29cd2d');
-      setPosts(res.data);
-      console.log(res);
-    };
     fetchPosts();
   }, []);
 
@@ -20,7 +20,7 @@ export default function Feed() {
         <Share/>
 
         { posts.map((p) => (
-          <Post key={p.id} post={p}/>
+          <Post key={p._id} post={p}/>
         ))}
 
       </div>

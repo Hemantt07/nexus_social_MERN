@@ -1,10 +1,22 @@
-import { Users } from "../post-data";
 import Online from "./online";
 import StoriesCarousel from "./storiesCarousel"
 import { Close } from '@mui/icons-material';
 import Userfriend from "./userfriend";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Rightbar( {user} ) {
+
+  const [users, setUsers] = useState([]);
+
+  const fetchUsers = async () => {
+    const res = await axios.get('http://localhost:5000/users/usersList/all');
+    setUsers(res.data);
+  };
+
+  useEffect(()=>{
+    fetchUsers();
+  }, []);
 
   const HomeRightBar = () => {
     return (
@@ -23,7 +35,7 @@ export default function Rightbar( {user} ) {
           <p className="head">Online Friends</p>
           <ul className="onlineFriendsList">
 
-            { Users.map((user)=>(
+            { users.map((user)=>(
 
               <Online key={user.id} user={user} />
 
@@ -54,7 +66,7 @@ export default function Rightbar( {user} ) {
           <h3 className="head">Your Friends</h3>
           <ul className="friendlist row">
 
-            { Users.map((friend)=>(
+            { users.map((friend)=>(
 
               <Userfriend key={friend.id} friend={friend} />
 

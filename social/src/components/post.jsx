@@ -1,33 +1,44 @@
 import { Favorite, MoreVert, QuestionAnswer } from '@mui/icons-material';
-import { Users } from "../post-data";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from "axios";
+import { format } from 'date-fns';
 
 export default function Post({post}) {
-    const [like, setLike] = useState(post.like);
+    const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLiked] = useState(false);
     const [isActive, setActive] = useState(false);
+    const [user, setUser] = useState({});
+    const date = format(Date.parse(post.createdAt), 'kk:mm MM/dd');
     
     const likeHandler =()=>{
         setActive( !isActive )
         setLike( isLiked ? like-1 : like+1 )
         setIsLiked( !isLiked )
     }
-    
+
+    useEffect(()=>{
+        const fetchUser = async () => {
+            const user = await axios.get(`http://localhost:5000/users/${post.userId}`);
+            setUser(user.data);
+        }
+        fetchUser();
+    },[]);
+
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     return (
-        <div className="post" id={`post${post.id}`}>
+        <div className="post" id={`post${post._id}`}>
             <div className="postWrapper">
                 <div className="postTop">
 
                     <div className="topLeft">
                         <img 
-                            src={ PF+Users.filter(u=>u.id === post.userId)[0].profilePicture }
+                            src={ user.profilePicture || `${PF}images/profiles/default.jpg` }
                             alt="" className="userDP"
                         />
                         <span className="userName">
-                            { Users.filter(u=>u.id === post.userId)[0].username }
+                            { user.username }
                         </span>
-                        <span className="date">{post.date}</span>
+                        <span className="date">{date}</span>
                     </div>
 
                     <div className="topRight">
@@ -42,7 +53,7 @@ export default function Post({post}) {
                     </div>
 
                     <div className="postImg">
-                        <img src={ PF+post.photo } alt={`post${post.id}`} />
+                        <img src={ post.img } alt={`post${post._id}`} />
                     </div>
 
                 </div>

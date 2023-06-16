@@ -4,7 +4,7 @@ export default function Userfriend({friend}) {
             <li className="usersfriend col-md-3">
 
                 <img
-                    src = { publicDir + friend.profilePicture}
+                    src = { friend.profilePicture || publicDir+'images/profiles/default.jpg' }
                     alt="" 
                     className = {friend.username}
                 />

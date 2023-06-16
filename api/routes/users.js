@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { Router } = require('express');
-const User = require("../models/Users");
+const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
 
 router.get("/", (req, res) => {
@@ -19,7 +18,7 @@ router.put("/:id", async(req, res) => {
             }
         }
         try {
-            const user = await User.findByIdAndUpdate(req.params.id, {
+            const user = await Users.findByIdAndUpdate(req.params.id, {
                 $set: req.body,
             });
             res.status(200).json("Account has been updated");
@@ -48,9 +47,19 @@ router.delete("/:id", async(req, res) => {
 // Get a user
 router.get("/:id", async(req, res) => {
     try {
-        const user = await User.findById(req.params.id);
+        const user = await Users.findById(req.params.id);
         const {password, updatedAt, ...other} = user ._doc;
         res.status(200).json(other);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
+// Get all user
+router.get('/usersList/all', async(req, res)=>{
+    try {
+        const users = await Users.find({});
+        res.status(200).json(users);
     } catch (error) {
         res.status(500).json(error);
     }
