@@ -55,10 +55,10 @@ export default function Rightbar( {user} ) {
 
         <div className="userInfo row">
 
-          <span className="col-md-2 key">City : </span><span className="col-md-10 value">Mohali ( IN )</span>
-          <span className="col-md-2 key">From : </span><span className="col-md-10 value">Himachal Pradesh ( IN )</span>
+          <span className="col-md-2 key">City : </span><span className="col-md-10 value">{ user.city }</span>
+          <span className="col-md-2 key">From : </span><span className="col-md-10 value">{ user.from }</span>
           <span className="col-md-2 key">Sex : </span><span className="col-md-10 value">Male</span>
-          <span className="col-md-2 key">Email : </span><span className="col-md-10 value">reshav07@gmail.com</span>
+          <span className="col-md-2 key">Email : </span><span className="col-md-10 value">{ user.email }</span>
 
         </div>
 

@@ -1,19 +1,15 @@
 const { default: mongoose } = require('mongoose');
 const mangoose = require('mongoose');
 
-const postSchema = new mongoose.Schema({
+const storySchema = new mongoose.Schema({
     userId: {
         type: String,
         required: true,
     },
-    desc: {
-        type: String,
-        max: 500,
-    },
     img:{
         type: String,
     },
-    likes:{
+    views:{
         type: Array,
         default: [],
     }
@@ -21,4 +17,4 @@ const postSchema = new mongoose.Schema({
     { timestamps: true }
 );
 
-module.exports = mangoose.model('Posts', postSchema);
+module.exports = mangoose.model('Stories', storySchema);

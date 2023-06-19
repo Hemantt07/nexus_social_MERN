@@ -2,9 +2,6 @@ const router = require('express').Router();
 const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
 
-router.get("/", (req, res) => {
-    res.send("Its a user root");
-});
 
 // Update user
 router.put("/:id", async(req, res) => {
@@ -45,21 +42,40 @@ router.delete("/:id", async(req, res) => {
 });
 
 // Get a user
-router.get("/:id", async(req, res) => {
+router.get("/", async(req, res) => {
+    const userId = req.query.userId;
+    const username = req.query.username;
     try {
-        const user = await Users.findById(req.params.id);
-        const {password, updatedAt, ...other} = user ._doc;
+        const user = userId 
+            ? await Users.findById( userId )
+            : await Users.findOne({ username: username });
+        const { password, updatedAt, ...other } = user ._doc;
         res.status(200).json(other);
     } catch (error) {
         res.status(500).json(error);
     }
 });
 
-// Get all user
+// Get all users
 router.get('/usersList/all', async(req, res)=>{
     try {
         const users = await Users.find({});
         res.status(200).json(users);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
+// Get following users
+router.get('/usersList/following', async(req, res)=>{
+    try {
+        const user = Users.findById(req.params.userId);
+        const friends = await Promise.all(
+            user.followings.map((friendsId)=>{
+                return Users.findById({friendsId });
+            })
+        )
+        res.status(200).json(friends);
     } catch (error) {
         res.status(500).json(error);
     }
@@ -70,8 +86,8 @@ router.get('/usersList/all', async(req, res)=>{
 router.put("/:id/follow", async (req, res) => {
     if ( req.body.userId !== req.params.id ) {
         try {
-            const user = await User.findById(req.params.id);
-            const currentUser = await User.findById(req.body.userId);
+            const user = await Users.findById(req.params.id);
+            const currentUser = await Users.findById(req.body.userId);
             if (!user.followers.includes(req.body.userId)) {
                 await user.updateOne({ $push: { followers: req.body.userId } });
                 await currentUser.updateOne({ $push: { followings: req.params.id } });

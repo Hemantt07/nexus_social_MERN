@@ -1,14 +1,14 @@
 import { Favorite, MoreVert, QuestionAnswer } from '@mui/icons-material';
 import { useEffect, useState } from 'react';
-import axios from "axios";
-import { format } from 'date-fns';
+import axios from 'axios';
+import { format } from 'timeago.js';
+import { Link } from 'react-router-dom';
 
 export default function Post({post}) {
     const [like, setLike] = useState(post.likes.length);
     const [isLiked, setIsLiked] = useState(false);
     const [isActive, setActive] = useState(false);
     const [user, setUser] = useState({});
-    const date = format(Date.parse(post.createdAt), 'kk:mm MM/dd');
     
     const likeHandler =()=>{
         setActive( !isActive )
@@ -18,18 +18,18 @@ export default function Post({post}) {
 
     useEffect(()=>{
         const fetchUser = async () => {
-            const user = await axios.get(`http://localhost:5000/users/${post.userId}`);
+            const user = await axios.get(`http://localhost:5000/users/?userId=${post.userId}`);
             setUser(user.data);
         }
         fetchUser();
-    },[]);
+    },[post.userId]);
 
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     return (
         <div className="post" id={`post${post._id}`}>
             <div className="postWrapper">
-                <div className="postTop">
-
+                <Link to={`/profile/${user.username}`}>
+                <div className="postTop">   
                     <div className="topLeft">
                         <img 
                             src={ user.profilePicture || `${PF}images/profiles/default.jpg` }
@@ -38,14 +38,13 @@ export default function Post({post}) {
                         <span className="userName">
                             { user.username }
                         </span>
-                        <span className="date">{date}</span>
+                        <span className="date">{format(post.createdAt)}</span>
                     </div>
-
                     <div className="topRight">
                         <MoreVert className="icon"/> 
                     </div>
-
                 </div>
+                </Link>
                 <div className="postCenter">
 
                     <div className="postCaption">

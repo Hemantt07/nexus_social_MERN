@@ -3,11 +3,23 @@ import Feed from "../components/feed";
 import Rightbar from "../components/rightbar";
 import Sidebar from "../components/sidebar";
 import Topbar from "../components/topbar";
+import { useEffect, useState } from "react";
+import axios from 'axios';
 import { ExpandLessSharp, Settings } from "@mui/icons-material";
 
 export default function Profile() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-    const user = 'iset';
+    const [user, setUser] = useState([]);
+    
+    const fetchUser = async () => {
+      const res = await axios.get('http://localhost:5000/users/?username=Reshav');
+      setUser(res.data);
+    };
+  
+    useEffect(()=>{
+      fetchUser();
+    }, []);
+
     return (
         <>
             
@@ -22,12 +34,12 @@ export default function Profile() {
 
                     <div className="col-md-12 profile-section">
                         <div className="userProfile">
-                            <img src={`${PF}images/posts/post8.jpeg`} alt="cover-photo" className="cover" />
-                            <img src={`${PF}images/profiles/profile.png`} alt="profile" className="userDP" />
+                            <img src={ user.coverPicture ||  `${PF}images/posts/posts1.webp` } alt="cover-photo" className="cover" />
+                            <img src={ user.profilePicture ||  `${PF}images/profiles/default.jpg` } alt="profile" className="userDP" />
                             
                             <div className="profileDetails">
-                                <h3 className="name">Reshav Dhiman</h3>
-                                <p className="about">Memes were my thing even before they existed on Instagram.</p>
+                                <h3 className="name">{ user.username }</h3>
+                                <p className="about">{ user.desc }</p>
                             </div>
                             <Tooltip title="Settings">
                                 <Settings className="settingsIcon"/>
@@ -37,11 +49,11 @@ export default function Profile() {
                     </div>
 
                     <div className="feed col-md-7">
-                        <Feed/>
+                        <Feed username={ user.username }/>
                     </div>
                     <div className="rightBar col-md-5">
 
-                        <Rightbar user={user}/>
+                        <Rightbar user={ user }/>
                         
                     </div>
                     

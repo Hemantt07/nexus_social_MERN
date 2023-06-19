@@ -61,6 +61,10 @@ const userSchema = new mongoose.Schema({
     relationship:{
         type: Number,
         enum: [1,2,3]
+    },
+    sex:{
+        type: Number,
+        enum: [1,2,3]
     }
   },
     { timestamps: true }

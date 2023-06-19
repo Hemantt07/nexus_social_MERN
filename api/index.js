@@ -7,6 +7,7 @@ const { default: mongoose } = require("mongoose");
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postsRoute = require("./routes/posts");
+const storiesRoute = require("./routes/stories");
 const cors = require("cors");
 app.use(cors());
 
@@ -24,6 +25,7 @@ app.use(morgan('common'));
 app.use('/users', userRoute);
 app.use('/auth', authRoute);
 app.use('/posts', postsRoute);
+app.use('/stories', storiesRoute);
 
 const server = app.listen(5000, () => {
     const port = server.address().port;

@@ -12,6 +12,13 @@ body.dark-mode {
     --main-content: #8B475D; 
 }
 
+body.light-mode {
+    --primary-bg: #bbbbbb;
+    --secondary-bg: #a6b1b7;
+    --primary-text: #000000;
+    --secondary-text: #404040;
+    --main-content: #a87284;
+}
 
 body {
     overflow-x: hidden;
@@ -211,7 +218,7 @@ input:focus-visible {
     font-size: 13px;
     line-height: 18px;
     border-radius: 24px;
-    color: var(--primary-text);
+    color: #bebebe;
 }
 
 .topbarRight {
@@ -705,7 +712,7 @@ input:focus-visible {
 }
 
 .story .content .userName {
-    color: var(--secondary-text)fff;
+    color: #E0DFDB;
     font-size: 14px;
     padding: 10px 0 5px;
     font-weight: 500;
