@@ -22,6 +22,7 @@ body {
 a {
     text-decoration: none !important;
     cursor: pointer;
+    color: inherit !important;
 }
 
 /* Home*/
@@ -840,7 +841,7 @@ input:focus-visible {
     list-style: none;
 }
 
-.userfriend .friendlist .usersfriend {
+.userfriend .friendlist .usersfriend a{
     display: flex;
     flex-direction: column;
     align-items: center;
