@@ -37,7 +37,7 @@ export default function Rightbar( {user} ) {
 
             { users.map((user)=>(
 
-              <Online key={user.id} user={user} />
+              <Online key={user._id} user={user} />
 
             )) }
             
@@ -55,10 +55,18 @@ export default function Rightbar( {user} ) {
 
         <div className="userInfo row">
 
-          <span className="col-md-2 key">City : </span><span className="col-md-10 value">{ user.city }</span>
-          <span className="col-md-2 key">From : </span><span className="col-md-10 value">{ user.from }</span>
-          <span className="col-md-2 key">Sex : </span><span className="col-md-10 value">Male</span>
-          <span className="col-md-2 key">Email : </span><span className="col-md-10 value">{ user.email }</span>
+          <div className="col-md-3">  
+            <h3 className="key">City : </h3>
+            <h3 className="key">From : </h3>
+            <h3 className="key">Sex : </h3>
+            <h3 className="key">Email : </h3>
+          </div>
+          <div className="col-md-9">
+            <h3 className="value">{ user.city || '...' }</h3>
+            <h3 className="value">{ user.from || user.city || '...' }</h3>
+            <h3 className="value">{ user.sex === 1 ? 'Male' : user.sex === 2 ? 'Female' : "Prefer not to say" }</h3>
+            <h3 className="value">{ user.email }</h3>
+          </div>
 
         </div>
 
@@ -68,7 +76,7 @@ export default function Rightbar( {user} ) {
 
             { users.map((friend)=>(
 
-              <Userfriend key={friend.id} friend={friend} />
+              <Userfriend key={friend._id} friend={friend} />
 
             )) }
 

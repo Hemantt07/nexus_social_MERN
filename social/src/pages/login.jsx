@@ -1,31 +1,68 @@
-import React from 'react'
+import React, { useContext, useRef } from 'react'
+import { loginCall } from '../apiCalls';
+import { AuthContext } from '../context/AuthContext';
+import { CircularProgress, Link } from '@mui/material';
 
 export default function Login() {
-  return (
-    <div className='loginPage row'>
+    const email = useRef();
+    const password = useRef();
+    const { user, isFetching, error, dispatch } = useContext( AuthContext );
 
-        <div className="col-md-6 login-left">
-            <div>
-                <h4 className="title">Nexus Social</h4>
-                <p className="description">
-                    Let's connect to the world with the help of <b>Nexus Social.</b>
-                </p>
+    const handleClick = (e)=>{
+        e.preventDefault();
+        loginCall( { 
+            email: email.current.value, 
+            password: password.current.value 
+        }, dispatch );
+        console.log(user);
+    }
+
+    return (
+        <div className='loginPage row'>
+
+            <div className="col-md-6 login-left">
+                <div>
+                    <h4 className="title">Nexus Social</h4>
+                    <p className="description">
+                        Let's connect to the world with the help of <b>Nexus Social.</b>
+                    </p>
+                </div>
             </div>
-        </div>
 
-        <div className="col-md-6 login-right">
-            <div className="login-form row">
-                <input type="text" className="loginMail col-12 mb-3" placeholder='Username or Email' />
-                <input type="mail" className="loginPassword col-12 mb-3" placeholder='Password' />
-                <button type="submit" className='loginButton mb-3'>Login</button>
-                <span className='forgotPass mb-3'>Forgot Password?</span>
-                <hr />
-                <button className="registerButton">
-                    Create New Account
-                </button>
+            <div className="col-md-6 login-right">
+                <form className="login-form row" onSubmit={ handleClick }>
+                    <input 
+                        type="email"
+                        className="loginMail col-12 mb-3"
+                        placeholder='Username or Email'
+                        ref={ email }
+                        required
+                    />
+                    <input 
+                        type="password" 
+                        className="loginPassword col-12 mb-3" 
+                        placeholder='Password'
+                        minLength={ 6 }
+                        ref={ password } 
+                        required
+                    />
+
+                    <button type="submit" className='loginButton mb-3' disabled ={ isFetching } >
+                        { isFetching ? <CircularProgress /> : 'Login' }
+                    </button>
+
+                    <span className='forgotPass mb-3'>Forgot Password?</span>
+                    <hr />
+
+                    <Link to="/register">
+                        <button className="registerButton" disabled ={ isFetching }>
+                            { isFetching ? <CircularProgress /> : 'Create New Account' }
+                        </button>
+                    </Link>
+
+                </form>
             </div>
-        </div>
 
-    </div>
-  )
+        </div>
+    )
 }

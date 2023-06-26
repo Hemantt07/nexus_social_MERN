@@ -4,7 +4,7 @@ export default function Userfriend({friend}) {
     const publicDir = process.env.REACT_APP_PUBLIC_FOLDER;
      return (
          <li className="usersfriend col-md-3">
-             <Link to={`/profile/?userId=${friend.username}`}>
+             <Link to={`/profile/${friend.username}`}>
                 <img
                     src = { friend.profilePicture || publicDir+'images/profiles/default.jpg' }
                     alt="" 

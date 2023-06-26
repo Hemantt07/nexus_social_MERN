@@ -19,7 +19,9 @@ export default function Feed({ username }) {
 
   return (
       <div className="feedWrapper">
-        <Share/>
+        <Share user={ username } />
+
+        { posts.length == 0 ? <h1 className='error'> User has not posed anything yet</h1> : '' }
 
         { posts.map((p) => (
           <Post key={p._id} post={p}/>

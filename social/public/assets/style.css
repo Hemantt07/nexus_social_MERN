@@ -105,7 +105,13 @@ a {
 
 .feed .feedWrapper {
     padding: 20px;
+}
 
+.feed .feedWrapper .error {
+    font-size: 35px;
+    text-align: center;
+    padding: 100px 0;
+    font-weight: 400;
 }
 
 /* TopBar */
@@ -218,7 +224,7 @@ input:focus-visible {
     font-size: 13px;
     line-height: 18px;
     border-radius: 24px;
-    color: #bebebe;
+    color: #fff;
 }
 
 .topbarRight {
@@ -750,7 +756,7 @@ input:focus-visible {
 
 .profile-section .userProfile {
     width: 100%;
-    height: 200px;
+    height: 250px;
     position: relative;
     display: flex;
     justify-content: center;
@@ -771,6 +777,7 @@ input:focus-visible {
     left: 20px;
     border-radius: 50%;
     border: 5px solid var(--primary-bg);
+    object-fit: cover;
 }
 
 .profile-section .userProfile .profileDetails {
@@ -798,7 +805,7 @@ input:focus-visible {
     cursor: pointer;
 }
 
-/* Profie RightBar */
+/* Profile RightBar */
 
 .rightBar .rightBarWrapper .rightBarTitle {
     font-size: 28px;
@@ -824,7 +831,7 @@ input:focus-visible {
     padding: 7px 10px 0;
     font-size: 16px;
     font-weight: 400;
-    line-height: 27px;
+    line-height: 23px;
 }
 
 /* Yur Friends */
@@ -949,6 +956,7 @@ input:focus-visible {
 .login-right .login-form .loginButton {
     width: 100% ;
     font-size: 20px;
+    transition: .8s;
 }
 
 .login-right .login-form .forgotPass {
@@ -961,4 +969,14 @@ input:focus-visible {
 .login-right .login-form hr {
     background-color: var(--primary-text);
     width: 100%;
+}
+
+.css-18lrjg1-MuiCircularProgress-root {
+    color: #fff !important;
+    width: 25px !important;
+    height: 25px !important;
+}
+
+button:disabled {
+    cursor: not-allowed;
 }
