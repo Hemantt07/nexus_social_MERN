@@ -1,10 +1,13 @@
 import { Favorite, ChatBubble, Search, Person, Brightness6 } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
+import { useContext } from 'react';
 import { Link } from "react-router-dom";
+import { AuthContext } from '../context/AuthContext';
 
 export default function Topbar(){
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
+    const { user } = useContext( AuthContext ) || [];
+ 
     return (
         <div className='topbar row'>
             <div className="topbarLeft col-md-2">
@@ -51,9 +54,9 @@ export default function Topbar(){
                 </div>
 
                 <Tooltip title="Profile">
-                    <Link to="/profile/:username">
+                    <Link to={ `/profile/${ user.username || '' }` }>
                         <div className="profile">
-                            <img src={`${PF}images/profiles/profile.png`} alt="" />
+                            <img src={ user.profilePicture || `${PF}images/profiles/profile.png`} alt="profile-picture" />
                         </div>
                     </Link>
                 </Tooltip>

@@ -32,6 +32,11 @@ a {
     color: inherit !important;
 }
 
+
+button:disabled {
+    cursor: not-allowed;
+}
+
 /* Home*/
 #backToTop {
     position: fixed;
@@ -243,13 +248,12 @@ input:focus-visible {
     border: 1px solid var(--main-content);
     margin-left: 20px;
     overflow: hidden;
-    cursor: pointer;
-    object-fit: cover;
 }
 
 .profile img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* SideBar */
@@ -749,6 +753,24 @@ input:focus-visible {
 
 /* Profile Page */
 
+.profileDetails .follow-btn {
+    display: block;
+    width: max-content;
+    background: var(--main-content);
+    padding: 5px 15px;
+    border: none;
+    border-radius: 7px;
+    color: var(--primary-text);
+    font-size: 16px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
+    transition: all .5s;
+}
+
+.profileDetails .follow-btn:hover {
+    background: var(--primary-text);
+    color: var(--main-content);
+}
+
 .profile-right ,
 .profile-right .profile-section {
     padding: 0px;
@@ -781,9 +803,16 @@ input:focus-visible {
 }
 
 .profile-section .userProfile .profileDetails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: absolute;
     bottom: 0;
     left: 230px;
+}
+
+.profile-section .userProfile .profileDetails div {
+    margin-right: 50px;
 }
 
 .profile-section .userProfile .profileDetails .name {
@@ -957,6 +986,7 @@ input:focus-visible {
     width: 100% ;
     font-size: 20px;
     transition: .8s;
+    text-align: center;
 }
 
 .login-right .login-form .forgotPass {
@@ -977,6 +1007,23 @@ input:focus-visible {
     height: 25px !important;
 }
 
-button:disabled {
-    cursor: not-allowed;
+.follow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.follow p{
+    margin-bottom: 3px;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.profileDetails .count {
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 1;
+    margin: 0;
 }

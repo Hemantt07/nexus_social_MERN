@@ -1,30 +1,20 @@
 import { Send, LocalOffer, EmojiEmotions, LocationOn, PermMedia } from '@mui/icons-material';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
-export default function Share( user ) {
+export default function Share() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-    // const [users, setUsers] = useState([]);
-    // console.log(usera);
-    // const fetchUsers = async () => {
-    //   const res = axios.get('http://localhost:5000/users/?username='+ user.user)
-    //    setUsers(res.data);
-    // };
-
-    // useEffect(()=>{
-    //     fetchUsers();
-    // }, [user]);
-
+    const { user } = useContext( AuthContext );
     return (
         <div className="share">
             <div className="shareWrapper">
                 <div className="shareTop"> 
 
                     <div className="shareProfileImg">
-                        <img src={ `${PF}images/profiles/default.jpg` } alt="profile" />
+                        <img src={ user.profilePicture || `${PF}images/profiles/default.jpg` } alt="profile" />
                     </div>
                     <input type="text" 
-                        placeholder="What's in your mind Reshav?" 
+                        placeholder={ `What's in your mind ${ user.username }?` } 
                         className="shareInput" 
                     />
 

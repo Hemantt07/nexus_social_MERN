@@ -91,11 +91,11 @@ export default function Register() {
                     </button>
                     <span className='forgotPass mb-3'>Forgot Password?</span>
                     <hr />
-                    <button className="registerButton">
+                    <div className="registerButton">
                         <Link to="/login">
                                 Allready have an Account? Login
                         </Link>
-                    </button>
+                    </div>
                 </form>
             </div>
 

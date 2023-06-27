@@ -48,40 +48,6 @@ export default function Sidebar() {
             <span className="text">More</span>
         </button><hr className="sidebarHr" />
 
-        {/* <ul className="friendsList">
-
-        <li className="friend">
-            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
-            <span className="text">Sumisha</span>
-          </li>
-
-          <li className="friend">
-            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
-            <span className="text">Sumisha</span>
-          </li>
-
-          <li className="friend">
-            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
-            <span className="text">Sumisha</span>
-          </li>
-
-          <li className="friend">
-            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
-            <span className="text">Sumisha</span>
-          </li>
-
-          <li className="friend">
-            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
-            <span className="text">Sumisha</span>
-          </li>
-
-          <li className="friend">
-            <img src="assets/images/profiles/profile2.jpeg" alt="" className="friendImg" />
-            <span className="text">Sumisha</span>
-          </li>
-
-        </ul> */}
-
       </div>
     </div>
   )

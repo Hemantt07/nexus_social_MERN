@@ -70,14 +70,10 @@ router.get('/usersList/all', async(req, res)=>{
 router.get('/usersList/following', async(req, res)=>{
     try {
         const user = Users.findById(req.params.userId);
-        const friends = await Promise.all(
-            user.followings.map((friendsId)=>{
-                return Users.findById({friendsId });
-            })
-        )
+        const friends = await user;
         res.status(200).json(friends);
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json('error');
     }
 });
 

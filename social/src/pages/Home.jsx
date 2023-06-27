@@ -5,8 +5,11 @@ import Topbar from "../components/topbar";
 import Sidebar from "../components/sidebar";
 import Feed from "../components/feed";
 import Rightbar from "../components/rightbar";
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Home(){
+    const username = useContext( AuthContext ).user.username;
     return (
         <>
         
@@ -15,7 +18,7 @@ export default function Home(){
         <div className="homeContainer row">
             <Sidebar/>
             <div className="feed col-md-6">
-                <Feed/>
+                <Feed  username={username}/>
             </div>
             <div className="rightBar col-md-4">
                 <Rightbar/>
