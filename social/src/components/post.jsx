@@ -1,21 +1,27 @@
 import { Favorite, MoreVert, QuestionAnswer } from '@mui/icons-material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { format } from 'timeago.js';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Post({post}) {
     const [like, setLike] = useState(post.likes.length);
-    const [isLiked, setIsLiked] = useState(false);
-    const [isActive, setActive] = useState(false);
-    const [user, setUser] = useState({});
+    const [users, setUser] = useState({});
+    const { user } = useContext( AuthContext );
     
-    const likeHandler =()=>{
+    const likeHandler = async ()=>{
+        try {
+            console.log(user);
+            await axios.put( `http://localhost:5000/posts/${ post._id }/like`, { userId: user._id } );
+        } catch (error) {
+            console.log(error);
+        }
         setActive( !isActive )
         setLike( isLiked ? like-1 : like+1 )
         setIsLiked( !isLiked )
     }
-
+    
     useEffect(()=>{
         const fetchUser = async () => {
             const user = await axios.get(`http://localhost:5000/users/?userId=${post.userId}`);
@@ -23,20 +29,24 @@ export default function Post({post}) {
         }
         fetchUser();
     },[post.userId]);
-
+    
+    const [isActive, setActive] = useState( post.likes.includes( user._id ) );
+    const [isLiked, setIsLiked] = useState( post.likes.includes( user._id ) );
+    
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    
     return (
         <div className="post" id={`post${post._id}`}>
             <div className="postWrapper">
-                <Link to={`/profile/${user.username}`}>
+                <Link to={`/profile/${users.username}`}>
                 <div className="postTop">   
                     <div className="topLeft">
                         <img 
-                            src={ user.profilePicture || `${PF}images/profiles/default.jpg` }
+                            src={ users.profilePicture ? users.profilePicture : `${PF}images/profiles/default.jpg` }
                             alt="" className="userDP"
                         />
                         <span className="userName">
-                            { user.username }
+                            { users.username }
                         </span>
                         <span className="date">{format(post.createdAt)}</span>
                     </div>
@@ -51,9 +61,11 @@ export default function Post({post}) {
                         {post?.desc}
                     </div>
 
+                    { post.img ?  
                     <div className="postImg">
                         <img src={ post.img } alt={`post${post._id}`} />
                     </div>
+                    : '' }
 
                 </div>
 

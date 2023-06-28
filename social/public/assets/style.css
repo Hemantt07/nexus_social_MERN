@@ -226,7 +226,7 @@ input:focus-visible {
     width: 20px;
     height: 20px;
     text-align: center;
-    font-size: 13px;
+    font-size: 10px;
     line-height: 18px;
     border-radius: 24px;
     color: #fff;
@@ -406,6 +406,10 @@ input:focus-visible {
     align-items: center;
     padding: 0 15px;
     justify-content: space-between;
+}
+
+.share .shareWrapper .shareBottom .shareOptions #image {
+    display: none;
 }
 
 .share .shareWrapper .shareBottom .shareOption {

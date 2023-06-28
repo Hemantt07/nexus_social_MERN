@@ -16,6 +16,7 @@ function App() {
 
   return (
     <Router>
+      
       <Routes>
         
         <Route exact path="/" element={ user.user !== null ? <Home/> : <Register /> } />
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/profile/:username?" element={ user.user == null ? <Navigate to='/' /> : <Profile/> } />
 
       </Routes>
+
     </Router>
     );
 
