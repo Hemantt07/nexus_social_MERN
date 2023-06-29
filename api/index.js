@@ -10,6 +10,7 @@ const postsRoute = require("./routes/posts");
 const storiesRoute = require("./routes/stories");
 const cors = require("cors");
 const multer = require( 'multer' );
+const path = require( 'path' );
 
 app.use(cors());
 
@@ -23,24 +24,27 @@ mongoose.connect(process.env.MONGO_URL, {
 
 app.use(express.json());
 app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(morgan('common'));
 
 const storage = multer.diskStorage({
-    destination: ( req, file, db ) =>{
-        cb( null, 'public/posts' );
+    destination: ( req, file, cb ) =>{
+        cb( null, 'public/images' );
     },
     filename: ( req, file, cb )=>{
         cb( null, req.body.name );
-    }
-})
+    },
+});
 
-const upload = multer({ storage });
+app.use('/images', express.static( path.join( __dirname, 'public/images' ) ) );
 
-app.post( '/upload', upload.single('file'), ()=>{
+const upload = multer({ storage: storage });
+
+app.post( '/upload', upload.single('file'), ( req, res )=>{
     try {
         return res.status(200).json( 'File has been uploaded' );
     } catch (error) {
-        
+        console.log( error );
     }
 } )
 

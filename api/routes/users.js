@@ -67,11 +67,19 @@ router.get('/usersList/all', async(req, res)=>{
 });
 
 // Get following users
-router.get('/usersList/following', async(req, res)=>{
-    try {
-        const user = Users.findById(req.params.userId);
-        const friends = await user;
-        res.status(200).json(friends);
+router.get('/following/:userId', async(req, res)=>{
+    try { 
+        const user = await Users.findById(req.params.userId);
+        const friends = await Promise.all( user.followings.map( (id) => {
+            return Users.findOne( {'_id': id} );
+        }) );
+        let friendsList = [];
+        friends.map( (friend)=>{
+            const { _id, username, profilePicture } = friend;
+            friendsList.push( { _id, username, profilePicture } );
+        } )
+
+        res.status(200).json(friendsList);
     } catch (error) {
         res.status(500).json('error');
     }
@@ -104,8 +112,8 @@ router.put("/:id/follow", async (req, res) => {
 router.put("/:id/unfollow", async (req, res) => {
     if ( req.body.userId !== req.params.id ) {
         try {
-            const user = await User.findById(req.params.id);
-            const currentUser = await User.findById(req.body.userId);
+            const user = await Users.findById(req.params.id);
+            const currentUser = await Users.findById(req.body.userId);
             if (user.followers.includes(req.body.userId)) {
                 await user.updateOne({ $pull: { followers: req.body.userId } });
                 await currentUser.updateOne({ $pull: { followings: req.params.id } });

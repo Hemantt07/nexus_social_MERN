@@ -12,7 +12,6 @@ export default function Post({post}) {
     
     const likeHandler = async ()=>{
         try {
-            console.log(user);
             await axios.put( `http://localhost:5000/posts/${ post._id }/like`, { userId: user._id } );
         } catch (error) {
             console.log(error);
@@ -42,7 +41,7 @@ export default function Post({post}) {
                 <div className="postTop">   
                     <div className="topLeft">
                         <img 
-                            src={ users.profilePicture ? users.profilePicture : `${PF}images/profiles/default.jpg` }
+                            src={ users.profilePicture ? users.profilePicture : `${PF}profiles/default.jpg` }
                             alt="" className="userDP"
                         />
                         <span className="userName">
@@ -63,7 +62,7 @@ export default function Post({post}) {
 
                     { post.img ?  
                     <div className="postImg">
-                        <img src={ post.img } alt={`post${post._id}`} />
+                        <img src={ PF+post.img } alt={`post${post._id}`} />
                     </div>
                     : '' }
 

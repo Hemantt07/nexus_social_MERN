@@ -2,16 +2,18 @@ import Online from "./online";
 import StoriesCarousel from "./storiesCarousel"
 import { Close } from '@mui/icons-material';
 import Userfriend from "./userfriend";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Rightbar( {user} ) {
 
-  const [users, setUsers] = useState([]);
+  const [friends, setFriends] = useState([]);
+  const { user: currentUser } = useContext( AuthContext );
 
   const fetchUsers = async () => {
-    const res = await axios.get('http://localhost:5000/users/usersList/all');
-    setUsers(res.data);
+    const res = await axios.get('http://localhost:5000/users/following/'+currentUser._id  );
+    setFriends(res.data);
   };
 
   useEffect(()=>{
@@ -35,7 +37,7 @@ export default function Rightbar( {user} ) {
           <p className="head">Online Friends</p>
           <ul className="onlineFriendsList">
 
-            { users.map((user)=>(
+            { friends.map((user)=>(
 
               <Online key={user._id} user={user} />
 
@@ -74,7 +76,7 @@ export default function Rightbar( {user} ) {
           <h3 className="head">Your Friends</h3>
           <ul className="friendlist row">
 
-            { users.map((friend)=>(
+            { friends.map((friend)=>(
 
               <Userfriend key={friend._id} friend={friend} />
 

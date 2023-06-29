@@ -10,6 +10,7 @@ export default function Share() {
     const [file, setFile] = useState( null );
     const postPhoto = (e)=>{
         setFile(e.target.files[0]);
+        console.log(file)
     } 
 
     const formHandler = async (e)=>{
@@ -18,9 +19,22 @@ export default function Share() {
             userId : user._id,
             desc : content.current.value,
         }
-        console.log (content.current.value );
+        if ( file ) {
+            const data = new FormData();
+            const fileName = Date.now() + file.name;
+            data.append( 'name', fileName );
+            data.append( 'file', file );
+            newPost.img = fileName;
+            try {
+                await axios.post( 'http://localhost:5000/upload', data );
+            } catch (error) {
+                console.log( error );   
+            }
+        }        
+
         try {
             await axios.post( 'http://localhost:5000/posts/', newPost )
+            window.location.reload();
         } catch (error) {
             console.log(error);
         }
@@ -32,7 +46,7 @@ export default function Share() {
                 <div className="shareTop"> 
 
                     <div className="shareProfileImg">
-                        <img src={ user.profilePicture || `${PF}images/profiles/default.jpg` } alt="profile" />
+                        <img src={ user.profilePicture || `${PF}profiles/default.jpg` } alt="profile" />
                     </div>
                     <input type="text" 
                         placeholder={ `What's in your mind ${ user.username }?` } 
@@ -42,18 +56,25 @@ export default function Share() {
                     />
 
                 </div>
+                { file 
+                    ? 
+                    <div className="postImg">
+                        <img src="" alt="" />
+                    </div>
+                    : '' 
+                }
                     <hr className="shareHr" />
                 <div className="shareBottom row" >
 
                     <div className="shareOptions col-md-10">
 
-                        <label htmlFor='image' className="shareOption">
+                        <label htmlFor='file' className="shareOption">
                             <PermMedia htmlColor="#6CA6CD" className="icon" />
                             <span className="text">Video or Photo</span>
                             <input 
                                 type="file"
-                                name="image"
-                                id="image"
+                                name="file"
+                                id="file"
                                 accept='.png,.jpg,.jpeg'
                                 onChange={ postPhoto }
                             />

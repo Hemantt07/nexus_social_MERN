@@ -56,7 +56,7 @@ export default function Topbar(){
                 <Tooltip title="Profile">
                     <Link to={ `/profile/${ user.username || '' }` }>
                         <div className="profile">
-                            <img src={ user.profilePicture || `${PF}images/profiles/profile.png`} alt="profile-picture" />
+                            <img src={ user.profilePicture || `${PF}profiles/profile.png`} alt="profile-picture" />
                         </div>
                     </Link>
                 </Tooltip>

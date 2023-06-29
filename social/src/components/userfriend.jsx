@@ -6,7 +6,7 @@ export default function Userfriend({friend}) {
          <li className="usersfriend col-md-3">
              <Link to={`/profile/${friend.username}`}>
                 <img
-                    src = { friend.profilePicture || publicDir+'images/profiles/default.jpg' }
+                    src = { friend.profilePicture || publicDir+'profiles/default.jpg' }
                     alt="" 
                     className = {friend.username}
                 />

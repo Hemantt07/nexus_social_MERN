@@ -6,7 +6,7 @@ export default function Online({user}) {
     <Link to="#">
       <li className="friend">
           <div className="imgContainer">
-              <img src={ user.profilePicture || publicF+'images/profiles/default.jpg' } alt="" />
+              <img src={ user.profilePicture || publicF+'profiles/default.jpg' } alt="" />
               <span className="onlineIcon"></span>
           </div>
           <p className="friendName">{user.username}</p>

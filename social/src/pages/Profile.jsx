@@ -13,17 +13,28 @@ export default function Profile() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const username  = useParams().username;
     const [user, setUser] = useState([]);
-    const currentUser = useContext( AuthContext);
-
+    const { user : currentUser } = useContext( AuthContext);
+    
     useEffect(()=>{
         const fetchUser = async () => {
-          const res = username == currentUser.user.username 
-            ? await axios.get('http://localhost:5000/users/?username='+ currentUser.user.username  )
+            const res = username == currentUser.username 
+            ? await axios.get('http://localhost:5000/users/?username='+ currentUser.username  )
             : await axios.get('http://localhost:5000/users/?username='+username);
-          setUser(res.data);
+            setUser(res.data);
         };
-      fetchUser();
-    }, []);
+        fetchUser();
+    }, [username, currentUser]);
+    
+    const handleFollow = async( req, res )=>{
+    //     try {
+    //         await axios.put( `http://localhost:5000/users/${ user._id }/follow/`, { userId: currentUser._id } );
+    //         setFollower( res.data );
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    }
+    console.log( user.length )
+    // const [follower, setFollower] = useState(  user.followers.includes( currentUser._id ) );
 
     return (
         <>
@@ -37,8 +48,8 @@ export default function Profile() {
 
                     <div className="col-md-12 profile-section">
                         <div className="userProfile">
-                            <img src={ user.coverPicture || `${PF}images/posts/posts1.webp` } alt="cover-photo" className="cover" />
-                            <img src={ user.profilePicture || `${PF}images/profiles/default.jpg` } alt="profile" className="userDP" />
+                            <img src={ user.coverPicture || `${PF}posts/posts1.webp` } alt="cover-photo" className="cover" />
+                            <img src={ user.profilePicture || `${PF}profiles/default.jpg` } alt="profile" className="userDP" />
                             
                             <div className="profileDetails">
                                 <div>
@@ -54,9 +65,9 @@ export default function Profile() {
                                     <p>Followings</p>
                                 </div>
 
-                                { username == currentUser.user.username 
+                                { username == currentUser.username 
                                     ? '' 
-                                    : <button className="follow-btn">Follow</button>
+                                    : <button className="follow-btn" onClick={ handleFollow }>Follow</button>
                                 }
                                 
                             </div>

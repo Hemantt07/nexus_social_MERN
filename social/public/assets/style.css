@@ -408,7 +408,7 @@ input:focus-visible {
     justify-content: space-between;
 }
 
-.share .shareWrapper .shareBottom .shareOptions #image {
+.share .shareWrapper .shareBottom .shareOptions #file {
     display: none;
 }
 
