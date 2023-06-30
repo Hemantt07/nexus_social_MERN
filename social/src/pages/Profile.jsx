@@ -13,8 +13,14 @@ export default function Profile() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const username  = useParams().username;
     const [user, setUser] = useState([]);
-    const { user : currentUser } = useContext( AuthContext);
-    
+    const { user : currentUser, dispatch } = useContext( AuthContext);
+    const [follower, setFollower] = useState( 
+        currentUser.followings.includes( user._id )
+    );
+    useEffect(()=>{
+        setFollower( currentUser.followings.includes( user._id ) );
+    })
+
     useEffect(()=>{
         const fetchUser = async () => {
             const res = username == currentUser.username 
@@ -23,19 +29,28 @@ export default function Profile() {
             setUser(res.data);
         };
         fetchUser();
-    }, [username, currentUser]);
+    }, [ username, currentUser ]);
     
-    const handleFollow = async( req, res )=>{
-    //     try {
-    //         await axios.put( `http://localhost:5000/users/${ user._id }/follow/`, { userId: currentUser._id } );
-    //         setFollower( res.data );
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    }
-    console.log( user.length )
-    // const [follower, setFollower] = useState(  user.followers.includes( currentUser._id ) );
+    const handleFollow = async () => {
+        try {
 
+            if ( follower ) {
+                await axios.put( `http://localhost:5000/users/${ user._id }/unfollow/`,{ 
+                  userId : currentUser._id 
+                } );
+                dispatch({ type: 'UNFOLLOW', payload: user._id });
+            } else {
+                await axios.put( `http://localhost:5000/users/${ user._id }/follow/`,{ 
+                  userId : currentUser._id 
+                } );
+                dispatch({ type: 'FOLLOW', payload: user._id });
+            }
+  
+            setFollower( !follower );
+        } catch (error) {
+            console.log(error);
+        }
+    }
     return (
         <>
         <Topbar/>
@@ -64,12 +79,15 @@ export default function Profile() {
                                     <h3 className="count"> { user.followings ? user.followings.length : '0' } </h3>
                                     <p>Followings</p>
                                 </div>
-
-                                { username == currentUser.username 
+                                { user.username == currentUser.username 
                                     ? '' 
-                                    : <button className="follow-btn" onClick={ handleFollow }>Follow</button>
+                                    : <button 
+                                        className={ follower ? 'unfollow-btn' : 'follow-btn' } 
+                                        onClick={ handleFollow }
+                                    >
+                                        { follower ? 'Unfollow' : 'Follow' }
+                                    </button>
                                 }
-                                
                             </div>
                             <Tooltip title="Settings">
                                 <Settings className="settingsIcon"/>

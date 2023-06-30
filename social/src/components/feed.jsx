@@ -8,8 +8,8 @@ export default function Feed({ username }) {
   const [posts, setPosts] = useState([]);
   const { user } = useContext( AuthContext );
 
-  const fetchPosts = async () => {
-    const res = username !== user.username
+    const fetchPosts = async () => {
+    const res = username
       ? await axios.get('http://localhost:5000/posts/profile/'+ username)
       : await axios.get('http://localhost:5000/posts/timeline/'+ user._id );
     setPosts(
@@ -28,7 +28,7 @@ export default function Feed({ username }) {
         { username === user.username ? <Share /> : '' }
 
         { posts.length === 0 
-          ? <h1 className='error'> User has not posed anything yet</h1> 
+          ? <h1 className='error'> User has not posted anything yet</h1> 
           : posts.map((p) => (
             <Post key={p._id} post={p}/>
           ))

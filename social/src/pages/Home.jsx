@@ -9,7 +9,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 
 export default function Home(){
-    const username = useContext( AuthContext ).user.username;
+    const { user }= useContext( AuthContext );
     return (
         <>
         
@@ -18,10 +18,10 @@ export default function Home(){
         <div className="homeContainer row">
             <Sidebar/>
             <div className="feed col-md-6">
-                <Feed  username={username}/>
+                <Feed username={ user.username } />
             </div>
             <div className="rightBar col-md-4">
-                <Rightbar/>
+                <Rightbar />
             </div>
         
         </div>

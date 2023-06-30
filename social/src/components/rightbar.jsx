@@ -6,19 +6,23 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 
-export default function Rightbar( {user} ) {
+export default function Rightbar({ user }) {
 
   const [friends, setFriends] = useState([]);
-  const { user: currentUser } = useContext( AuthContext );
-
-  const fetchUsers = async () => {
-    const res = await axios.get('http://localhost:5000/users/following/'+currentUser._id  );
-    setFriends(res.data);
-  };
-
+  const { user: currentUser, dispatch } = useContext( AuthContext );
+  
   useEffect(()=>{
+    const fetchUsers = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/users/following/'+currentUser._id  );
+        setFriends(res.data);
+      } catch (error) {
+        console.log( error )
+      }
+    };
     fetchUsers();
-  }, []);
+  }, [ user ]);
+
 
   const HomeRightBar = () => {
     return (
@@ -51,10 +55,10 @@ export default function Rightbar( {user} ) {
   }
 
   const ProfileRightBar = () => {
+
     return(
       <>
         <h4 className="rightBarTitle">User Informations</h4>
-
         <div className="userInfo row">
 
           <div className="col-md-3">  

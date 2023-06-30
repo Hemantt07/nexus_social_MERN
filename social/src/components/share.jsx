@@ -1,7 +1,8 @@
 import { Send, LocalOffer, EmojiEmotions, LocationOn, PermMedia } from '@mui/icons-material';
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
+import { Close } from '@mui/icons-material';
 
 export default function Share() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -10,8 +11,7 @@ export default function Share() {
     const [file, setFile] = useState( null );
     const postPhoto = (e)=>{
         setFile(e.target.files[0]);
-        console.log(file)
-    } 
+    }
 
     const formHandler = async (e)=>{
         e.preventDefault();
@@ -56,21 +56,22 @@ export default function Share() {
                     />
 
                 </div>
+                <hr className="shareHr" />
                 { file 
                     ? 
                     <div className="postImg">
-                        <img src="" alt="" />
+                        <img src={ URL.createObjectURL( file ) } alt="" />
+                        <Close className="closeIcon" onClick={ ()=> setFile(null) }/>
                     </div>
                     : '' 
                 }
-                    <hr className="shareHr" />
                 <div className="shareBottom row" >
 
                     <div className="shareOptions col-md-10">
 
                         <label htmlFor='file' className="shareOption">
                             <PermMedia htmlColor="#6CA6CD" className="icon" />
-                            <span className="text">Video or Photo</span>
+                            <span className="text">Photo</span>
                             <input 
                                 type="file"
                                 name="file"

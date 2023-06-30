@@ -398,7 +398,7 @@ input:focus-visible {
 }
 
 .share .shareWrapper hr.shareHr {
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 .share .shareWrapper .shareBottom .shareOptions {
@@ -516,10 +516,26 @@ input:focus-visible {
     line-height: 1;
 }
 
+.shareWrapper .postImg { 
+    padding-bottom: 15px; 
+    position: relative;
+}
+
+.shareWrapper .postImg  .closeIcon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    background: #2d2d2d;
+    border-radius: 50%;
+    color: #fff;
+    padding: 2px;
+}
+.shareWrapper .postImg img ,
 .post .postWrapper .postCenter .postImg img {
     width: 100%;
     height: auto;
-    max-height: 500px;
+    max-height: 400px;
     object-fit: contain;
 }
 
@@ -757,7 +773,7 @@ input:focus-visible {
 
 /* Profile Page */
 
-.profileDetails .follow-btn {
+.follow-btn {
     display: block;
     width: max-content;
     background: var(--main-content);
@@ -766,14 +782,25 @@ input:focus-visible {
     border-radius: 7px;
     color: var(--primary-text);
     font-size: 16px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, .16);
-    transition: all .5s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .56);
+    transition: box-shadow .3s;
 }
 
-.profileDetails .follow-btn:hover {
-    background: var(--primary-text);
+.unfollow-btn {
+    display: block;
+    width: max-content;
     color: var(--main-content);
+    padding: 5px 15px;
+    border: none;
+    border-radius: 7px;
+    background: var(--primary-text);
+    font-size: 16px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .56);
+    transition: box-shadow .3s;
 }
+
+.unfollow-btn:hover ,
+.follow-btn:hover {  box-shadow: none; }
 
 .profile-right ,
 .profile-right .profile-section {
