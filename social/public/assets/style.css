@@ -32,6 +32,11 @@ a {
     color: inherit !important;
 }
 
+ul,ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
 button:disabled {
     cursor: not-allowed;
@@ -499,9 +504,28 @@ input:focus-visible {
     align-items: center;
 }
 
+.post .postWrapper .postTop .topRight .more {
+    background: transparent;
+    border: none;
+    color: #000;
+}
+
 .post .postWrapper .postTop .topRight .icon {
     cursor: pointer;
     font-size: 25px;
+    color: var(--primary-text);
+}
+
+.popup-content {
+    background-color: var(--primary-bg) !important;
+    border: none !important;
+} 
+
+.popup-content>div { display: none; }
+
+.popup-content .moreList li {
+    padding: 3px 10px;
+    cursor: pointer;
 }
 
 .post .postWrapper .postCenter {
@@ -647,14 +671,14 @@ input:focus-visible {
     padding: 0;
     margin: 0;
     list-style: none;
-    border-bottom: 1px solid #bebebe;
+    border-top: 1px solid var(--primary-text);
 }
 
 .friendOnline  .onlineFriendsList .friend {
     padding: 10px;
     display: flex;
     align-items: center;
-    border-top: 1px solid #bebebe;
+    border-bottom: 1px solid #bebebe;
     position: relative;
 }
 
@@ -677,11 +701,11 @@ input:focus-visible {
 }
 
 .friendOnline .head {
-    font-size: 23px;
-    font-weight: 600;
-    margin-bottom: 6px;
-    padding: 0 10px;
-    color: var(--primary-text);
+    font-size: 28px;
+    font-weight: 300;
+    padding-bottom: 5px;
+    width: fit-content;
+    margin-bottom: 15px;
 }
 
 .friendOnline .onlineFriendsList .friend .onlineIcon {
@@ -705,10 +729,12 @@ input:focus-visible {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
-    border: 3px solid var(--main-content);
     cursor: pointer;
 }
 
+.story.user .storyImg {
+    height: 80%;
+}
 
 .story .storyImg {
     height: 100%;
@@ -719,13 +745,28 @@ input:focus-visible {
     height: 100%;
     object-fit: cover;
 }
+.story.user .content .profileImg{
+    border: none;
+    width: 40px;
+    height: 40px;
+}
+
+.story.user .content .userName {
+    background: var(--secondary-bg);
+    color: var(--primary-text);
+    width: 100%;
+    text-align: center;
+    font-weight: 300;
+    font-size: 13px;
+    height: 20%;
+}
 
 .story .content .profileImg {
     width: 60px;
     height: 60px;
     object-fit: cover;
     border-radius: 50%;
-    border: 2px dashed var(--primary-text);
+    border: 3px solid var(--main-content);
 }
 
 .story .content {
@@ -739,6 +780,13 @@ input:focus-visible {
     align-items: center;
     justify-content: end;
     flex-direction: column;
+}
+
+h1.error {
+    font-size: 2vw;
+    font-weight: 300;
+    text-align: center;
+    margin: 74px 0;
 }
 
 .story .content .userName {
@@ -816,20 +864,56 @@ input:focus-visible {
     margin-bottom: 70px;
 }
 
-.profile-section .userProfile .cover {
+.profile-section .userProfile .coverPicture label {
+    bottom: auto;
+    top: 10px;
+}
+
+.profile-section .userProfile .coverPicture img,
+.profile-section .userProfile .coverPicture  {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.profile-right .profile-section .userDP {
+.profile-right .profile-section .profile-picture {
     width: 180px;
     height: 180px;
     position: absolute;
     bottom: -47px;
     left: 20px;
-    border-radius: 50%;
+}
+
+.profile-section .userProfile .coverPicture input,
+.profile-right .profile-section .profile-picture input { display: none; }
+
+
+.profile-section .userProfile .coverPicture label,
+.profile-right .profile-section .profile-picture label {
+    cursor: pointer;
+    position: absolute;
+    right: 24px;
+    bottom: 21px;
+    background: var(--primary-text);
+    color: var(--secondary-bg);
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 55%;
+}
+
+.profile-section .userProfile .coverPicture label svg,
+.profile-right .profile-section .profile-picture label svg {
+    font-size: 18px;
+}
+
+.profile-right .profile-section .userDP {
     border: 5px solid var(--primary-bg);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
@@ -1057,4 +1141,38 @@ input:focus-visible {
     font-weight: 300;
     line-height: 1;
     margin: 0;
+}
+
+/* Settings */
+
+.settings .title {
+    font-size: 34px;
+    font-weight: 300;
+    padding: 11px 10px;
+}
+
+.settings .settings-list {
+    position: relative;
+    padding: 0;
+    border-top: 0.1em solid var(--primary-text);
+}
+
+.settings button.logout,
+.settings .settings-list .item {
+    padding: 15px 15px;
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 1;
+    border: none;
+    border-bottom: 0.1em solid var(--primary-text);
+    width: 100%;
+    cursor: pointer;
+    background:transparent;
+    color:  var(--primary-text);
+}
+
+.settings {
+    padding-right: 20px;
 }

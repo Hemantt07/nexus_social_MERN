@@ -12,7 +12,7 @@ export default function Rightbar({ user }) {
   const { user: currentUser, dispatch } = useContext( AuthContext );
   
   useEffect(()=>{
-    const fetchUsers = async () => {
+    const fetchFriends = async () => {
       try {
         const res = await axios.get('http://localhost:5000/users/following/'+currentUser._id  );
         setFriends(res.data);
@@ -20,14 +20,15 @@ export default function Rightbar({ user }) {
         console.log( error )
       }
     };
-    fetchUsers();
+    fetchFriends();
   }, [ user ]);
-
 
   const HomeRightBar = () => {
     return (
       <>
-        <div className="stories"><StoriesCarousel/></div>
+        <div className="stories row">
+          <StoriesCarousel/>
+        </div>
 
         <div className="adv">
           <img src="assets/images/ad1.jpeg" alt="ad1" />
@@ -41,11 +42,14 @@ export default function Rightbar({ user }) {
           <p className="head">Online Friends</p>
           <ul className="onlineFriendsList">
 
-            { friends.map((user)=>(
+            { friends.length === 0 
+              ? <h1 className='error'>No one is online</h1> 
+              : friends.map((user)=>(
 
               <Online key={user._id} user={user} />
 
-            )) }
+              )) 
+            }
             
           </ul>
 
@@ -80,7 +84,9 @@ export default function Rightbar({ user }) {
           <h3 className="head">Your Friends</h3>
           <ul className="friendlist row">
 
-            { friends.map((friend)=>(
+            { friends.length === 0
+              ? <h1 className="error">You have no friends</h1>
+              : friends.map((friend)=>(
 
               <Userfriend key={friend._id} friend={friend} />
 
