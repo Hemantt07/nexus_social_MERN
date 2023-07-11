@@ -15,8 +15,6 @@ export default function Profile() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const username  = useParams().username;
     const [user, setUser] = useState([]);
-    const [profileDP, setProfileDP] = useState( null );
-    const [coverPicture, setCoverPic] = useState( null );
     const { user : currentUser, dispatch } = useContext( AuthContext);
     const [follower, setFollower] = useState( 
         currentUser.followings.includes( user._id )
@@ -57,55 +55,6 @@ export default function Profile() {
         }
     }
 
-    const profilePic = (e) => {
-        setTimeout(() => {
-            setProfileDP(e.target.files[0]);
-        }, 100);
-        setTimeout(() => {
-            if ( profileDP ) {
-                const data = new FormData();
-                const fileName = Date.now() + profileDP.name;
-                data.append( 'name', fileName );
-                data.append( 'file', profileDP );
-                try {
-                    axios.post( 'http://localhost:5000/upload', data );
-                } catch (error) {
-                    console.log( error );   
-                }
-                try {
-                    axios.put( `http://localhost:5000/users/${ user._id }`, { profilePicture: fileName } );
-                } catch (error) {
-                    console.log( error );
-                }
-            } else {
-                console.log('hlo');
-            }
-        }, 1000);
-    }
-
-    const coverPic = (e) => {
-        setCoverPic(e.target.files[0]);
-        setTimeout(() => {
-            if ( coverPicture ) {
-                const data = new FormData();
-                const fileName = Date.now() + coverPicture.name;
-                data.append( 'name', fileName );
-                data.append( 'file', coverPicture );
-                try {
-                    axios.post( 'http://localhost:5000/upload', data );
-                } catch (error) {
-                    console.log( error );   
-                }
-                try {
-                    axios.put( `http://localhost:5000/users/${ user._id }`, { coverPicture: fileName } );
-                } catch (error) {
-                    console.log( error );
-                }
-            } else {
-                console.log('hlo');
-            }
-        }, 1000);
-    }
 
     return (
         <>
@@ -121,38 +70,10 @@ export default function Profile() {
                         <div className="userProfile">
                             <div className="coverPicture">
                                 <img src={ user.coverPicture || `${PF}posts/posts1.webp` } alt="cover-photo" className="cover" />
-                                { user.username === currentUser.username 
-                                    ? <><label htmlFor="coverPic">
-                                            <EditIcon />
-                                        </label>
-                                        <input 
-                                            type="file" 
-                                            name="coverPic"
-                                            id="coverPic"
-                                            accept=".png, .jpg, .jpeg"
-                                            onChange={ coverPic }
-                                        />
-                                      </>
-                                      : ''
-                                } 
                             </div>
 
                             <div className="profile-picture">
                                 <img src={ user.profilePicture || `${PF}profiles/default.jpg` } alt="profile" className="userDP" />
-                                { user.username === currentUser.username 
-                                    ? <><label htmlFor="profilePic">
-                                            <EditIcon />
-                                        </label>
-                                        <input 
-                                            type="file" 
-                                            name="profilePic"
-                                            id="profilePic"
-                                            accept=".png, .jpg, .jpeg"
-                                            onChange={ profilePic }
-                                        />
-                                      </>
-                                      : ''
-                                }   
                             </div>
                             
                             <div className="profileDetails">
