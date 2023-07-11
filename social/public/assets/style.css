@@ -825,7 +825,10 @@ h1.error {
     display: block;
     width: max-content;
     background: var(--main-content);
-    padding: 5px 15px;
+    color: var(--main-content);
+    padding: 3px 0;
+    width: 85px;
+    line-height: 1.4;
     border: none;
     border-radius: 7px;
     color: var(--primary-text);
@@ -838,7 +841,9 @@ h1.error {
     display: block;
     width: max-content;
     color: var(--main-content);
-    padding: 5px 15px;
+    padding: 3px 0;
+    width: 85px;
+    line-height: 1.4;
     border: none;
     border-radius: 7px;
     background: var(--primary-text);
@@ -920,20 +925,30 @@ h1.error {
 .profile-section .userProfile .profileDetails {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     position: absolute;
+    flex-direction: column;
     bottom: 0;
     left: 230px;
+    right: 100px;
 }
 
-.profile-section .userProfile .profileDetails div {
-    margin-right: 50px;
+.profile-section .userProfile .profileDetails .follow {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profile-section .userProfile .profileDetails .follow h3.count {
+    margin-right: 30px;
 }
 
 .profile-section .userProfile .profileDetails .name {
     font-size: 29px;
     font-weight: 500;
+    line-height: 1;
     color: var(--primary-text);
+    margin: 0;
 }
 
 .profile-section .userProfile .profileDetails .about {
@@ -1124,7 +1139,6 @@ h1.error {
 
 .follow {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -1132,13 +1146,18 @@ h1.error {
 .follow p{
     margin-bottom: 3px;
     font-size: 17px;
-    font-weight: 800;
+    font-weight: 400;
     line-height: 1.2;
 }
 
+.profileDetails .count b {
+    font-weight: 800;
+    font-size: 20px;
+}
+
 .profileDetails .count {
-    font-size: 34px;
-    font-weight: 300;
+    font-size: 18px;
+    font-weight: 400;
     line-height: 1;
     margin: 0;
 }

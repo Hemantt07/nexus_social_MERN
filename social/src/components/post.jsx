@@ -58,7 +58,7 @@ export default function Post({post}) {
                         <span className="userName">
                             { users.username }
                         </span>
-                        <span className="date">{format(post.createdAt)}</span>
+                        <span className="date">{ format(post.createdAt) }</span>
                     </div>
                     </Link>
                     <div className="topRight">
@@ -85,9 +85,12 @@ export default function Post({post}) {
                 </div>
                 <div className="postCenter">
 
-                    <div className="postCaption">
-                        {post?.desc}
-                    </div>
+                    { post.desc 
+                        ? <div className="postCaption">
+                            { post.desc }
+                          </div>
+                        : ''
+                    }
 
                     { post.img ?  
                     <div className="postImg">

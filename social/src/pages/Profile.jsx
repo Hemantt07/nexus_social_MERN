@@ -25,10 +25,10 @@ export default function Profile() {
     useEffect(()=>{
         setFollower( currentUser.followings.includes( user._id ) );
     }, [user])
-
+    console.log(follower)
     useEffect(()=>{
         const fetchUser = async () => {
-            const res = username == currentUser.username 
+            const res = username == currentUser.username
             ? await axios.get('http://localhost:5000/users/?username='+ currentUser.username  )
             : await axios.get('http://localhost:5000/users/?username='+username);
             setUser(res.data);
@@ -160,23 +160,22 @@ export default function Profile() {
                                     <h3 className="name">{ user.username }</h3>
                                     <p className="about">{ user.desc }</p>
                                 </div>
-                                <div className="follow">
-                                    <h3 className="count"> { user.followers ? user.followers.length : '0' } </h3>
-                                    <p>Followers</p>
+
+                                <div className="mt-3 follow">
+                                    <h3 className="count"><b>{ user.followers ? user.followers.length : '0' }</b> Followers</h3>
+                                    <h3 className="count"><b>{ user.followings ? user.followings.length : '0' }</b> Following</h3>
+
+                                    { user.username === currentUser.username 
+                                        ? '' 
+                                        : <button 
+                                            className={ follower ? 'unfollow-btn' : 'follow-btn' } 
+                                            onClick={ handleFollow }
+                                        >
+                                            { follower ? 'Unfollow' : 'Follow' }
+                                        </button>
+                                    }
+
                                 </div>
-                                <div className="follow">
-                                    <h3 className="count"> { user.followings ? user.followings.length : '0' } </h3>
-                                    <p>Followings</p>
-                                </div>
-                                { user.username === currentUser.username 
-                                    ? '' 
-                                    : <button 
-                                        className={ follower ? 'unfollow-btn' : 'follow-btn' } 
-                                        onClick={ handleFollow }
-                                    >
-                                        { follower ? 'Unfollow' : 'Follow' }
-                                    </button>
-                                }
                             </div>
                             { user.username === currentUser.username 
                                 ? <Link to={ `/settings` }>

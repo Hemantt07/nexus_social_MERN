@@ -14,6 +14,8 @@ export default function Register() {
             confirmPassword.current.setCustomValidity("Password don't match!");
         } else {
             const user = {
+                firstname: fname.current.value,
+                lastname: lname.current.value,
                 username: fname.current.value+' '+lname.current.value,
                 email: email.current.value,
                 password: email.current.value,

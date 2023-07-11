@@ -9,8 +9,19 @@ export default function Share() {
     const { user } = useContext( AuthContext );
     const content = useRef();
     const [file, setFile] = useState( null );
+    const [error, setError] = useState( true );
     const postPhoto = (e)=>{
         setFile(e.target.files[0]);
+    }
+
+    useEffect( ()=>{
+        if ( file ) {
+            setError( false )
+        }
+    } )
+
+    const onTextChange = (e) => {
+        e.target.value != '' || file ? setError( false ) : setError( true )
     }
 
     const formHandler = async (e)=>{
@@ -31,12 +42,14 @@ export default function Share() {
                 console.log( error );   
             }
         }        
-
-        try {
-            await axios.post( 'http://localhost:5000/posts/', newPost )
-            window.location.reload();
-        } catch (error) {
-            console.log(error);
+        
+        if ( content.current.value != '' || file ) {
+            try {
+                await axios.post( 'http://localhost:5000/posts/', newPost )
+                window.location.reload();
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 
@@ -49,10 +62,10 @@ export default function Share() {
                         <img src={ user.profilePicture || `${PF}profiles/default.jpg` } alt="profile" />
                     </div>
                     <input type="text" 
-                        placeholder={ `What's in your mind ${ user.username }?` } 
+                        placeholder={ `What's in your mind ${ user.username }?`} 
                         className="shareInput"
                         ref={ content }
-                        required
+                        onChange={ onTextChange }
                     />
 
                 </div>
@@ -98,7 +111,11 @@ export default function Share() {
                         
                     </div>
 
-                    <button className="shareButton col-md-2" type='submit'>
+                    <button 
+                        className="shareButton col-md-2" 
+                        type='submit'
+                        disabled={ error }
+                    >
                         <span>Share</span>
                         <Send className="icon"/>
                     </button>
