@@ -1,15 +1,20 @@
-import { useContext, useRef } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { useContext, useRef, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axios from 'axios';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Register() {
     const fname = useRef(), lname = useRef(), email = useRef(), password = useRef(), confirmPassword = useRef(), dob = useRef();
-    const { users, isFetching, error, dispatch } = useContext( AuthContext );
     const history = useNavigate();
-
-    const handleClick = async(e)=>{
-        e.preventDefault();
+    const [ show, setShow ] = useState( false );
+    const { user, isFetching, error, dispatch } = useContext( AuthContext );
+    const hide_show_password = async()=>{
+        setShow( !show );
+    }
+    
+    const handleClick = async( event )=>{
+        event.preventDefault();
         if ( password.current.value !== confirmPassword.current.value ) {
             confirmPassword.current.setCustomValidity("Password don't match!");
         } else {
@@ -18,7 +23,7 @@ export default function Register() {
                 lastname: lname.current.value,
                 username: fname.current.value+' '+lname.current.value,
                 email: email.current.value,
-                password: email.current.value,
+                password: password.current.value,
                 dob: dob.current.value
             }
 
@@ -26,7 +31,7 @@ export default function Register() {
                 await axios.post( 'http://localhost:5000/auth/register', user );         
                 history('/login');
             } catch (error) {
-                // console.log(error);
+                console.log(error);
             }
 
         }
@@ -45,49 +50,62 @@ export default function Register() {
 
             <div className="col-md-6 login-right">
                 <form className="login-form row" onSubmit={handleClick}>
-                    <input 
-                        type="text"
-                        className="registerFirstName mb-3"
-                        placeholder='First Name'
-                        ref={fname}
-                        required
-                    />
-                    <input 
-                        type="text"
-                        className="registerLastName mb-3"
-                        placeholder='Last Name'
-                        ref={lname}
-                    />
-                    <input 
-                        type="date"
-                        className="registerDOB mb-3"
-                        placeholder='Date Of Birth'
-                        ref={dob}
-                        required
-                    />
-                    <input
-                        type="email"
-                        className="registerMail mb-3"
-                        placeholder='Email'
-                        ref={email}
-                        required
-                    />
-                    <input 
-                        type="password"
-                        minLength='8'
-                        className="registerPassword mb-3"
-                        placeholder='Password'
-                        ref={password}
-                        required
-                    />
-                    <input 
-                        type="password"
-                        minLength='8'
-                        className="registerPasswordConfirm mb-3"
-                        placeholder='Confirm Password'
-                        ref={confirmPassword}
-                        required
-                    />
+                    <div className='input-field'>
+                        <input 
+                            type="text"
+                            className="registerFirstName mb-3"
+                            placeholder='First Name'
+                            ref={fname}
+                            required
+                        />
+                    </div>
+                    <div className='input-field'>
+                        <input 
+                            type="text"
+                            className="registerLastName mb-3"
+                            placeholder='Last Name'
+                            ref={lname}
+                        />
+                    </div>
+                    <div className='input-field'>
+                        <input 
+                            type="date"
+                            className="registerDOB mb-3"
+                            placeholder='Date Of Birth'
+                            ref={dob}
+                            required
+                        />
+                    </div>
+                    <div className='input-field'>
+                        <input
+                            type="email"
+                            className="registerMail mb-3"
+                            placeholder='Email'
+                            ref={email}
+                            required
+                        />
+                    </div>
+                    <div className='input-field'>
+                        <input 
+                            type= 'password'
+                            minLength='8'
+                            className="registerPassword mb-3"
+                            placeholder='Password'
+                            ref= { password }
+                            required
+                        />
+                    </div>
+                    <div className='input-field'>
+                        <input 
+                            type={ show ? 'text' : 'password' }
+                            minLength='8'
+                            className="registerPasswordConfirm mb-3"
+                            placeholder='Confirm Password'
+                            ref={confirmPassword}
+                            required
+                        />
+                        <RemoveRedEyeIcon className='eyebutton' onClick={ hide_show_password } />
+                    </div>
                     <button type="submit" className='registerButton mb-3'>
                         Sign Up
                     </button>

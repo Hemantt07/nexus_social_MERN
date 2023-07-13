@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
-    font-family: 'Roboto';
+    font-family: 'Poppins', sans-serif;
 }
 
 body.dark-mode {
@@ -40,6 +42,14 @@ ul,ol {
 
 button:disabled {
     cursor: not-allowed;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-text-fill-color: var(--primary-text) !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 /* Home*/
@@ -1085,6 +1095,7 @@ h1.error {
 }
 
 .login-right .login-form input {
+    width: 100%;
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
@@ -1094,8 +1105,23 @@ h1.error {
     color: var(--primary-text);
 }
 
-.registerPage .login-right .login-form input {
+.login-right .login-form .input-field { 
+    position: relative; 
+    padding: 0;
+}
+.registerPage .login-right .login-form .input-field {
     width: 49%;
+    position: relative;
+}
+
+.login-right .login-form .input-field .eyebutton,
+.registerPage .login-right .login-form .input-field .eyebutton {
+    position: absolute;
+    right: 23px;
+    top: 0px;
+    height: calc(100% - 1rem);
+    color: #fff;
+    cursor: pointer;
 }
 
 .login-right .login-form .registerButton ,
@@ -1113,10 +1139,11 @@ h1.error {
 
 .login-right .login-form .registerButton,
 .login-right .login-form .loginButton {
-    width: 100% ;
-    font-size: 20px;
+    width: 100%;
+    font-size: 18px;
     transition: .8s;
     text-align: center;
+    line-height: 1.1;
 }
 
 .login-right .login-form .forgotPass {

@@ -1,13 +1,19 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { loginCall } from '../apiCalls';
 import { AuthContext } from '../context/AuthContext';
 import { CircularProgress } from '@mui/material';
 import { Link } from "react-router-dom";
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 
 export default function Login() {
     const email = useRef();
     const password = useRef();
+    const [ show, setShow ] = useState( false );
     const { user, isFetching, error, dispatch } = useContext( AuthContext );
+
+    const hide_show_password = async()=>{
+        setShow( !show );
+    }
 
     const handleClick = async (e)=>{
         e.preventDefault();
@@ -31,21 +37,27 @@ export default function Login() {
 
             <div className="col-md-6 login-right">
                 <form className="login-form row" onSubmit={ handleClick }>
-                    <input 
-                        type="email"
-                        className="loginMail col-12 mb-3"
-                        placeholder='Username or Email'
-                        ref={ email }
-                        required
-                    />
-                    <input 
-                        type="password" 
-                        className="loginPassword col-12 mb-3" 
-                        placeholder='Password'
-                        minLength={ 6 }
-                        ref={ password } 
-                        required
-                    />
+                    <div className="input-field">
+                        <input 
+                            type="email"
+                            className="loginMail col-12 mb-3"
+                            placeholder='Username or Email'
+                            ref={ email }
+                            required
+                        />
+                    </div>
+
+                    <div className="input-field">
+                        <input 
+                            type={ show ? 'text' : 'password' } 
+                            className="loginPassword col-12 mb-3" 
+                            placeholder='Password'
+                            minLength={ 6 }
+                            ref={ password } 
+                            required
+                        />
+                      <RemoveRedEyeIcon className='eyebutton' onClick={ hide_show_password } />
+                    </div>
 
                     <button type="submit" className='loginButton mb-3' disabled ={ isFetching } >
                         { isFetching ? <CircularProgress /> : 'Login' }

@@ -20,7 +20,7 @@ function App() {
       
       <Routes>
         
-        <Route exact path="/" element={ user.user !== null ? <Home/> : <Register /> } />
+        <Route exact path="/" element={ user.user !== null ? <Home/> : <Login /> } />
 
         <Route exact path="/login" element={ user.user !== null ? <Navigate to='/' /> : <Login />} />
 

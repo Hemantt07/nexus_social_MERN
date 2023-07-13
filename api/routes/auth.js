@@ -2,7 +2,7 @@ const router = require('express').Router();
 const User = require('../models/Users');
 const bcryptjs = require('bcryptjs');
 
-// Register
+// Register route
 router.post("/register",async (req, res) => {
     try {
         // Genrate new password
@@ -20,23 +20,27 @@ router.post("/register",async (req, res) => {
 
         // Save new user
         const user = await newUser.save();
-        res.status(200).json(user);
+        res.status(201).json(user);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal server error' });
     }
 });
 
-//  Login
+//  Login route
 router.post("/login",async (req, res)=>{
     try {
-        const user = await User.findOne({email:req.body.email});
+        const user = await User.findOne({ email:req.body.email });
         !user && res.status(404).json("User not found");
 
         const validPassword = await bcryptjs.compare(req.body.password, user.password)
-        !validPassword && res.status(400).json("Wrong Password")
 
-        res.status(200).json(user)
+        if (validPassword) {
+            res.status(200).json(user)
+        } else {
+            res.status(401).json("Wrong Password")
+        }       
+
     } catch (error) {
         res.status(500).json(error);
     }
