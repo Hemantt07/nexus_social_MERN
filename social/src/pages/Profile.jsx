@@ -37,12 +37,12 @@ export default function Profile() {
         try {
             
             if ( follower ) {
-                await axios.put( `${ process.env.REACT_APP_BASE_PATH_API }/users/${ user._id }/unfollow/`,{ 
+                await axios.put( `${ process.env.REACT_APP_BASE_PATH_API }users/${ user._id }/unfollow/`,{ 
                   userId : currentUser._id 
                 } );
                 dispatch({ type: 'UNFOLLOW', payload: user._id });
             } else {
-                await axios.put( `${ process.env.REACT_APP_BASE_PATH_API }/users/${ user._id }/follow/`,{ 
+                await axios.put( `${ process.env.REACT_APP_BASE_PATH_API }users/${ user._id }/follow/`,{ 
                   userId : currentUser._id 
                 } );
                 dispatch({ type: 'FOLLOW', payload: user._id });

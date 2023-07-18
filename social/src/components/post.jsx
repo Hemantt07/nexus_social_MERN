@@ -18,7 +18,7 @@ export default function Post({post}) {
     
     const likeHandler = async ()=>{
         try {
-            await axios.put( `${ process.env.REACT_APP_BASE_PATH_API }/posts/${ post._id }/like`, { userId: user._id } );
+            await axios.put( `${ process.env.REACT_APP_BASE_PATH_API }posts/${ post._id }/like`, { userId: user._id } );
         } catch (error) {
             console.log(error);
         }
@@ -30,7 +30,7 @@ export default function Post({post}) {
     const deletePost = async() => {
         try {
             console.log( user._id, post._id )
-            await axios.delete( `${ process.env.REACT_APP_BASE_PATH_API }/posts/${ post._id}`, { userId: user._id } );
+            await axios.delete( `${ process.env.REACT_APP_BASE_PATH_API }posts/${ post._id}`, { userId: user._id } );
             window.location.reload();
         } catch (error) {
             console.log(error);
@@ -39,7 +39,7 @@ export default function Post({post}) {
     
     useEffect(()=>{
         const fetchUser = async () => {
-            const user = await axios.get(`${ process.env.REACT_APP_BASE_PATH_API }/users/?userId=${post.userId}`);
+            const user = await axios.get(`${ process.env.REACT_APP_BASE_PATH_API }users/?userId=${post.userId}`);
             setUser(user.data);
         }
         fetchUser();
