@@ -1,11 +1,18 @@
 const router = require('express').Router();
 const Stories = require('../models/Stories');
 
-router.get("/", (req, res) => {
-    res.send("Its a story root");
+// Create a Story
+router.post('/', async(req, res)=>{
+    const newStory = new Stories(req.body);
+    try {
+        const savedStory = await newStory.save();
+        res.status(200).json(savedStory);
+    } catch (error) {
+        res.status(500).json(error);
+    }
 });
 
-// Delete user
+// Delete story
 router.delete("/story/:id", async(req, res) => {
     if ( req.body.userId == req.params.id || req.body.isAdmin ) {
         try {

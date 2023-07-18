@@ -6,7 +6,7 @@ const storySchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    img:{
+    storyImg:{
         type: String,
     },
     views:{

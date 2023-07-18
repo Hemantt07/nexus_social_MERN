@@ -766,8 +766,8 @@ input:focus-visible {
     color: var(--primary-text);
     width: 100%;
     text-align: center;
-    font-weight: 300;
-    font-size: 13px;
+    font-weight: 400;
+    font-size: 11px;
     height: 20%;
 }
 
