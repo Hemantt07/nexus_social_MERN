@@ -7,7 +7,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         min: 3,
         max:25,
-        unique:true
     },
 
     lastname:{
@@ -15,7 +14,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         min: 3,
         max:25,
-        unique:true
     },
 
     username:{
@@ -23,7 +21,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         min: 3,
         max:25,
-        unique:true
     },
 
     email:{

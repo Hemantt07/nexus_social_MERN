@@ -1,5 +1,5 @@
 import Story from "./story"
-import OwlCarousel from 'react-owl-carousel';  
+// import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css';  
 import { Stories } from "../post-data";
@@ -13,18 +13,7 @@ export default function StoriesCarousel() {
   const { user } = useContext( AuthContext );
     return (   
       <>
-        <OwlCarousel items={4} className="owl-theme" dots margin={35} >
-            {/* <div>
-                <h4>Popup - GeeksforGeeks</h4>
-                <Popup trigger=
-                    {<button> Click to open popup </button>}
-                    position="right center">
-                    <ul className="moreList">
-                      <li>Edit</li>
-                      <li>Delete </li>
-                    </ul>
-                </Popup>
-            </div> */}
+        {/* <OwlCarousel items={4} className="owl-theme" dots margin={35} >
           <div className='story user'>
               <div className="storyImg">
                   <img src={ user.profilePicture} alt="profile" />
@@ -39,7 +28,7 @@ export default function StoriesCarousel() {
             <Story key={s.id} story={s}/>
             )) }
 
-        </OwlCarousel> 
+        </OwlCarousel>  */}
       </>       
       )  
 }

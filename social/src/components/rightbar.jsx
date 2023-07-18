@@ -14,7 +14,7 @@ export default function Rightbar({ user }) {
   useEffect(()=>{
     const fetchFriends = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/users/following/' + currentUser._id  );
+        const res = await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/following/' + currentUser._id  );
         setFriends(res.data);
       } catch (error) {
         console.log( error )
@@ -87,7 +87,7 @@ export default function Rightbar({ user }) {
           <ul className="friendlist row">
 
             { friends.length === 0
-              ? <h1 className="error">You have no friends</h1>
+              ? ''
               : friends.map((friend)=>(
 
               <Userfriend key={friend._id} friend={friend} />

@@ -37,7 +37,7 @@ export default function Share() {
             data.append( 'file', file );
             newPost.img = fileName;
             try {
-                await axios.post( 'http://localhost:5000/upload', data );
+                await axios.post( process.env.REACT_APP_BASE_PATH_API+'upload', data );
             } catch (error) {
                 console.log( error );   
             }
@@ -45,7 +45,7 @@ export default function Share() {
         
         if ( content.current.value != '' || file ) {
             try {
-                await axios.post( 'http://localhost:5000/posts/', newPost )
+                await axios.post( process.env.REACT_APP_BASE_PATH_API+'posts/', newPost )
                 window.location.reload();
             } catch (error) {
                 console.log(error);

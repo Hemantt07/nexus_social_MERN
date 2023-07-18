@@ -9,7 +9,6 @@ import { ExpandLessSharp, Settings } from "@mui/icons-material";
 import { useParams } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
-import EditIcon from '@mui/icons-material/Edit';
 
 export default function Profile() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -19,16 +18,16 @@ export default function Profile() {
     const [follower, setFollower] = useState( 
         currentUser.followings.includes( user._id )
     );
-
+    
     useEffect(()=>{
         setFollower( currentUser.followings.includes( user._id ) );
     }, [user])
-    console.log(follower)
+    
     useEffect(()=>{
         const fetchUser = async () => {
             const res = username == currentUser.username
-            ? await axios.get('http://localhost:5000/users/?username='+ currentUser.username  )
-            : await axios.get('http://localhost:5000/users/?username='+username);
+            ? await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?username='+ currentUser.username  )
+            : await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?username='+username);
             setUser(res.data);
         };
         fetchUser();
@@ -36,14 +35,14 @@ export default function Profile() {
     
     const handleFollow = async () => {
         try {
-
+            
             if ( follower ) {
-                await axios.put( `http://localhost:5000/users/${ user._id }/unfollow/`,{ 
+                await axios.put( `${ process.env.REACT_APP_BASE_PATH_API }/users/${ user._id }/unfollow/`,{ 
                   userId : currentUser._id 
                 } );
                 dispatch({ type: 'UNFOLLOW', payload: user._id });
             } else {
-                await axios.put( `http://localhost:5000/users/${ user._id }/follow/`,{ 
+                await axios.put( `${ process.env.REACT_APP_BASE_PATH_API }/users/${ user._id }/follow/`,{ 
                   userId : currentUser._id 
                 } );
                 dispatch({ type: 'FOLLOW', payload: user._id });
