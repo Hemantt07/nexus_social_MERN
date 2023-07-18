@@ -16,7 +16,7 @@ export default function StoriesCarousel() {
         {/* <OwlCarousel items={4} className="owl-theme" dots margin={35} >
           <div className='story user'>
               <div className="storyImg">
-                  <img src={ user.profilePicture} alt="profile" />
+                  <img src={ user.profilePicture ? PF+user.profilePicture : `${PF}profiles/default.jpg` } alt="profile" />
               </div>
               <div className="content">
                   <AddIcon className="profileImg" />

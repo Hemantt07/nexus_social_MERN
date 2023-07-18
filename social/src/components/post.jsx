@@ -52,7 +52,7 @@ export default function Post({post}) {
                     <Link to={`/profile/${users.username}`}>
                     <div className="topLeft">
                         <img 
-                            src={ users.profilePicture ? users.profilePicture : `${PF}profiles/default.jpg` }
+                            src={ users.profilePicture ? PF+users.profilePicture : `${PF}profiles/default.jpg` }
                             alt="" className="userDP"
                             />
                         <span className="userName">

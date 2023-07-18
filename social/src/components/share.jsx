@@ -59,7 +59,7 @@ export default function Share() {
                 <div className="shareTop"> 
 
                     <div className="shareProfileImg">
-                        <img src={ user.profilePicture || `${PF}profiles/default.jpg` } alt="profile" />
+                        <img src={ user.profilePicture ? PF+user.profilePicture : `${PF}profiles/default.jpg` } alt="profile" />
                     </div>
                     <input type="text" 
                         placeholder={ `What's in your mind ${ user.username }?`} 
