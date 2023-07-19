@@ -1222,3 +1222,8 @@ h1.error {
 .settings {
     padding-right: 20px;
 }
+
+.construction_icon {
+    width: 80px !important;
+    height: 80px !important;
+}
