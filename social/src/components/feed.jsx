@@ -25,7 +25,7 @@ export default function Feed({ username }) {
  
   return (
       <div className="feedWrapper">
-        { username === user.username ? <Share /> : '' }
+        { username && username != user.username ? '' : <Share /> }
 
         { posts.length === 0 
           ? ''

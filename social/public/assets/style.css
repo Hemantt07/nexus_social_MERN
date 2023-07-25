@@ -44,6 +44,10 @@ button:disabled {
     cursor: not-allowed;
 }
 
+select:-webkit-autofill,
+select:-webkit-autofill:hover, 
+select:-webkit-autofill:focus, 
+select:-webkit-autofill:active,
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
@@ -51,6 +55,21 @@ input:-webkit-autofill:active{
     -webkit-text-fill-color: var(--primary-text) !important;
     transition: background-color 5000s ease-in-out 0s;
 }
+
+
+.form-control::placeholder {
+    color: var(--primary-text);
+    opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+    color: var(--primary-text);
+}
+
+.form-control::-ms-input-placeholder {
+    color: var(--primary-text);
+}
+
 
 /* Home*/
 #backToTop {
@@ -187,7 +206,7 @@ input:-webkit-autofill:active{
 
 .topbarCenter .search::placeholder {
     color: var(--primary-text);
-    opacity: 1;
+    opacity: .1;
 }
 
 .topbarCenter .search:-ms-input-placeholder {
@@ -1203,6 +1222,28 @@ h1.error {
     border-top: 0.1em solid var(--primary-text);
 }
 
+.settings .settings-list select.form-select {
+    background-image: url(images/arrow-down.png);
+}
+
+.settings .settings-list select.form-select ,
+.settings .settings-list input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: var(--secondary-bg);
+    color: var(--primary-text);
+}
+
+.settings .settings-list select.form-select:focus,
+.settings .settings-list input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 .settings button.logout,
 .settings .settings-list .item {
     padding: 15px 15px;
@@ -1226,4 +1267,32 @@ h1.error {
 .construction_icon {
     width: 80px !important;
     height: 80px !important;
+}
+
+.btn {
+    width: max-content;
+    font-size: 16px;
+    color: var(--primary-text);
+    background: var(--main-content);
+    border: none;
+    padding: 8px 30px;
+    border-radius: 5px;
+    margin: 10px 5px 10px 15px  ;
+}
+
+.btn:hover {
+    color: var(--primary-text);
+}
+
+.settings .settings-list .profile-picture img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.settings .settings-list .cover-picture img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
 }

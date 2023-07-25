@@ -26,7 +26,7 @@ export default function Profile() {
     useEffect(()=>{
         const fetchUser = async () => {
             const res = username == currentUser.username
-            ? await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?username='+ currentUser.username  )
+            ? await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?userId='+ currentUser._id  )
             : await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?username='+username);
             setUser(res.data);
         };
@@ -68,11 +68,11 @@ export default function Profile() {
                     <div className="col-md-12 profile-section">
                         <div className="userProfile">
                             <div className="coverPicture">
-                                <img src={ user.coverPicture || `${PF}posts/posts1.webp` } alt="cover-photo" className="cover" />
+                                <img src={ user.coverPicture ? PF+user.coverPicture : `${PF}posts/posts1.webp` } alt="cover-photo" className="cover" />
                             </div>
 
                             <div className="profile-picture">
-                                <img src={ user.profilePicture || `${PF}profiles/default.jpg` } alt="profile" className="userDP" />
+                                <img src={ user.profilePicture  ? PF+user.profilePicture : `${PF}profiles/default.jpg` } alt="profile" className="userDP" />
                             </div>
                             
                             <div className="profileDetails">
