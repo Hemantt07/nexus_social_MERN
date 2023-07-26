@@ -5,11 +5,8 @@ import Topbar from "../components/topbar";
 import Sidebar from "../components/sidebar";
 import Feed from "../components/feed";
 import Rightbar from "../components/rightbar";
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
 
 export default function Home(){
-    const { user }= useContext( AuthContext );
     return (
         <>
         

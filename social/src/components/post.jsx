@@ -56,7 +56,7 @@ export default function Post({post}) {
                             alt="" className="userDP"
                             />
                         <span className="userName">
-                            { users.username }
+                        { users.firstname+" "+users.lastname }
                         </span>
                         <span className="date">{ format(post.createdAt) }</span>
                     </div>
@@ -84,20 +84,21 @@ export default function Post({post}) {
                     </div>
                 </div>
                 <div className="postCenter">
-
-                    { post.desc 
-                        ? <div className="postCaption">
-                            { post.desc }
-                          </div>
-                        : ''
-                    }
-
-                    { post.img ?  
-                    <div className="postImg">
-                        <img src={ PF+post.img } alt={`post${post._id}`} />
-                    </div>
-                    : '' }
-
+                    <Link to={ '/post/'+post._id }>
+                        <pre>
+                            { post.desc 
+                                ? <div className="postCaption">
+                                    { post.desc }
+                                </div>
+                                : ''
+                            }
+                        </pre>
+                        { post.img ?  
+                            <div className="postImg">
+                                <img src={ PF+post.img } alt={`post${post._id}`} />
+                            </div>
+                        : '' }
+                    </Link>
                 </div>
 
                 <div className="postBottom">

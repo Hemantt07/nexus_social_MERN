@@ -523,9 +523,10 @@ input:focus-visible {
 }
 
 .post .postWrapper .postTop .topLeft .date {
-    font-size: 13px;
-    line-height: 100%;
+    font-size: 12px;
     color: #818181;
+    margin-top: 5px;
+    line-height: 1;
 }
 
 .post .postWrapper .postTop .topLeft {
@@ -566,7 +567,12 @@ input:focus-visible {
     padding: 10px 5px;
     font-size: 15px;
     font-weight: 400;
-    line-height: 1;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 
 .shareWrapper .postImg { 
@@ -908,6 +914,7 @@ h1.error {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: brightness(0.5);
 }
 
 .profile-right .profile-section .profile-picture {
@@ -982,8 +989,15 @@ h1.error {
 
 .profile-section .userProfile .profileDetails .about {
     color: var(--primary-text);
-    font-weight: 300;
-    margin-bottom: 5px;
+    font-weight: 400;
+    margin: 5px 0;
+    width: 80%;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    overflow: hidden;
 }
 
 .profile-section .userProfile .settingsIcon {
@@ -1226,22 +1240,24 @@ h1.error {
     background-image: url(images/arrow-down.png);
 }
 
+.settings .settings-list  textarea,
 .settings .settings-list select.form-select ,
 .settings .settings-list input {
     width: 100%;
     border: none;
     border-radius: 5px;
     padding: 10px 15px;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
     background-color: var(--secondary-bg);
     color: var(--primary-text);
 }
 
-.settings .settings-list select.form-select:focus,
-.settings .settings-list input:focus {
-    outline: none;
-    box-shadow: none;
+textarea:focus,.btn:focus,
+select.form-select:focus,
+input:focus {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 .settings button.logout,

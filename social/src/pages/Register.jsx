@@ -1,14 +1,12 @@
-import { useContext, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axios from 'axios';
-import { AuthContext } from '../context/AuthContext';
 
 export default function Register() {
     const fname = useRef(), lname = useRef(), email = useRef(), password = useRef(), confirmPassword = useRef(), dob = useRef();
     const history = useNavigate();
     const [ show, setShow ] = useState( false );
-    const { user, isFetching, error, dispatch } = useContext( AuthContext );
     const hide_show_password = async()=>{
         setShow( !show );
     }
@@ -21,7 +19,7 @@ export default function Register() {
             const user = {
                 firstname: fname.current.value,
                 lastname: lname.current.value,
-                username: fname.current.value+' '+lname.current.value,
+                username: ((fname.current.value+' '+lname.current.value).trim()).toLowerCase()+Math.random(),
                 email: email.current.value,
                 password: password.current.value,
                 dob: dob.current.value
@@ -36,6 +34,7 @@ export default function Register() {
 
         }
     }
+
     return (
         <div className='registerPage row'>
 

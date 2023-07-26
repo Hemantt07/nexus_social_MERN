@@ -18,10 +18,10 @@ export default function Share() {
         if ( file ) {
             setError( false )
         }
-    } )
+    },[file] )
 
     const onTextChange = (e) => {
-        e.target.value != '' || file ? setError( false ) : setError( true )
+        e.target.value !== '' || file ? setError( false ) : setError( true )
     }
 
     const formHandler = async (e)=>{
@@ -39,11 +39,11 @@ export default function Share() {
             try {
                 await axios.post( process.env.REACT_APP_BASE_PATH_API+'upload', data );
             } catch (error) {
-                console.log( error );   
+                console.log( error );
             }
         }        
         
-        if ( content.current.value != '' || file ) {
+        if ( content.current.value !== '' || file ) {
             try {
                 await axios.post( process.env.REACT_APP_BASE_PATH_API+'posts/', newPost )
                 window.location.reload();
@@ -61,11 +61,12 @@ export default function Share() {
                     <div className="shareProfileImg">
                         <img src={ user.profilePicture ? PF + user.profilePicture : `${PF}profiles/default.jpg` } alt="profile" />
                     </div>
-                    <input type="text" 
-                        placeholder={ `What's in your mind ${ user.username }?`} 
+                    <textarea type="text" 
+                        placeholder={ `What's in your mind ${ user.firstname+" "+user.lastname }?`} 
                         className="shareInput"
                         ref={ content }
                         onChange={ onTextChange }
+                        rows={ 1 }
                     />
 
                 </div>

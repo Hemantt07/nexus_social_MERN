@@ -9,7 +9,7 @@ export default function Login() {
     const email = useRef();
     const password = useRef();
     const [ show, setShow ] = useState( false );
-    const { user, isFetching, error, dispatch } = useContext( AuthContext );
+    const { isFetching, dispatch } = useContext( AuthContext );
 
     const hide_show_password = async()=>{
         setShow( !show );

@@ -3,7 +3,7 @@ import Feed from "../components/feed";
 import Rightbar from "../components/rightbar";
 import Sidebar from "../components/sidebar";
 import Topbar from "../components/topbar";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from 'axios';
 import { ExpandLessSharp, Settings } from "@mui/icons-material";
 import { useParams } from "react-router";
@@ -21,11 +21,11 @@ export default function Profile() {
     
     useEffect(()=>{
         setFollower( currentUser.followings.includes( user._id ) );
-    }, [user])
+    }, [currentUser, user._id])
     
     useEffect(()=>{
         const fetchUser = async () => {
-            const res = username == currentUser.username
+            const res = username === currentUser.username
             ? await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?userId='+ currentUser._id  )
             : await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?username='+username);
             setUser(res.data);
@@ -54,7 +54,6 @@ export default function Profile() {
         }
     }
 
-
     return (
         <>
         <Topbar/>
@@ -68,16 +67,16 @@ export default function Profile() {
                     <div className="col-md-12 profile-section">
                         <div className="userProfile">
                             <div className="coverPicture">
-                                <img src={ user.coverPicture ? PF+user.coverPicture : `${PF}posts/posts1.webp` } alt="cover-photo" className="cover" />
+                                <img src={ user.coverPicture ? PF+user.coverPicture : `${PF}posts/posts1.webp` } alt="cover-pic" className="cover" />
                             </div>
 
                             <div className="profile-picture">
-                                <img src={ user.profilePicture  ? PF+user.profilePicture : `${PF}profiles/default.jpg` } alt="profile" className="userDP" />
+                                <img src={ user.profilePicture  ? PF+user.profilePicture : `${PF}profiles/default.jpg` } alt="profile-pic" className="userDP" />
                             </div>
                             
                             <div className="profileDetails">
                                 <div>
-                                    <h3 className="name">{ user.username }</h3>
+                                    <h3 className="name">{ user.firstname+" "+user.lastname }</h3>
                                     <p className="about">{ user.desc }</p>
                                 </div>
 
