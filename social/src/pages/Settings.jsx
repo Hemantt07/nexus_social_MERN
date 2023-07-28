@@ -1,25 +1,14 @@
 import Topbar from '../components/topbar'
 import Sidebar from '../components/sidebar'
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
+import { countries } from '../data';
 
 export default function Settings() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const { user, dispatch } = useContext( AuthContext );
-    const [countries, setCountries] = useState([]);
-
-    useEffect(() => {
-        axios
-            .get('https://restcountries.com/v2/all')
-            .then((response) => {
-                setCountries(response.data);
-            })
-            .catch((error) => {
-                console.error('Error fetching countries:', error);
-            });
-    }, [user]);
     // For logout
     const logout = () => {
         try {
@@ -56,7 +45,8 @@ export default function Settings() {
             desc : desc.current.value,
             city: city.current.value,
             from : from.current.value,
-            relation : relation.current.value,
+            from : from.current.value,
+            sex : relation.current.value,
         }
 
         if ( profile_Pic ) {
@@ -269,7 +259,7 @@ export default function Settings() {
                                     <select defaultValue={ user.from && user.from  } className="form-select form-select-md mb-3" ref={ from } > 
                                         <option defaultValue="" disabled>Select a country</option>
                                         { countries.map((country) => (
-                                            <option key={country.alpha2Code} value={country.name}>{ country.name }</option>
+                                            <option key={country.code} value={country.name}>{ country.name }</option>
                                         ))}
                                     </select>
                                 </div>  

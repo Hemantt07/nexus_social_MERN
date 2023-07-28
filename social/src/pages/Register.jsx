@@ -19,7 +19,7 @@ export default function Register() {
             const user = {
                 firstname: fname.current.value,
                 lastname: lname.current.value,
-                username: ((fname.current.value+' '+lname.current.value).trim()).toLowerCase()+Math.random(),
+                username: ((fname.current.value+lname.current.value).trim()).toLowerCase()+Math.floor(Math.random() * 90 + 10),
                 email: email.current.value,
                 password: password.current.value,
                 dob: dob.current.value

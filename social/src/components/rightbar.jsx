@@ -5,9 +5,9 @@ import Userfriend from "./userfriend";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
+import { format } from "date-fns";
 
 export default function Rightbar({ user }) {
-
   const [friends, setFriends] = useState([]);
   const { user: currentUser } = useContext( AuthContext );
   
@@ -77,7 +77,7 @@ export default function Rightbar({ user }) {
             <h3 className="value">{ user.from || user.city || '...' }</h3>
             <h3 className="value">{ user.sex === 1 ? 'Single' : user.sex === 2 ? 'Commited' : "Prefer not to say" }</h3>
             <h3 className="value">{ user.email }</h3>
-            <h3 className="value">{ user.dob }</h3>
+            <h3 className="value">{ user.dob ? format( new Date(user.dob), 'dd MMMM yyyy') : '' }</h3>
           </div>
 
         </div>
