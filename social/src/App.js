@@ -13,25 +13,21 @@ import {
 import Settings from "./pages/Settings";
 import Underconsruction from "./components/underconsruction";
 import Error from "./components/404";
-import Single_post from "./pages/Single-post";
+import SinglePost from "./pages/Single-post";
 
 function App() {
   const user = useContext( AuthContext );
-
-
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
     window.addEventListener('resize', handleResize);
-
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  });
 
   return (
     <Router>
@@ -51,7 +47,7 @@ function App() {
 
                 <Route exact path="/settings/:username?" element={ user.user == null ? <Navigate to='/' /> : <Settings/> } />
 
-                <Route exact path="/post/:postId?" element={ user.user == null ? <Navigate to='/' /> : <Single_post/> } />
+                <Route exact path="/post/:postId?" element={ user.user == null ? <Navigate to='/' /> : <SinglePost /> } />
 
                 <Route exact path="/*" element={ <Error/> } />
 

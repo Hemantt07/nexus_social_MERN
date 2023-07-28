@@ -30,7 +30,7 @@ export default function Settings() {
         }
     }
     // For update user
-    const dob = useRef( 'dob' ), sex = useRef( 'sex' ), desc = useRef( 'desc' ), username = useRef( 'username' ), profile_pic = useRef( 'profile_pic' ), cover_pic = useRef( 'cover_pic' ), fname = useRef( 'fname' ), lname = useRef( 'lname' ), email = useRef( 'email' ), new_password = useRef( 'new_password' ), confirm_password = useRef( 'confirm_password' ), city = useRef( 'city' ), from = useRef( 'from' );
+    const dob = useRef( 'dob' ), relation = useRef( 'relation' ), desc = useRef( 'desc' ), username = useRef( 'username' ), profile_pic = useRef( 'profile_pic' ), cover_pic = useRef( 'cover_pic' ), fname = useRef( 'fname' ), lname = useRef( 'lname' ), email = useRef( 'email' ), new_password = useRef( 'new_password' ), confirm_password = useRef( 'confirm_password' ), city = useRef( 'city' ), from = useRef( 'from' );
 
     const [profile_Pic, setProfile_pic] = useState( null );
     const [cover_Pic, setCover_pic] = useState( null );
@@ -56,7 +56,7 @@ export default function Settings() {
             desc : desc.current.value,
             city: city.current.value,
             from : from.current.value,
-            sex : sex.current.value,
+            relation : relation.current.value,
         }
 
         if ( profile_Pic ) {
@@ -117,7 +117,19 @@ export default function Settings() {
                 <Sidebar/>
 
                 <div className="settings col-md-10">
-                    <h2 className='title'>Settings</h2>
+                    <div className="row align-items-baseline">
+                        <div className="col-md-10">
+                            <h2 className='title'>Settings</h2>
+                        </div>
+                        <div className="col">
+                            <button className="logout">
+                                <span onClick={ logout }>
+                                    <LogoutIcon />Log out
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    
 
                     <form id='settings-form'>
                         <ul className="settings-list">
@@ -217,11 +229,11 @@ export default function Settings() {
                                     />
                                 </div>  
                                 <div className='input-field col-md-6 mb-3'>
-                                    <label htmlFor="email" className="form-label">Sex :</label>
-                                    <select defaultValue={ user.sex } className="form-select form-select-md mb-3" ref={ sex }>
-                                        <option defaultValue="0">Prefer Not to say</option>
-                                        <option key='1' defaultValue='1'>Male</option>
-                                        <option key='2' defaultValue='2'>Female</option>
+                                    <label htmlFor="email" className="form-label">Relationship status :</label>
+                                    <select defaultValue={ user.sex } className="form-select form-select-md mb-3" ref={ relation }>
+                                        <option value="0">Prefer Not to say</option>
+                                        <option key='1' value='1'>Single</option>
+                                        <option key='2' value='2'>Committed</option>
                                     </select>
                                 </div>
                             </li>
@@ -304,11 +316,6 @@ export default function Settings() {
                         <button type="submit" className='btn' onClick={ update }>Update & Save</button>
                     </form>
 
-                    <button className="logout">
-                        <span onClick={ logout }>
-                            <LogoutIcon />Log out
-                        </span>
-                    </button>
                 </div>
             </div>
 

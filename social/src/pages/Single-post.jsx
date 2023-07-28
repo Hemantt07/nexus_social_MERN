@@ -1,14 +1,12 @@
 import { useParams } from "react-router";
 import Post from "../components/post";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Topbar from "../components/topbar";
 import Sidebar from "../components/sidebar";
 
-export default function Single_post() {
+export default function SinglePost() {
     const postId = useParams().postId;
-    const { user } = useContext( AuthContext );
     const [ post, setPost ] = useState();
     
     useEffect(()=>{ 

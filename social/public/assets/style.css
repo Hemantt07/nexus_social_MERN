@@ -206,7 +206,7 @@ input:-webkit-autofill:active{
 
 .topbarCenter .search::placeholder {
     color: var(--primary-text);
-    opacity: .1;
+    opacity: .8;
 }
 
 .topbarCenter .search:-ms-input-placeholder {
@@ -1023,7 +1023,7 @@ h1.error {
 }
 
 .rightBar .rightBarWrapper .userInfo .key {
-    padding: 7px 10px 0;
+    padding: 7px 0 0 10px;
     font-size: 19px;
     font-weight: 800;
     line-height: 23px
@@ -1212,7 +1212,8 @@ h1.error {
 
 .profileDetails .count b {
     font-weight: 800;
-    font-size: 20px;
+    font-size: 17px;
+    margin-right: 3px;
 }
 
 .profileDetails .count {
@@ -1260,8 +1261,7 @@ input:focus {
     box-shadow: none !important;
 }
 
-.settings button.logout,
-.settings .settings-list .item {
+.settings button.logout {
     padding: 15px 15px;
     font-size: 20px;
     display: flex;
@@ -1269,7 +1269,6 @@ input:focus {
     align-items: center;
     line-height: 1;
     border: none;
-    border-bottom: 0.1em solid var(--primary-text);
     width: 100%;
     cursor: pointer;
     background:transparent;

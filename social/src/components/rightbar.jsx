@@ -1,5 +1,5 @@
 import Online from "./online";
-import StoriesCarousel from "./storiesCarousel"
+// import StoriesCarousel from "./storiesCarousel"
 import { Close } from '@mui/icons-material';
 import Userfriend from "./userfriend";
 import { useContext, useEffect, useState } from "react";
@@ -9,7 +9,7 @@ import { AuthContext } from "../context/AuthContext";
 export default function Rightbar({ user }) {
 
   const [friends, setFriends] = useState([]);
-  const { user: currentUser, dispatch } = useContext( AuthContext );
+  const { user: currentUser } = useContext( AuthContext );
   
   useEffect(()=>{
     const fetchFriends = async () => {
@@ -21,13 +21,13 @@ export default function Rightbar({ user }) {
       }
     };
     fetchFriends();
-  }, [ user ]);
+  }, [ currentUser._id ]);
 
   const HomeRightBar = () => {
     return (
       <>
         <div className="stories row">
-          <StoriesCarousel/>
+          {/* <StoriesCarousel/> */}
         </div>
 
         <div className="adv">
@@ -65,17 +65,17 @@ export default function Rightbar({ user }) {
         <h4 className="rightBarTitle">User Informations</h4>
         <div className="userInfo row">
 
-          <div className="col-md-3">  
+          <div className="col-md-4">  
             <h3 className="key">City : </h3>
             <h3 className="key">From : </h3>
-            <h3 className="key">Sex : </h3>
+            <h3 className="key">Relationship : </h3>
             <h3 className="key">Email : </h3>
             <h3 className="key">DOB : </h3>
           </div>
-          <div className="col-md-9">
+          <div className="col-md-8">
             <h3 className="value">{ user.city || '...' }</h3>
             <h3 className="value">{ user.from || user.city || '...' }</h3>
-            <h3 className="value">{ user.sex === 1 ? 'Male' : user.sex === 2 ? 'Female' : "Prefer not to say" }</h3>
+            <h3 className="value">{ user.sex === 1 ? 'Single' : user.sex === 2 ? 'Commited' : "Prefer not to say" }</h3>
             <h3 className="value">{ user.email }</h3>
             <h3 className="value">{ user.dob }</h3>
           </div>
