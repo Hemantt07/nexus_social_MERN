@@ -28,9 +28,7 @@ export default function SinglePost() {
             <Topbar />
             <div className="row">
                 <Sidebar />
-                <div className="col-md-6">
-                    { post ? <Post post={ post }/> :'' }
-                </div>
+                {  post && <Post post={ post }  singlePost={ true }/> }
             </div>
         </>
     )

@@ -34,7 +34,7 @@ a {
     color: inherit !important;
 }
 
-ul,ol {
+pre, ul,ol {
     list-style: none;
     padding: 0;
     margin: 0;
@@ -56,7 +56,6 @@ input:-webkit-autofill:active{
     transition: background-color 5000s ease-in-out 0s;
 }
 
-
 .form-control::placeholder {
     color: var(--primary-text);
     opacity: 1;
@@ -69,7 +68,6 @@ input:-webkit-autofill:active{
 .form-control::-ms-input-placeholder {
     color: var(--primary-text);
 }
-
 
 /* Home*/
 #backToTop {
@@ -1241,7 +1239,8 @@ h1.error {
     background-image: url(images/arrow-down.png);
 }
 
-.settings .settings-list  textarea,
+.comment-section-inner input.comment-input ,
+.settings .settings-list textarea,
 .settings .settings-list select.form-select ,
 .settings .settings-list input {
     width: 100%;
@@ -1305,9 +1304,109 @@ input:focus {
     border-radius: 50%;
     object-fit: cover;
 }
+
 .settings .settings-list .cover-picture img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     border-radius: 15px;
+}
+
+#single-post {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    margin: 0;
+    left: 0;
+    z-index: 9999;
+    justify-content: center;
+    backdrop-filter: brightness(.3);
+    align-items: center;
+}
+
+#single-post .postWrapper_1, #single-post .postWrapper_2 {
+    height: 100%;
+}
+
+#single-post .post{
+    height: calc( 100% - 50px );
+    margin: 25px 0;
+}
+
+#single-post .postWrapper_1 .postWrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    padding: 5px;
+}
+
+#single-post .postWrapper_2 .postWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+    padding: 0; 
+}
+
+#single-post .post .postWrapper .postCenter .postImg img {
+    height: 100%;
+    object-fit: cover;
+}
+
+#single-post .comment-section {
+    width: 100%;
+    box-shadow: 0 2px 11px -3px rgb(0 0 0 / 69%);
+    border-radius: 10px;
+    color: var(--primary-text);
+    background-color: var(--secondary-bg);
+    overflow: hidden;
+}
+
+#single-post .cancel-icon {
+    color: #fff;
+    z-index: 99999;
+    position: absolute;
+    top: 7px;
+    font-size: 30px;
+    right: 7px;
+}
+
+.comment-section .comment-section-inner {
+    border: 1px solid #323232;
+    padding: 10px;
+}
+
+.comment-section .comment-section-inner .postCaption {
+    padding: 10px;
+}
+
+.comment-section .bottomRight {
+    width: 87%;
+    position: relative;
+}
+
+.comment-section .bottomRight .icon {
+    position: absolute;
+    left: 22px;
+}
+
+.comment-section-inner input.comment-input {
+    padding-left: 54px;
+    border: 1px solid #8b8b8b;
+    border-radius: 30px;
+}
+
+.comment-section .comment-button {
+    position: absolute;
+    border: none;
+    color: var(--primary-text);
+    border-radius: 50px;
+    background: var(--main-content);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    right: 6px;
 }
