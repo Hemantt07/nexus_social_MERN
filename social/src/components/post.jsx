@@ -30,9 +30,10 @@ export default function Post( { post, singlePost } ) {
     
     const deletePost = async() => {
         try {
-            console.log( user._id, post._id )
-            await axios.delete( `${ process.env.REACT_APP_BASE_PATH_API }posts/${ post._id}`, { userId: user._id } );
-            window.location.reload();
+            if ( window.confirm('Do you want to delete this post ?') ) {
+                await axios.delete( `${ process.env.REACT_APP_BASE_PATH_API }posts/${ post._id}`, { userId: user._id } );
+                window.location.reload();
+            }
         } catch (error) {
             console.log(error);
         }
@@ -110,8 +111,10 @@ export default function Post( { post, singlePost } ) {
                     <span className="reactionsCount">{like}</span>
                 </div>
                 <div className="bottomRight">
-                    <QuestionAnswer className="icon"/>
-                    <span className="commentCount">{post.comment} Comments</span>
+                    <Link to={ '/post/'+post._id }>
+                        <QuestionAnswer className="icon"/>
+                        <span className="commentCount">{post.comment} Comments</span>
+                    </Link>
                 </div>
             </div>
 
@@ -123,20 +126,20 @@ export default function Post( { post, singlePost } ) {
         <Link to={ '/' } >
             <CloseIcon className='cancel-icon'/>
         </Link>
+        { post.img ?  
         <div className="col-md-5 postWrapper_1">
             <div className="post" id={`post${post._id}`}>
                 <div className="postWrapper">
                     <div className="postCenter">
-                        { post.img ?  
                             <div className="postImg">
                                 <img src={ PF+post.img } alt={`post${post._id}`} />
                             </div>
-                        : '' }
                     </div>
 
                 </div>
             </div>
         </div>
+            : '' }
         <div className="col-md-5 postWrapper_2">
             <div className="comment-section post">
                 <div className="postWrapper">
@@ -187,7 +190,7 @@ export default function Post( { post, singlePost } ) {
                     </div>
                     <div className="postCenter">
                         <Link to={ '/post/'+post._id }>
-                            
+                            <h1 className='error'>Be first to comment</h1>
                         </Link>
                     </div>
                     <div className="comment-section-inner">
