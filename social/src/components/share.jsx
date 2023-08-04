@@ -1,4 +1,4 @@
-import { Send, LocalOffer, EmojiEmotions, LocationOn, PermMedia } from '@mui/icons-material';
+import { Send, LocalOffer, LocationOn, PermMedia } from '@mui/icons-material';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
@@ -103,11 +103,6 @@ export default function Share() {
                         <div className="shareOption">
                             <LocationOn htmlColor="#0d6efd" className="icon" />
                             <span className="text">Location</span>
-                        </div>
-                        
-                        <div className="shareOption">
-                            <EmojiEmotions htmlColor="#ffc107" className="icon" />
-                            <span className="text">Feelings</span>
                         </div>
                         
                     </div>

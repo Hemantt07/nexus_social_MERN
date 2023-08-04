@@ -13,7 +13,6 @@ import {
 import Settings from "./pages/Settings";
 import Underconsruction from "./components/underconsruction";
 import Error from "./components/404";
-import SinglePost from "./pages/Single-post";
 
 function App() {
   const user = useContext( AuthContext );
@@ -46,8 +45,6 @@ function App() {
                 <Route exact path="/profile/:username?" element={ user.user == null ? <Navigate to='/' /> : <Profile/> } />
 
                 <Route exact path="/settings/:username?" element={ user.user == null ? <Navigate to='/' /> : <Settings/> } />
-
-                <Route exact path="/post/:postId?" element={ user.user == null ? <Navigate to='/' /> : <SinglePost /> } />
 
                 <Route exact path="/*" element={ <Error/> } />
 

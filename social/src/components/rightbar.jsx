@@ -1,5 +1,5 @@
 import Online from "./online";
-// import StoriesCarousel from "./storiesCarousel"
+import StoriesCarousel from "./storiesCarousel"
 import { Close } from '@mui/icons-material';
 import Userfriend from "./userfriend";
 import { useContext, useEffect, useState } from "react";
@@ -27,18 +27,10 @@ export default function Rightbar({ user }) {
     return (
       <>
         <div className="stories row">
-          {/* <StoriesCarousel/> */}
+          <StoriesCarousel/>
         </div>
 
-        <div className="adv">
-          <img src="assets/images/ad1.jpeg" alt="ad1" />
-          <p className="adText">
-            Advertisement
-            <Close className="closeIcon"/>
-          </p>
-        </div>
-
-        <div className="friendOnline">
+        <div className="friendOnline mt-3">
           <p className="head">Online Friends</p>
           <ul className="onlineFriendsList">
 

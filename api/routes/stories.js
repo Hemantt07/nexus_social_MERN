@@ -29,18 +29,19 @@ router.delete("/story/:id", async(req, res) => {
 // Get a user
 router.get("/story/:id", async(req, res) => {
     try {
-        const user = await Stories.findById(req.params.id);
-        res.status(200).json(user);
+        const stories = await Stories.findById(req.params.id);
+        console.log(stories)
+        res.status(200).json(stories);
     } catch (error) {
         res.status(500).json(error);
     }
 });
 
 // Get all user
-router.get('/stories/all', async(req, res)=>{
+router.get('/all', async(req, res)=>{
     try {
-        const users = await Stories.find({});
-        res.status(200).json(users);
+        const stories = await Stories.find({});
+        res.status(200).json(stories);
     } catch (error) {
         res.status(500).json(error);
     }

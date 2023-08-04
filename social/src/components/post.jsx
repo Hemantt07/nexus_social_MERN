@@ -9,13 +9,14 @@ import 'reactjs-popup/dist/index.css';
 import { saveAs } from 'file-saver'
 import CloseIcon from '@mui/icons-material/Close';
 
-export default function Post( { post, singlePost } ) {
+export default function Post( { post } ) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [like, setLike] = useState(post.likes.length);
     const [users, setUser] = useState({});
     const { user } = useContext( AuthContext );
     const [isActive, setActive] = useState( post.likes.includes( user._id ) );
     const [isLiked, setIsLiked] = useState( post.likes.includes( user._id ) );
+    const [showModal, setShowModal] = useState(false);
     
     const likeHandler = async ()=>{
         try {
@@ -47,174 +48,168 @@ export default function Post( { post, singlePost } ) {
         fetchUser();
     },[post.userId]);
 
-    const main_post = 
-    <div className="post" id={`post${post._id}`}>
-        <div className="postWrapper">
-            <div className="postTop">   
-                <Link to={`/profile/${users.username}`}>
-                <div className="topLeft">
-                    <img 
-                        src={ users.profilePicture ? PF+users.profilePicture : `${PF}profiles/default.jpg` }
-                        alt="" className="userDP"
-                        />
-                    <span className="userName">
-                    { users.firstname+" "+users.lastname }
-                    </span>
-                    <span className="date">{ format(post.createdAt) }</span>
-                </div>
-                </Link>
-                <div className="topRight">
-                    <Popup trigger=
-                        {<button className='more'> <MoreVert className="icon"/> </button>}
-                        position="left top">
-                        <ul className="moreList">
-                            { users.username === user.username
-                                ? <>
-                                    <li>Edit</li>
-                                    <li onClick={ deletePost }>Delete</li>
-                                </>
-                                : ''
-                            }
-                            <Link download={ PF+post.img }>
-                                <li onClick={ ()=> saveAs( PF+post.img, post._id+'.jpg' ) }>
-                                    Save
-                                </li>
-                            </Link>
-                        </ul>
-                    </Popup>
-                    
-                </div>
-            </div>
-            <div className="postCenter">
-                <Link to={ '/post/'+post._id }>
-                    <pre>
+    const openPost = ()=>{
+        setShowModal( true ); 
+    }
+
+    const hideModal = ()=>{
+        setShowModal( false );
+    }
+
+    return (
+        <>
+            <div className="post" id={`post${ post._id }`}>
+                <div className="postWrapper">
+                    <div className="postTop">   
+                        <Link to={`/profile/${users.username}`}>
+                        <div className="topLeft">
+                            <img 
+                                src={ users.profilePicture ? PF+users.profilePicture : `${PF}profiles/default.jpg` }
+                                alt="" className="userDP"
+                                />
+                            <span className="userName">
+                            { users.firstname+" "+users.lastname }
+                            </span>
+                            <span className="date">{ format(post.createdAt) }</span>
+                        </div>
+                        </Link>
+                        <div className="topRight">
+                            <Popup trigger=
+                                {<button className='more'> <MoreVert className="icon"/> </button>}
+                                position="left top">
+                                <ul className="moreList">
+                                    { users.username === user.username
+                                        ? <>
+                                            <li>Edit</li>
+                                            <li onClick={ deletePost }>Delete</li>
+                                        </>
+                                        : ''
+                                    }
+                                    <Link download={ PF+post.img }>
+                                        <li onClick={ ()=> saveAs( PF+post.img, post._id+'.jpg' ) }>
+                                            Save
+                                        </li>
+                                    </Link>
+                                </ul>
+                            </Popup>
+                            
+                        </div>
+                    </div>
+                    <div className="postCenter" onClick={ openPost }>
                         { post.desc 
-                            ? <div className="postCaption">
+                            ? <pre className='postCaption'>
                                 { post.desc }
-                            </div>
+                            </pre>
                             : ''
                         }
-                    </pre>
-                    { post.img ?  
-                        <div className="postImg">
-                            <img src={ PF+post.img } alt={`post${post._id}`} />
-                        </div>
-                    : '' }
-                </Link>
-            </div>
-
-            <div className="postBottom">
-                <div className="bottomLeft">
-
-                    <Favorite onClick={likeHandler} className={`likeIcon ${isActive ? "active" : null}`}/>
-
-                    <span className="reactionsCount">{like}</span>
-                </div>
-                <div className="bottomRight">
-                    <Link to={ '/post/'+post._id }>
-                        <QuestionAnswer className="icon"/>
-                        <span className="commentCount">{post.comment} Comments</span>
-                    </Link>
-                </div>
-            </div>
-
-        </div>
-    </div>;
-
-    const single_post = 
-    <div className="row" id="single-post">
-        <Link to={ '/' } >
-            <CloseIcon className='cancel-icon'/>
-        </Link>
-        { post.img ?  
-        <div className="col-md-5 postWrapper_1">
-            <div className="post" id={`post${post._id}`}>
-                <div className="postWrapper">
-                    <div className="postCenter">
+                        { post.img ?  
                             <div className="postImg">
                                 <img src={ PF+post.img } alt={`post${post._id}`} />
                             </div>
+                        : '' }
                     </div>
 
-                </div>
-            </div>
-        </div>
-            : '' }
-        <div className="col-md-5 postWrapper_2">
-            <div className="comment-section post">
-                <div className="postWrapper">
-                    <div className='comment-section-inner'>
-                        <div className="postTop">   
-                            <Link to={`/profile/${users.username}`}>
-                            <div className="topLeft">
-                                <img 
-                                    src={ users.profilePicture ? PF+users.profilePicture : `${PF}profiles/default.jpg` }
-                                    alt="" className="userDP"
-                                    />
-                                <span className="userName">
-                                { users.firstname+" "+users.lastname }
-                                </span>
-                                <span className="date">{ format(post.createdAt) }</span>
-                            </div>
-                            </Link>
-                            <div className="topRight">
-                                <Popup trigger=
-                                    {<button className='more'> <MoreVert className="icon"/> </button>}
-                                    position="left top">
-                                    <ul className="moreList">
-                                        { users.username === user.username
-                                            ? <>
-                                                <li>Edit</li>
-                                                <li onClick={ deletePost }>Delete</li>
-                                            </>
-                                            : ''
-                                        }
-                                        <Link download={ PF+post.img }>
-                                            <li onClick={ ()=> saveAs( PF+post.img, post._id+'.jpg' ) }>
-                                                Save
-                                            </li>
-                                        </Link>
-                                    </ul>
-                                </Popup>
-                                
-                            </div>
+                    <div className="postBottom">
+                        <div className="bottomLeft">
+
+                            <Favorite onClick={likeHandler} className={`likeIcon ${isActive ? "active" : null}`}/>
+
+                            <span className="reactionsCount">{like}</span>
                         </div>
-                        <pre>
-                            { post.desc 
-                                ? <div className="postCaption">
-                                    { post.desc }
+                        <div className="bottomRight" onClick={ openPost }>
+                            <QuestionAnswer className="icon"/>
+                            <span className="commentCount">{post.comment} Comments</span>
+                        </div>
+                    </div>
+                    <div id="single-post" className={`${showModal ? 'show' : ''}`}>
+                       <div className="modal-post row ">
+                        <CloseIcon className='cancel-icon' onClick={ hideModal }/>
+                            { post.img ?  
+                            <div className="col-md-5 postWrapper_1">
+                                <div className="post" id={`post${post._id}`}>
+                                    <div className="postWrapper">
+                                        <div className="postCenter">
+                                                <div className="postImg">
+                                                    <img src={ PF+post.img } alt={`post${post._id}`} />
+                                                </div>
+                                        </div>
+
+                                    </div>
                                 </div>
-                                : ''
-                            }
-                        </pre>
-                    </div>
-                    <div className="postCenter">
-                        <Link to={ '/post/'+post._id }>
-                            <h1 className='error'>Be first to comment</h1>
-                        </Link>
-                    </div>
-                    <div className="comment-section-inner">
-                        <div className="postBottom">
-                            <div className="bottomLeft">
-                                <Favorite onClick={likeHandler} className={`likeIcon ${isActive ? "active" : null}`}/>
-                                <span className="reactionsCount">{like}</span>
                             </div>
-                            <div className="bottomRight">
-                                <QuestionAnswer className="icon"/>
-                                <input type="text" placeholder='Leave a comment..' className='comment-input' />
-                                <button type="submit" className='comment-button'>
-                                    <Send />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                                : '' }
+                            <div className="col-md-5 postWrapper_2">
+                                <div className="comment-section post">
+                                    <div className="postWrapper">
+                                        <div className='comment-section-inner'>
+                                            <div className="postTop">   
+                                                <Link to={`/profile/${users.username}`}>
+                                                <div className="topLeft">
+                                                    <img 
+                                                        src={ users.profilePicture ? PF+users.profilePicture : `${PF}profiles/default.jpg` }
+                                                        alt="" className="userDP"
+                                                        />
+                                                    <span className="userName">
+                                                    { users.firstname+" "+users.lastname }
+                                                    </span>
+                                                    <span className="date">{ format(post.createdAt) }</span>
+                                                </div>
+                                                </Link>
+                                                <div className="topRight">
+                                                    <Popup trigger=
+                                                        {<button className='more'> <MoreVert className="icon"/> </button>}
+                                                        position="left top">
+                                                        <ul className="moreList">
+                                                            { users.username === user.username
+                                                                ? <>
+                                                                    <li>Edit</li>
+                                                                    <li onClick={ deletePost }>Delete</li>
+                                                                </>
+                                                                : ''
+                                                            }
+                                                            <Link download={ PF+post.img }>
+                                                                <li onClick={ ()=> saveAs( PF+post.img, post._id+'.jpg' ) }>
+                                                                    Save
+                                                                </li>
+                                                            </Link>
+                                                        </ul>
+                                                    </Popup>
+                                                    
+                                                </div>
+                                            </div>
+                                            { post.desc 
+                                                ? <pre  className='postCaption'>
+                                                    { post.desc }
+                                                  </pre>
+                                                : ''
+                                            }
+                                        </div>
+                                        <div className="postCenter">
+                                            <h1 className='error'>Be first to comment</h1>
+                                        </div>
+                                        <div className="comment-section-inner">
+                                            <div className="postBottom">
+                                                <div className="bottomLeft">
+                                                    <Favorite onClick={likeHandler} className={`likeIcon ${isActive ? "active" : null}`}/>
+                                                    <span className="reactionsCount">{like}</span>
+                                                </div>
+                                                <div className="bottomRight">
+                                                    <QuestionAnswer className="icon"/>
+                                                    <input type="text" placeholder='Leave a comment..' className='comment-input' />
+                                                    <button type="submit" className='comment-button'>
+                                                        <Send />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
+                    </div> 
                 </div>
-            </div>
-        </div>
-    </div>
-
-    return (
-        singlePost ? single_post : main_post
+            </div> 
+        </>
     )
 }
