@@ -1,7 +1,6 @@
 import Story from "./story"
-import OwlCarousel from 'react-owl-carousel';  
-import 'owl.carousel/dist/assets/owl.carousel.css';  
-import 'owl.carousel/dist/assets/owl.theme.default.css';  
+import { Carousel } from 'react-responsive-carousel'; 
+import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useContext, useEffect, useRef, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import AddIcon from '@mui/icons-material/Add';
@@ -53,7 +52,7 @@ export default function StoriesCarousel() {
             }
         }
         fetchStories()
-    },[stories])
+    },[ user ])
 
     return (   
       <>
@@ -67,7 +66,7 @@ export default function StoriesCarousel() {
             </label>
             <input type="file" name="story-img" id="story-img" ref={ story_img } onChange={ postStory } />
         </div>
-        <OwlCarousel items={4} className="owl-theme" dots margin={35} >
+        <Carousel showThumbs={false}>
 
           { stories ? stories.map((stori)=>(
 
@@ -75,7 +74,7 @@ export default function StoriesCarousel() {
 
             )) : '' }
 
-        </OwlCarousel> 
+        </Carousel> 
       </>       
       )  
 }

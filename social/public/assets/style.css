@@ -46,6 +46,10 @@ button:disabled {
     cursor: not-allowed;
 }
 
+.popup-arrow  {
+    display: none;
+}
+
 select:-webkit-autofill,
 select:-webkit-autofill:hover, 
 select:-webkit-autofill:focus, 
@@ -168,7 +172,7 @@ input:-webkit-autofill:active{
     position: sticky;
     top: 0;
     z-index: 999;
-    box-shadow: 0 0 3px 0px var(--secondary-text);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .topbarLeft {
@@ -257,18 +261,26 @@ input:focus-visible {
     cursor: pointer;
 }
 
+.topbarRight .topBarIcons .item svg {
+    font-size: 27px;
+}
+
 .topbarRight .topBarIcons .item .counter {
-    position: absolute;
-    top: -7px;
-    right: 3px;
+    display: flex;
     background: var(--main-content);
-    width: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 23px;
     height: 20px;
-    text-align: center;
-    font-size: 10px;
-    line-height: 18px;
-    border-radius: 24px;
-    color: #fff;
+    position: absolute;
+    top: -10px;
+    right: 0;
+}
+
+.topbarRight .topBarIcons .item .counter span {
+    font-size: x-small;
+    font-weight: bolder;
 }
 
 .topbarRight {
@@ -559,8 +571,6 @@ input:focus-visible {
     border: none !important;
 } 
 
-.popup-content>div { display: none; }
-
 .popup-content .moreList li {
     padding: 3px 15px;
     cursor: pointer;
@@ -671,6 +681,14 @@ input:focus-visible {
     margin: 0;
     padding: 0;
     flex-wrap: nowrap;
+}
+
+.rightBar .rightBarWrapper .stories .carousel .slide {
+    min-width: auto;
+    width: max-content;
+}
+.control-dots {
+    display: none;
 }
 
 .rightBar .rightBarWrapper .stories .owl-carousel.owl-loaded {
@@ -1413,4 +1431,20 @@ input:focus {
     align-items: center;
     padding: 8px;
     right: 6px;
+}
+
+/* poups' css */
+#popup-root .friendsPopup-content {
+    position: fixed !important;
+    top: 70px !important;
+    right: 30px;
+    background: var(--secondary-bg) !important;
+    border-radius: 0 0 10px 10px !important;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+#popup-root  .popup-overlay.friendsPopup-overlay {
+    top: 71px !important;
+    backdrop-filter: brightness(0.5);
 }

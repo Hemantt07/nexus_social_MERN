@@ -3,6 +3,8 @@ import { Tooltip } from '@mui/material';
 import { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../context/AuthContext';
+import Popup from 'reactjs-popup';
+import Friendrequests from './friendrequests';
 
 export default function Topbar(){
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -34,22 +36,24 @@ export default function Topbar(){
                         </Tooltip>
                     </div>
                     <div className="item">
-                        <Tooltip title="Friends">
-                            <Person/>
-                        </Tooltip>
-                        <span className="counter">1</span>
+                        <Popup className='friendsPopup' trigger=
+                            { <Person/>}
+                            position="bottom left">
+                            <Friendrequests/>
+                        </Popup>
+                        <span className="counter"><span>9+</span></span>
                     </div>
                     <div className="item">
                         <Tooltip title="Chats">
                             <ChatBubble/>
                         </Tooltip>
-                        <span className="counter">9+</span>
+                        <span className="counter"><span>9+</span></span>
                     </div>
                     <div className="item">
                         <Tooltip title="Notifications">
                             <Favorite/> 
                         </Tooltip>
-                        <span className="counter">1</span>
+                        <span className="counter"><span>9+</span></span>
                     </div>
                 </div>
 

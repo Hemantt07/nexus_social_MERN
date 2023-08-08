@@ -89,6 +89,30 @@ router.get('/following/:userId', async(req, res)=>{
     }
 });
 
+// Get Follow Requests
+
+router.get('/followers/:userId', async(req, res)=>{
+    try { 
+        const user = await Users.findById(req.params.userId);
+        const followers = await Promise.allSettled( user.followers.map( (id) => {
+            if (!user.followings.includes(id)) {
+                return Users.findOne({ '_id': id });
+            }
+        }) );
+
+        let followersList = followers
+            .filter((friend) => friend.status === 'fulfilled')
+            .map((friend) => {
+                const { _id, username, profilePicture } = friend.value;
+                return { _id, username, profilePicture };
+            });
+
+        res.status(200).json(followersList);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
+
 // Folow a user
 
 router.put("/:id/follow", async (req, res) => {
