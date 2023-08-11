@@ -509,7 +509,7 @@ input:focus-visible {
 
 .post {
     width: 100%;
-    box-shadow: 0 2px 11px -3px rgb(0 0 0 / 69%);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.6);
     border-radius: 10px;
     margin: 30px 0;
     color: var(--primary-text);
@@ -765,7 +765,9 @@ input:focus-visible {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
+    border: 1px solid rgb(0 0 0 / 45%);
     cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.6);
 }
 
 .story.user .storyImg {
@@ -810,7 +812,7 @@ input:focus-visible {
     position: absolute;
     top: 0;
     left: 0;
-    background: rgb(0 0 0 / 54%);
+    backdrop-filter: brightness(.5);
     height: 100%;
     width: 100%;
     display: flex;
@@ -1438,6 +1440,8 @@ input:focus {
     position: fixed !important;
     top: 70px !important;
     right: 30px;
+    left: auto !important;
+    width: fit-content;
     background: var(--secondary-bg) !important;
     border-radius: 0 0 10px 10px !important;
     padding: 10px;
@@ -1447,4 +1451,31 @@ input:focus {
 #popup-root  .popup-overlay.friendsPopup-overlay {
     top: 71px !important;
     backdrop-filter: brightness(0.5);
+}
+
+.friends-popup .col {
+    padding: 10px 0 10px 30px;
+    border-right: .001rem solid var(--primary-text);
+}
+
+.friends-popup .list {
+    padding: 10px 0;
+    height: 80vh;
+    overflow-y: auto;
+}
+
+.friends-popup .list .item {
+    padding: 0px 90px 15px 5px;
+    margin: 0;
+}
+
+.friends-popup .list .item img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.friends-popup .list .item .userName {
+    padding: 0 10px;
 }

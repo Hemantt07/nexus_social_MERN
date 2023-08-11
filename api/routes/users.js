@@ -59,11 +59,26 @@ router.get("/", async(req, res) => {
 });
 
 // Get all users
-router.get('/usersList/all', async(req, res)=>{
-    try {
+router.get('/usersList/all/:userId', async(req, res)=>{
+    try { 
         const users = await Users.find({});
-        res.status(200).json(users);
+        const currentUser = await Users.findById(req.params.userId);
+        const allUsers = await Promise.allSettled( users.map( (user) => {
+            if (!currentUser.followings.includes(user._id)) {
+                return Users.findOne({ '_id': user._id });
+            }
+        }) );
+
+        let allUsersList = allUsers
+            .filter((friend) => friend.status === 'fulfilled')
+            .filter((friend) => friend.value )
+            .map((friend) => {
+                const { _id, username, profilePicture } = friend.value;
+                return { _id, username, profilePicture };
+            });
+        res.status(200).json(allUsersList);
     } catch (error) {
+        console.log(error)
         res.status(500).json(error);
     }
 });
@@ -77,7 +92,8 @@ router.get('/following/:userId', async(req, res)=>{
         }) );
 
         let friendsList = friends
-            .filter((friend) => friend.status === 'fulfilled')
+        .filter((friend) => friend.status === 'fulfilled')
+            .filter((friend) => friend.value)
             .map((friend) => {
                 const { _id, username, profilePicture } = friend.value;
                 return { _id, username, profilePicture };
@@ -102,6 +118,7 @@ router.get('/followers/:userId', async(req, res)=>{
 
         let followersList = followers
             .filter((friend) => friend.status === 'fulfilled')
+            .filter((friend) => friend.value)
             .map((friend) => {
                 const { _id, username, profilePicture } = friend.value;
                 return { _id, username, profilePicture };
