@@ -15,10 +15,13 @@ export default function Profile() {
     const username  = useParams().username;
     const [user, setUser] = useState([]);
     const { user : currentUser, dispatch } = useContext( AuthContext);
+
     const [follower, setFollower] = useState( 
         currentUser.followings.includes( user._id )
     );
-    
+
+    console.log(useContext(AuthContext))
+
     useEffect(()=>{
         setFollower( currentUser.followings.includes( user._id ) );
     }, [currentUser, user._id])
@@ -119,9 +122,6 @@ export default function Profile() {
                 </div>
             </div>
         </div>
-            <Tooltip title="Back to Top">
-                <div id="backToTop"><ExpandLessSharp className='icon'/></div>
-            </Tooltip>
         </>
     )
 }

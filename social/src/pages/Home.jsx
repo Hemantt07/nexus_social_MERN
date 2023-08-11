@@ -22,9 +22,6 @@ export default function Home(){
             </div>
         
         </div>
-            <Tooltip title="Back to Top">
-                <div id="backToTop"><ExpandLessSharp className='icon'/></div>
-            </Tooltip>
         </>
     );
 }

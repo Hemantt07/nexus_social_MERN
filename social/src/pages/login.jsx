@@ -25,7 +25,6 @@ export default function Login() {
 
     return (
         <div className='loginPage row'>
-
             <div className="col-md-6 login-left">
                 <div>
                     <h4 className="title">Nexus Social</h4>
@@ -72,9 +71,7 @@ export default function Login() {
                         </Link>
                     </div>
                 </form>
-
             </div>
-
         </div>
     )
 }

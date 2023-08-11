@@ -129,11 +129,10 @@ export default function Post( { post } ) {
                                 <div className="post" id={`post${post._id}`}>
                                     <div className="postWrapper">
                                         <div className="postCenter">
-                                                <div className="postImg">
-                                                    <img src={ PF+post.img } alt={`post${post._id}`} />
-                                                </div>
+                                            <div className="postImg">
+                                                <img src={ PF+post.img } alt={`post${post._id}`} />
+                                            </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
