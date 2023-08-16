@@ -20,8 +20,6 @@ export default function Profile() {
         currentUser.followings.includes( user._id )
     );
 
-    console.log(useContext(AuthContext))
-
     useEffect(()=>{
         setFollower( currentUser.followings.includes( user._id ) );
     }, [currentUser, user._id])

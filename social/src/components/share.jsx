@@ -13,7 +13,6 @@ export default function Share() {
     const postPhoto = (e)=>{
         setFile(e.target.files[0]);
     }
-
     useEffect( ()=>{
         if ( file ) {
             setError( false )
@@ -51,6 +50,14 @@ export default function Share() {
                 console.log(error);
             }
         }
+
+    }
+    
+    const changesize = ()=>{
+        document.querySelector('#share-content').addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = `${this.scrollHeight}px`;
+        })
     }
 
     return (
@@ -67,6 +74,8 @@ export default function Share() {
                         ref={ content }
                         onChange={ onTextChange }
                         rows={ 1 }
+                        id="share-content"
+                        onChangeCapture={ changesize }
                     />
 
                 </div>

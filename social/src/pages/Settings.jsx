@@ -98,6 +98,14 @@ export default function Settings() {
 
         }
     }
+
+    const changesize = ()=>{
+        document.querySelector('#desc').addEventListener('input', function () {
+            this.style.height = 'auto';
+            this.style.height = `${this.scrollHeight}px`;
+        })
+    }
+
     
     return (
         <>
@@ -176,6 +184,7 @@ export default function Settings() {
                                         id="desc" 
                                         ref={ desc }
                                         rows={ 3 }
+                                        onChangeCapture={ changesize }
                                     />
                                 </div> 
                             </li>
