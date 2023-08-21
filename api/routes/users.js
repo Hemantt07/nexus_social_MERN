@@ -18,7 +18,7 @@ router.put("/:id", async(req, res) => {
             const user = await Users.findByIdAndUpdate(req.params.id, {
                 $set: req.body,
             });
-            const { password, ...userData } = user;
+            const { password, ...userData } = await user;
             res.status(200).json(userData);
         } catch (error) {
             res.status(500).json(error);

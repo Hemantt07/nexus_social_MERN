@@ -79,21 +79,21 @@ export default function Settings() {
                 confirm_password.current.setCustomValidity("Password don't match!");
             } else {
                 try {
-                    const user_updated = await axios.put( process.env.REACT_APP_BASE_PATH_API+'users/'+user._id, updated_data );
-                    console.log(user_updated.data._doc)
-                    dispatch({ type: 'UPDATE', payload: user_updated.data._doc });
-                    // window.location.reload();
+                    await axios.put( process.env.REACT_APP_BASE_PATH_API+'users/'+user._id, updated_data );
+                    user = await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?userId='+ user._id  )
+                    dispatch({ type: 'UPDATE', payload: user});
+                    window.location.reload();
                 } catch (error) {
                     console.log(error);
                 }    
             }
         } else {
-
+            
             try {
-                const user_updated = await axios.put( process.env.REACT_APP_BASE_PATH_API+'users/'+user._id, updated_data );
-                console.log(user_updated)
-                dispatch({ type: 'UPDATE', payload: user_updated.data._doc });
-                // window.location.reload();
+                await axios.put( process.env.REACT_APP_BASE_PATH_API+'users/'+user._id, updated_data );
+                user = await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?userId='+ user._id  )
+                dispatch({ type: 'UPDATE', payload: user});
+                window.location.reload();
             } catch (error) {
                 console.log(error);
             }

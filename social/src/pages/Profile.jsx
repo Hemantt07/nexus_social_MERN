@@ -15,7 +15,6 @@ export default function Profile() {
     const username  = useParams().username;
     const [user, setUser] = useState([]);
     const { user : currentUser, dispatch } = useContext( AuthContext);
-    console.log(currentUser)
     const [follower, setFollower] = useState( 
         currentUser.followings.includes( user._id )
     );
@@ -33,7 +32,7 @@ export default function Profile() {
         };
         fetchUser();
     }, [ username, currentUser ]);
-    console.log(user)
+
     const handleFollow = async () => {
         try {
             

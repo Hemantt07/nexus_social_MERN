@@ -49,7 +49,6 @@ const AuthReducer = ( state, action )=>{
             }
 
         case 'UPDATE':
-            console.log(action.payload)
             return {
                 user: action.payload,
                 isFetching: false,
