@@ -26,7 +26,7 @@ const AuthReducer = ( state, action )=>{
                 ...state,
                 user:{
                     ...state.user,
-                    followings: [ state.user.followings, action.payload ]
+                    followings: state.user.followings.concat(action.payload)
                 },
             }
         
@@ -49,6 +49,7 @@ const AuthReducer = ( state, action )=>{
             }
 
         case 'UPDATE':
+            console.log(action.payload)
             return {
                 user: action.payload,
                 isFetching: false,

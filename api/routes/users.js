@@ -19,7 +19,6 @@ router.put("/:id", async(req, res) => {
                 $set: req.body,
             });
             const { password, ...userData } = user;
-            console.log( userData )
             res.status(200).json(userData);
         } catch (error) {
             res.status(500).json(error);
@@ -130,7 +129,7 @@ router.get('/followers/:userId', async(req, res)=>{
     }
 });
 
-// Folow a user
+// Follow a user
 
 router.put("/:id/follow", async (req, res) => {
     if ( req.body.userId !== req.params.id ) {

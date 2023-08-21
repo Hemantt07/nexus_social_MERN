@@ -80,8 +80,9 @@ export default function Settings() {
             } else {
                 try {
                     const user_updated = await axios.put( process.env.REACT_APP_BASE_PATH_API+'users/'+user._id, updated_data );
+                    console.log(user_updated.data._doc)
                     dispatch({ type: 'UPDATE', payload: user_updated.data._doc });
-                    window.location.reload();
+                    // window.location.reload();
                 } catch (error) {
                     console.log(error);
                 }    
@@ -90,8 +91,9 @@ export default function Settings() {
 
             try {
                 const user_updated = await axios.put( process.env.REACT_APP_BASE_PATH_API+'users/'+user._id, updated_data );
+                console.log(user_updated)
                 dispatch({ type: 'UPDATE', payload: user_updated.data._doc });
-                window.location.reload();
+                // window.location.reload();
             } catch (error) {
                 console.log(error);
             }
