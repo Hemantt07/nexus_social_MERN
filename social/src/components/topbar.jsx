@@ -1,15 +1,30 @@
 import { Favorite, ChatBubble, Search, Person, Brightness6 } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../context/AuthContext';
 import Popup from 'reactjs-popup';
 import Friendrequests from './friendrequests';
+import axios from 'axios';
 
 export default function Topbar(){
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const { user } = useContext( AuthContext ) || [];
- 
+    const search = useRef();
+    
+    const searchHit = ()=>{
+        const searchKey = search.current.value
+        const searchUser = async () => {
+            try {
+                const userList = await axios.post('http://localhost:5000/users/?search='+searchKey);
+                console.log( userList.data )
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        searchUser();
+    }
+
     return (
         <div className='topbar row'>
             <div className="topbarLeft col-md-2">
@@ -21,7 +36,13 @@ export default function Topbar(){
                 <button type="submit" className='searchBtn'>
                     <Search className='searchIcon'/>
                 </button>
-                <input type="text" placeholder='Search Nexus Social...' className="search" />
+                <input 
+                    type="text" 
+                    placeholder='Search Nexus Social...' 
+                    className="search" 
+                    ref={ search }
+                    onChangeCapture={ searchHit }
+                />
             </div>
             <div className="topbarRight col-md-4">
                 <div className="topbarLinks">

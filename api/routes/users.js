@@ -2,6 +2,32 @@ const router = require('express').Router();
 const Users = require('../models/Users');
 const bcrypt = require('bcrypt');
 
+// Find a user by name
+router.post("/", async(req, res) => {
+    console.log(req.query)
+    const allUsers = await Users.find()
+    const search = req.query.search.toLowerCase();
+    try {
+        const filteredUsers = allUsers.filter((user) =>{
+            if ( Users.schema.paths['firstname'].length > 0 ) {
+
+                return user.firstname.toLowerCase().includes(search);
+            
+            } else if ( Users.schema.paths['lastname'] > 0 ){
+            
+                return user.lastname.toLowerCase().includes(search);
+            
+            } else {
+            
+                return user.username.toLowerCase().includes(search);
+            
+            }
+        });
+        res.status(200).json( filteredUsers );
+    } catch (error) {
+        res.status(500).json(error);
+    }
+});
 
 // Update user
 router.put("/:id", async(req, res) => {

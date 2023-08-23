@@ -99,7 +99,7 @@ export default function Share() {
                                 type="file"
                                 name="file"
                                 id="file"
-                                accept='.png,.jpg,.jpeg'
+                                accept='.jpeg, .gif, .png, .apng, .svg, .bmp, .bmp, .png , .webp'
                                 onChange={ postPhoto }
                             />
                         </label>

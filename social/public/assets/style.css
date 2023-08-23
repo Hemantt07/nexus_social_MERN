@@ -1483,3 +1483,7 @@ input:focus {
 .friends-popup .list .item .userName {
     padding: 0 10px;
 }
+
+.profileDetails * {
+    text-shadow: 1px 3px 20px rgb(0 0 0 / 27%);
+}

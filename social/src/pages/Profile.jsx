@@ -5,7 +5,7 @@ import Sidebar from "../components/sidebar";
 import Topbar from "../components/topbar";
 import { useContext, useEffect, useState } from "react";
 import axios from 'axios';
-import { ExpandLessSharp, Settings } from "@mui/icons-material";
+import { Settings } from "@mui/icons-material";
 import { useParams } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
