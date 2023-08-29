@@ -6,20 +6,22 @@
     font-family: 'Poppins', sans-serif !important;
 }
 
-body.dark-mode {
+body{
     --primary-bg: #121212;
     --secondary-bg: #282828;
     --primary-text: #E0DFDB;
-    --secondary-text: #404040;
+    --secondary-text: #ffffff;
     --main-content: #8B475D;
+    --dark-shadow: rgba(0,0,0,0.6);
 }
 
 body.light-mode {
-    --primary-bg: #bbbbbb;
-    --secondary-bg: #a6b1b7;
-    --primary-text: #000000;
-    --secondary-text: #404040;
-    --main-content: #a87284;
+    --primary-bg: #fafafa;
+    --secondary-bg: #e4e5f1;
+    --primary-text: #835c68;
+    --secondary-text: #ffffff;
+    --main-content: #8B475D;
+
 }
 
 body {
@@ -83,7 +85,7 @@ input:-webkit-autofill:active{
     right: 14px;
     bottom: 15px;
     background: var(--main-content);
-    color: var(--primary-text);
+    color: var(--secondary-text);
     padding: 0px;
     border-radius: 50%;
     cursor: pointer;
@@ -210,7 +212,7 @@ input:-webkit-autofill:active{
     border: none;
     border-radius: 100px;
     font-size: 18px;
-    background-color: var(--secondary-text);
+    background-color: var(--primary-bg);
     color: var(--primary-text);
     padding-left: 50px;
 }
@@ -270,6 +272,7 @@ input:focus-visible {
 .topbarRight .topBarIcons .item .counter {
     display: flex;
     background: var(--main-content);
+    color: var(--secondary-text);
     justify-content: center;
     align-items: center;
     border-radius: 50%;
@@ -369,7 +372,7 @@ input:focus-visible {
     margin-left: 40px;
     padding: 10px 30px;
     background: var(--main-content);
-    color: var(--primary-text);
+    color: var(--secondary-text);
     border-radius: 5px;
 }
 
@@ -490,7 +493,7 @@ input:focus-visible {
 
 .share .shareWrapper .shareBottom .shareButton {
     border: none;
-    color: var(--primary-text);
+    color: var(--secondary-text);
     border-radius: 50px;
     background: var(--main-content);
     display: flex;
@@ -512,7 +515,7 @@ input:focus-visible {
 
 .post {
     width: 100%;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.6);
+    box-shadow: 0 3px 6px var(----dark-shadow);
     border-radius: 10px;
     margin: 30px 0;
     color: var(--primary-text);
@@ -770,7 +773,7 @@ input:focus-visible {
     overflow: hidden;
     border: 1px solid rgb(0 0 0 / 45%);
     cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.6);
+    box-shadow: 0 3px 6px var(----dark-shadow);
 }
 
 .story.user .storyImg {
@@ -868,13 +871,13 @@ h1.error {
     display: block;
     width: max-content;
     background: var(--main-content);
-    color: var(--main-content);
+    color: var(--secondary-text);
     padding: 3px 0;
     width: 85px;
     line-height: 1.4;
     border: none;
     border-radius: 7px;
-    color: var(--primary-text);
+    color: var(--secondary-text);
     font-size: 16px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .56);
     transition: box-shadow .3s;
@@ -889,7 +892,7 @@ h1.error {
     line-height: 1.4;
     border: none;
     border-radius: 7px;
-    background: var(--primary-text);
+    background: var(--secondary-text);
     font-size: 16px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .56);
     transition: box-shadow .3s;
@@ -1169,7 +1172,7 @@ h1.error {
 .login-right .login-form .loginButton {
     width: max-content;
     font-size: 16px;
-    color: var(--primary-text);
+    color: var(--secondary-text);
     background: var(--main-content);
     border: none;
     padding: 8px 30px;
@@ -1297,7 +1300,7 @@ input:focus {
 .btn {
     width: max-content;
     font-size: 16px;
-    color: var(--primary-text);
+    color: var(--secondary-text);
     background: var(--main-content);
     border: none;
     padding: 8px 30px;
@@ -1429,7 +1432,7 @@ input:focus {
 .comment-section .comment-button {
     position: absolute;
     border: none;
-    color: var(--primary-text);
+    color: var(--secondary-text);
     border-radius: 50px;
     background: var(--main-content);
     display: flex;
@@ -1440,6 +1443,7 @@ input:focus {
 }
 
 /* poups' css */
+#popup-root .searchPopup-content,
 #popup-root .friendsPopup-content {
     position: fixed !important;
     top: 70px !important;
@@ -1452,7 +1456,8 @@ input:focus {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
-#popup-root  .popup-overlay.friendsPopup-overlay {
+#popup-root .popup-overlay.searchPopup-overlay ,
+#popup-root .popup-overlay.friendsPopup-overlay {
     top: 71px !important;
     backdrop-filter: brightness(0.5);
 }
@@ -1486,4 +1491,41 @@ input:focus {
 
 .profileDetails * {
     text-shadow: 1px 3px 20px rgb(0 0 0 / 27%);
+}
+
+#popup-root .searchPopup-content {
+    left: -200px !important;
+    width: 50%;
+}
+
+#searchedUsers .item {
+    padding: 0 0 10px 0 !important;
+}
+
+#searchedUsers .item img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 11px;
+}
+
+#searchedUsers .item .userName {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.SwitchMode {
+    position: fixed;
+    top: 19px;
+    right: 12px;
+    width: 43px;
+    height: 44px;
+    z-index: 999;
+}
+
+.SwitchMode svg#switchMode {
+    width: auto;
+    height: 71%;
+    cursor: pointer;
 }

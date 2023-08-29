@@ -79,20 +79,19 @@ export default function Settings() {
                 confirm_password.current.setCustomValidity("Password don't match!");
             } else {
                 try {
-                    await axios.put( process.env.REACT_APP_BASE_PATH_API+'users/'+user._id, updated_data );
-                    user = await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?userId='+ user._id  )
-                    dispatch({ type: 'UPDATE', payload: user});
+                    const updated_user = await axios.put( process.env.REACT_APP_BASE_PATH_API+'users/'+user._id, updated_data );
+                    dispatch({ type: 'UPDATE', payload: updated_user});
                     window.location.reload();
                 } catch (error) {
                     console.log(error);
                 }    
             }
         } else {
-            
             try {
-                await axios.put( process.env.REACT_APP_BASE_PATH_API+'users/'+user._id, updated_data );
-                user = await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?userId='+ user._id  )
-                dispatch({ type: 'UPDATE', payload: user});
+                const updated_user = await axios.put( process.env.REACT_APP_BASE_PATH_API+'users/'+user._id, updated_data );
+                console.log(updated_user.data)
+
+                dispatch({ type: 'UPDATE', payload: updated_user.data});
                 window.location.reload();
             } catch (error) {
                 console.log(error);

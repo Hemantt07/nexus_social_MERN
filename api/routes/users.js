@@ -4,28 +4,25 @@ const bcrypt = require('bcrypt');
 
 // Find a user by name
 router.post("/", async(req, res) => {
-    console.log(req.query)
     const allUsers = await Users.find()
-    const search = req.query.search.toLowerCase();
-    try {
-        const filteredUsers = allUsers.filter((user) =>{
-            if ( Users.schema.paths['firstname'].length > 0 ) {
-
-                return user.firstname.toLowerCase().includes(search);
-            
-            } else if ( Users.schema.paths['lastname'] > 0 ){
-            
-                return user.lastname.toLowerCase().includes(search);
-            
-            } else {
-            
-                return user.username.toLowerCase().includes(search);
-            
-            }
-        });
-        res.status(200).json( filteredUsers );
-    } catch (error) {
-        res.status(500).json(error);
+    const search = req.query.search.toLowerCase().trim();
+    if ( search !== '' ) {
+        try {
+            const filteredUsers = allUsers.filter((user) =>{
+                if ( Users.schema.paths['firstname'].length > 0 ) {
+                    return user.firstname.toLowerCase().includes(search);
+                } else if ( Users.schema.paths['lastname'] > 0 ){
+                    return user.lastname.toLowerCase().includes(search);
+                } else {
+                    return user.username.toLowerCase().includes(search);
+                }
+            });
+            res.status(200).json( filteredUsers );
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    } else {
+        res.status(200).json([]);
     }
 });
 
@@ -43,9 +40,10 @@ router.put("/:id", async(req, res) => {
         try {
             const user = await Users.findByIdAndUpdate(req.params.id, {
                 $set: req.body,
-            });
-            const { password, ...userData } = await user;
-            res.status(200).json(userData);
+            }, { new: true });
+            const UserData = user.toObject();
+            const { password, ...dataNeeded } = UserData;
+            res.status(200).json(dataNeeded);
         } catch (error) {
             res.status(500).json(error);
         }
