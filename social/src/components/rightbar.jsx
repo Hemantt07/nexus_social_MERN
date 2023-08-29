@@ -20,7 +20,7 @@ export default function Rightbar({ user }) {
       }
     };
     fetchFriends();
-  }, [ currentUser._id ]);
+  }, [ currentUser.followings ]);
 
   const HomeRightBar = () => {
     return (

@@ -49,11 +49,13 @@ export default function Post( { post } ) {
     },[post.userId]);
 
     const openPost = ()=>{
-        setShowModal( true ); 
+        setShowModal( true );
+        document.body.style.overflow = 'hidden';
     }
 
     const hideModal = ()=>{
         setShowModal( false );
+        document.body.style.overflow = 'auto';
     }
 
     return (

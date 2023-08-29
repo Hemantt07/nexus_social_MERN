@@ -8,9 +8,11 @@ const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
 const postsRoute = require("./routes/posts");
 const storiesRoute = require("./routes/stories");
+const mailRoute = require("./routes/mail");
 const cors = require("cors");
 const multer = require( 'multer' );
 const path = require( 'path' );
+
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
@@ -54,6 +56,7 @@ app.use('/users', userRoute);
 app.use('/auth', authRoute);
 app.use('/posts', postsRoute);
 app.use('/stories', storiesRoute);
+app.use('/mail', mailRoute);
 
 const server = app.listen(PORT, () => {
     const port = server.address().port;

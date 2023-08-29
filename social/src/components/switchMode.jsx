@@ -13,7 +13,7 @@ export default function SwitchMode() {
       localStorage.setItem('mode', lightMode)
     }
 
-    if ( localStorage.getItem('mode') == 'true' ) {
+    if ( localStorage.getItem('mode') === 'true' ) {
       body.classList.add('light-mode');
     }else {
       body.classList.remove('light-mode');

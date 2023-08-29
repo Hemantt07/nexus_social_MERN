@@ -1,4 +1,4 @@
-import { Favorite, ChatBubble, Search, Person, Brightness6 } from '@mui/icons-material';
+import { Favorite, ChatBubble, Search, Person } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from "react-router-dom";

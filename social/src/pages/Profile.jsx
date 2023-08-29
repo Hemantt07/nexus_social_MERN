@@ -14,6 +14,7 @@ export default function Profile() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const username  = useParams().username;
     const [user, setUser] = useState([]);
+    const [dpfull, setDpfull] = useState(false);
     const { user : currentUser, dispatch } = useContext( AuthContext);
     const [follower, setFollower] = useState( 
         currentUser.followings.includes( user._id )
@@ -35,7 +36,6 @@ export default function Profile() {
 
     const handleFollow = async () => {
         try {
-            
             if ( follower ) {
                 await axios.put( `${ process.env.REACT_APP_BASE_PATH_API }users/${ user._id }/unfollow/`,{ 
                   userId : currentUser._id 
@@ -54,6 +54,15 @@ export default function Profile() {
         }
     }
 
+    const openDp = async ()=>{
+        setDpfull(!dpfull);
+        if ( document.body.style.overflow === 'hidden' ) {
+            document.body.style.overflow = 'auto';
+        } else {
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
     return (
         <>
         <Topbar/>
@@ -67,11 +76,27 @@ export default function Profile() {
                     <div className="col-md-12 profile-section">
                         <div className="userProfile">
                             <div className="coverPicture">
-                                <img src={ user.coverPicture ? PF+user.coverPicture : `${PF}posts/posts1.webp` } alt="cover-pic" className="cover" />
+                                <img 
+                                    src={ user.coverPicture ? PF+user.coverPicture : `${PF}posts/posts1.webp` } 
+                                    alt="cover-pic" 
+                                    className="cover" 
+                                />
                             </div>
 
                             <div className="profile-picture">
-                                <img src={ user.profilePicture  ? PF+user.profilePicture : `${PF}profiles/default.jpg` } alt="profile-pic" className="userDP" />
+                                <img 
+                                    src={ user.profilePicture  ? PF+user.profilePicture : `${PF}profiles/default.jpg` } 
+                                    alt="profile-pic" 
+                                    className="userDP" 
+                                    onClick={ openDp }
+                                />
+                                <div className={`full-screen ${dpfull ? 'open' : ''}`}  onClick={ openDp }>
+                                    <img 
+                                        src={ user.profilePicture  ? PF+user.profilePicture : `${PF}profiles/default.jpg` } 
+                                        alt="profile-pic" 
+                                        className="userDP" 
+                                    />  
+                                </div>
                             </div>
                             
                             <div className="profileDetails">

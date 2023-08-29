@@ -26,7 +26,8 @@ export default function Register() {
             }
 
             try {
-                await axios.post( process.env.REACT_APP_BASE_PATH_API+'auth/register', user );         
+                await axios.post( process.env.REACT_APP_BASE_PATH_API+'auth/register', user );
+                await axios.post( process.env.REACT_APP_BASE_PATH_API+'mail/admin', user );
                 history('/login');
             } catch (error) {
                 console.log(error);
@@ -92,6 +93,7 @@ export default function Register() {
                             placeholder='Password'
                             ref= { password }
                             required
+                            autoComplete="off"
                         />
                     </div>
                     <div className='input-field'>
@@ -102,6 +104,7 @@ export default function Register() {
                             placeholder='Confirm Password'
                             ref={confirmPassword}
                             required
+                            autoComplete="off"
                         />
                         <RemoveRedEyeIcon className='eyebutton' onClick={ hide_show_password } />
                     </div>

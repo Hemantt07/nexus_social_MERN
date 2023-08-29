@@ -1,6 +1,3 @@
-import { ExpandLessSharp } from '@mui/icons-material'
-import { Tooltip } from '@mui/material'
-
 import Topbar from "../components/topbar";
 import Sidebar from "../components/sidebar";
 import Feed from "../components/feed";
