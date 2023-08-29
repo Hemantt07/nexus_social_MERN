@@ -33,23 +33,23 @@ export default function Friendrequests() {
 
   return (
     <div className='friends-popup row'>
-    { friendReq.length !== 0
-        ?<div className="requests col">
-            <h4>Follows you</h4>
-            <ul className="list">
-                { friendReq.map((user)=>(
-                    <FriendInline user={ user } key={ user._id } />
-                )) }
-            </ul>
-        </div> : ''}
+        { friendReq.length !== 0
+            ?<div className="requests col">
+                <h4>Follows you</h4>
+                <ul className="list">
+                    { friendReq.map((user)=>(
+                        <FriendInline user={ user } key={ user._id } />
+                    )) }
+                </ul>
+            </div> : ''}
 
-    { allusers.length !== 0
-        ? <div className="suggestions col">
-            <h4>You may know</h4>
-            <ul className="list">
-                { allusers.map((user)=>(
-                    <FriendInline user={ user } key={ user._id } />
-                )) }
+        { allusers.length !== 0
+            ? <div className="suggestions col">
+                <h4>You may know</h4>
+                <ul className="list">
+                    { allusers.map((user)=>(
+                        <FriendInline user={ user } key={ user._id } />
+                    )) }
             </ul>
         </div> : ''}
     </div>

@@ -1,6 +1,6 @@
 import { Favorite, ChatBubble, Search, Person, Brightness6 } from '@mui/icons-material';
 import { Tooltip } from '@mui/material';
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { Link } from "react-router-dom";
 import { AuthContext } from '../context/AuthContext';
 import Popup from 'reactjs-popup';
@@ -12,6 +12,7 @@ export default function Topbar(){
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const { user } = useContext( AuthContext ) || [];
     const [usersList, setUsersList] = useState();
+    const [friendReq, setFriendReq] = useState([]);
 
     const search = useRef();
     
@@ -27,6 +28,19 @@ export default function Topbar(){
         }
         searchUser();
     }
+
+    useEffect(()=>{
+        const fetchRequests = async ()=>{
+            try {
+                const res = await axios.get( process.env.REACT_APP_BASE_PATH_API+'users/followers/'+user._id );
+                setFriendReq(res.data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        fetchRequests();
+    }, [user])
 
     return (
         <div className='topbar row'>
@@ -76,7 +90,7 @@ export default function Topbar(){
                             position="bottom left">
                             <Friendrequests/>
                         </Popup>
-                        <span className="counter"><span>9+</span></span>
+                        <span className="counter"><span>{ friendReq.length < 10 ? friendReq.length : '9+' }</span></span>
                     </div>
 
                     <div className="item">
