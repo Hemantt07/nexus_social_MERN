@@ -17,8 +17,6 @@ npm install react-router-dom
 
 npm start
 
-Open http://localhost:3000 to view it in the browser.
-
 ### For api
 
 npm install express mongoose dotenv morgan helmet bcryptjs --save
