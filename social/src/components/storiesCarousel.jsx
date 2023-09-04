@@ -8,8 +8,8 @@ import 'reactjs-popup/dist/index.css';
 import { signal } from "@preact/signals";
 import axios from 'axios';
 
-
 export default function StoriesCarousel() {
+    <styles />
     const { user } = useContext( AuthContext );
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const story_img = useRef(null);

@@ -80,7 +80,7 @@ export default function Settings() {
             } else {
                 try {
                     const updated_user = await axios.put( process.env.REACT_APP_BASE_PATH_API+'users/'+user._id, updated_data );
-                    dispatch({ type: 'UPDATE', payload: updated_user});
+                    dispatch({ type: 'UPDATE', payload: updated_user.data});
                     window.location.reload();
                 } catch (error) {
                     console.log(error);

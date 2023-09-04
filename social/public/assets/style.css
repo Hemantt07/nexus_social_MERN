@@ -13,6 +13,7 @@ body{
     --secondary-text: #ffffff;
     --main-content: #8B475D;
     --dark-shadow: rgba(0,0,0,0.6);
+    height: 100vh;
 }
 
 body.light-mode {
@@ -31,6 +32,7 @@ body {
     max-width: 1500px;
     margin: auto;
 }
+
 
 a {
     text-decoration: none !important;
@@ -1093,7 +1095,13 @@ h1.error {
    text-align: center;
 }
 
+
 /* Login Page */
+
+.registerPage.row,
+.loginPage.row {
+    height: calc(100% - 55px);
+}
 
 .login-left {
     padding: 0;
@@ -1102,7 +1110,6 @@ h1.error {
     justify-content: center;
     flex-direction: column;
     align-items: flex-end;
-    height: 100vh;
 }
 
 .login-left .title {
@@ -1129,6 +1136,7 @@ h1.error {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 80vh;
 }
 
 .login-right .login-form {
@@ -1440,7 +1448,7 @@ input:focus {
     justify-content: center;
     align-items: center;
     padding: 8px;
-    right: 6px;
+    right: 8px;
 }
 
 /* poups' css */
@@ -1553,4 +1561,21 @@ input:focus {
 
 .full-screen.open {
     display: flex;
+}
+
+#footer {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 1px solid var(--secondary-bg);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: var(--primary-bg);
+}
+
+#footer a {
+    margin-left: 8px;
+    color: var(--main-content) !important;
+    font-weight: 600;
+    font-size: 111%;
 }

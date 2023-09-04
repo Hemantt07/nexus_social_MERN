@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import { CircularProgress } from '@mui/material';
 import { Link } from "react-router-dom";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import Footer from '../components/footer'
 
 export default function Login() {
     const email = useRef();
@@ -24,6 +25,7 @@ export default function Login() {
     }
 
     return (
+        <>
         <div className='loginPage row'>
             <div className="col-md-6 login-left">
                 <div>
@@ -73,5 +75,7 @@ export default function Login() {
                 </form>
             </div>
         </div>
+        <Footer />
+        </>
     )
 }

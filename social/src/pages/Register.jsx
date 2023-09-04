@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axios from 'axios';
+import Footer from '../components/footer'
 
 export default function Register() {
     const fname = useRef(), lname = useRef(), email = useRef(), password = useRef(), confirmPassword = useRef(), dob = useRef();
@@ -37,6 +38,7 @@ export default function Register() {
     }
 
     return (
+        <>
         <div className='registerPage row'>
 
             <div className="col-md-6 login-left">
@@ -120,7 +122,8 @@ export default function Register() {
                     </div>
                 </form>
             </div>
-
         </div>
+        <Footer />
+        </>
     )
 }
