@@ -7,9 +7,9 @@ import axios from 'axios';
 import { countries } from '../data';
 
 export default function Settings() {
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
     const { user, dispatch } = useContext( AuthContext );
-    // For logout
+    
     const logout = () => {
         try {
             window.location.href = '/login';
@@ -18,7 +18,7 @@ export default function Settings() {
             console.log(error);
         }
     }
-    // For update user
+    
     const dob = useRef( 'dob' ), relation = useRef( 'relation' ), desc = useRef( 'desc' ), username = useRef( 'username' ), profile_pic = useRef( 'profile_pic' ), cover_pic = useRef( 'cover_pic' ), fname = useRef( 'fname' ), lname = useRef( 'lname' ), email = useRef( 'email' ), new_password = useRef( 'new_password' ), confirm_password = useRef( 'confirm_password' ), city = useRef( 'city' ), from = useRef( 'from' );
 
     const [profile_Pic, setProfile_pic] = useState( null );
@@ -137,8 +137,8 @@ export default function Settings() {
                                         src={ profile_Pic
                                                 ? URL.createObjectURL(profile_Pic)
                                                 : user.profilePicture
-                                                ? PF + user.profilePicture
-                                                : `${PF}profiles/default.jpg` } 
+                                                ? public_folder + user.profilePicture
+                                                : `${public_folder}profiles/default.jpg` } 
                                         alt="profile-pic" 
                                     />
                                     <label htmlFor="profile-pic" className='btn'>Upload Profile Picture</label>
@@ -156,8 +156,8 @@ export default function Settings() {
                                         src={ cover_Pic
                                                 ? URL.createObjectURL( cover_Pic )
                                                 : user.coverPicture 
-                                                ? PF+user.coverPicture 
-                                                : `${PF}posts/posts1.webp` } 
+                                                ? public_folder+user.coverPicture 
+                                                : `${public_folder}posts/posts1.webp` } 
                                         alt="cover-pic" 
                                     />
                                     <label htmlFor="cover-pic" className='btn'>Upload Cover Picture</label>

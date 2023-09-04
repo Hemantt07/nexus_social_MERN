@@ -9,7 +9,7 @@ import axios from 'axios';
 import FriendInline from './friend-inline';
 
 export default function Topbar(){
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
     const { user } = useContext( AuthContext ) || [];
     const [usersList, setUsersList] = useState();
     const [friendReq, setFriendReq] = useState([]);
@@ -113,7 +113,10 @@ export default function Topbar(){
 
                     <Link to={ `/profile/${ user.username || '' }` }>
                         <div className="profile">
-                            <img src={ user.profilePicture  ? PF+user.profilePicture : `${PF}profiles/default.jpg` } alt="profile-pic" />
+                            <img 
+                                src={ user.profilePicture  ? public_folder+user.profilePicture : `${public_folder}profiles/default.jpg` } 
+                                alt="profile-pic" 
+                            />
                         </div>
                     </Link>
 

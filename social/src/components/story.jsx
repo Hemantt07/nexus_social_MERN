@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Story( {story} ) {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState(null);
   
   useEffect(()=>{
@@ -18,10 +18,10 @@ export default function Story( {story} ) {
 
       <div className='story'>
         <div className="storyImg">
-          <img src={ story.storyImg ? PF+story.storyImg : `${PF}profiles/default.jpg`} alt="story" />
+          <img src={ story.storyImg ? public_folder+story.storyImg : `${public_folder}profiles/default.jpg`} alt="story" />
         </div>
         <div className="content">
-            <img src={ PF+user.profilePicture} alt="profile" className="profileImg" />
+            <img src={ public_folder+user.profilePicture} alt="profile" className="profileImg" />
             <span className="userName">{user.username}</span>
         </div>
       </div> : ''

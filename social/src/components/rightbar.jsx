@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
 import { format } from "date-fns";
+import FriendsList from "./FriendsList";
 
 export default function Rightbar({ user }) {
   const [friends, setFriends] = useState([]);
@@ -29,22 +30,7 @@ export default function Rightbar({ user }) {
           <StoriesCarousel/>
         </div>
 
-        <div className="friendOnline mt-3">
-          <p className="head">Online Friends</p>
-          <ul className="onlineFriendsList">
-
-            { friends.length === 0 
-              ? <h1 className='error'>No one is online</h1> 
-              : friends.map((user)=>(
-
-              <Online key={user._id} user={user} />
-
-              )) 
-            }
-            
-          </ul>
-
-        </div>
+        <FriendsList />
       </>
     );
   }

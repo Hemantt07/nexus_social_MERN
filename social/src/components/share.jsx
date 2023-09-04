@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Close } from '@mui/icons-material';
 
 export default function Share() {
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
     const { user } = useContext( AuthContext );
     const content = useRef();
     const [file, setFile] = useState( null );
@@ -66,7 +66,7 @@ export default function Share() {
                 <div className="shareTop"> 
 
                     <div className="shareProfileImg">
-                        <img src={ user.profilePicture ? PF + user.profilePicture : `${PF}profiles/default.jpg` } alt="profile" />
+                        <img src={ user.profilePicture ? public_folder + user.profilePicture : `${public_folder}profiles/default.jpg` } alt="profile" />
                     </div>
                     <textarea type="text" 
                         placeholder={ `What's in your mind ${ user.firstname+" "+user.lastname }?`} 

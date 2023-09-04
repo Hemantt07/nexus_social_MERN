@@ -11,10 +11,10 @@ import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
 export default function Profile() {
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
     const username  = useParams().username;
     const [user, setUser] = useState([]);
-    const [dpfull, setDpfull] = useState(false);
+    const [dpublic_folderull, setDpublic_folderull] = useState(false);
     const { user : currentUser, dispatch } = useContext( AuthContext);
     const [follower, setFollower] = useState( 
         currentUser.followings.includes( user._id )
@@ -55,7 +55,7 @@ export default function Profile() {
     }
 
     const openDp = async ()=>{
-        setDpfull(!dpfull);
+        setDpublic_folderull(!dpublic_folderull);
         if ( document.body.style.overflow === 'hidden' ) {
             document.body.style.overflow = 'auto';
         } else {
@@ -77,7 +77,7 @@ export default function Profile() {
                         <div className="userProfile">
                             <div className="coverPicture">
                                 <img 
-                                    src={ user.coverPicture ? PF+user.coverPicture : `${PF}posts/posts1.webp` } 
+                                    src={ user.coverPicture ? public_folder+user.coverPicture : `${public_folder}posts/posts1.webp` } 
                                     alt="cover-pic" 
                                     className="cover" 
                                 />
@@ -85,14 +85,14 @@ export default function Profile() {
 
                             <div className="profile-picture">
                                 <img 
-                                    src={ user.profilePicture  ? PF+user.profilePicture : `${PF}profiles/default.jpg` } 
+                                    src={ user.profilePicture  ? public_folder+user.profilePicture : `${public_folder}profiles/default.jpg` } 
                                     alt="profile-pic" 
                                     className="userDP" 
                                     onClick={ openDp }
                                 />
-                                <div className={`full-screen ${dpfull ? 'open' : ''}`}  onClick={ openDp }>
+                                <div className={`full-screen ${dpublic_folderull ? 'open' : ''}`}  onClick={ openDp }>
                                     <img 
-                                        src={ user.profilePicture  ? PF+user.profilePicture : `${PF}profiles/default.jpg` } 
+                                        src={ user.profilePicture  ? public_folder+user.profilePicture : `${public_folder}profiles/default.jpg` } 
                                         alt="profile-pic" 
                                         className="userDP" 
                                     />  

@@ -20,7 +20,9 @@ export default function Register() {
             const user = {
                 firstname: fname.current.value,
                 lastname: lname.current.value,
-                username: ((fname.current.value+lname.current.value).trim()).toLowerCase()+Math.floor(Math.random() * 90 + 10),
+                username: (
+                    (fname.current.value+lname.current.value).trim()
+                    ).toLowerCase() + Math.floor(Math.random() * 90 + 10),
                 email: email.current.value,
                 password: password.current.value,
                 dob: dob.current.value
@@ -29,11 +31,10 @@ export default function Register() {
             try {
                 await axios.post( process.env.REACT_APP_BASE_PATH_API+'auth/register', user );
                 await axios.post( process.env.REACT_APP_BASE_PATH_API+'mail/admin', user );
-                history('/login');
+                history('/settings');
             } catch (error) {
                 console.log(error);
             }
-
         }
     }
 
