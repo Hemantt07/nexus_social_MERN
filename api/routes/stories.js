@@ -26,7 +26,7 @@ router.delete("/story/:id", async(req, res) => {
     }
 });
 
-// Get a user
+// Get a story
 router.get("/story/:id", async(req, res) => {
     try {
         const stories = await Stories.findById(req.params.id);
@@ -37,7 +37,7 @@ router.get("/story/:id", async(req, res) => {
     }
 });
 
-// Get all user
+// Get all story
 router.get('/all', async(req, res)=>{
     try {
         const stories = await Stories.find({});

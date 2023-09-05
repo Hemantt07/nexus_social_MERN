@@ -118,8 +118,8 @@ router.get('/following/:userId', async(req, res)=>{
         .filter((friend) => friend.status === 'fulfilled')
             .filter((friend) => friend.value)
             .map((friend) => {
-                const { _id, username, profilePicture } = friend.value;
-                return { _id, username, profilePicture };
+                const { _id, username, profilePicture, firstname, lastname } = friend.value;
+                return { _id, username, profilePicture, firstname, lastname };
             });
 
         res.status(200).json(friendsList);

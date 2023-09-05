@@ -8,8 +8,10 @@ export default function Sidebar() {
         <ul className="sidebarList">
 
         <li className="item">
-            <RssFeed className="icon"/>
-            <span className="text">Feed</span>
+            <Link to={ '/' } >
+              <RssFeed className="icon"/>
+              <span className="text">Feed</span>
+            </Link>
           </li>
           
           <li className="item">

@@ -32,9 +32,7 @@ export default function FriendsList({page}) {
                     <input 
                         type="text" 
                         placeholder='Search Friends...' 
-                        className="search" 
-                        // ref={ search }
-                        // onChangeCapture={ searchHit }
+                        className="search"
                     />
                 </div>
                 : <p className="head">Online Friends</p>

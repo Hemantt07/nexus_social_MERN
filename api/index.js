@@ -9,6 +9,8 @@ const authRoute = require("./routes/auth");
 const postsRoute = require("./routes/posts");
 const storiesRoute = require("./routes/stories");
 const mailRoute = require("./routes/mail");
+const messagesRoute = require("./routes/messages");
+const conversationsRoute = require("./routes/conversations");
 const cors = require("cors");
 const multer = require( 'multer' );
 const path = require( 'path' );
@@ -57,6 +59,8 @@ app.use('/auth', authRoute);
 app.use('/posts', postsRoute);
 app.use('/stories', storiesRoute);
 app.use('/mail', mailRoute);
+app.use('/messages', messagesRoute);
+app.use('/conversations', conversationsRoute);
 
 const server = app.listen(PORT, () => {
     const port = server.address().port;

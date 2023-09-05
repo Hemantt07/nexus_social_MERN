@@ -4,20 +4,11 @@ import { AuthContext } from '../context/AuthContext';
 import FriendInline from './friend-inline';
 import { toast } from 'react-toastify';
 
-export default function Friendrequests() {
-    const [friendReq, setFriendReq] = useState([]);
+export default function Friendrequests({friendReq}) {
     const [allusers, setAllUsers] = useState([]);
     const { user } = useContext( AuthContext );
 
     useEffect(()=>{
-        const fetchRequests = async ()=>{
-            try {
-                const res = await axios.get( process.env.REACT_APP_BASE_PATH_API+'users/followers/'+user._id );
-                setFriendReq(res.data)
-            } catch (error) {
-                toast.error(error.response.data)
-            }
-        }
 
         const fetchAllUsers = async () =>{
             try {
@@ -29,7 +20,6 @@ export default function Friendrequests() {
         }
 
         fetchAllUsers();
-        fetchRequests();
     }, [user])
 
   return (

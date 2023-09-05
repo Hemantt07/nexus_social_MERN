@@ -13,11 +13,13 @@ export default function Topbar(){
     const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
     const { user } = useContext( AuthContext ) || [];
     const [usersList, setUsersList] = useState();
+    const [searchList, setSearchList] = useState(false);
     const [friendReq, setFriendReq] = useState([]);
 
     const search = useRef();
     
     const searchHit = ()=>{
+        setSearchList(true)
         const searchKey = search.current.value
         const searchUser = async () => {
             try {
@@ -43,6 +45,9 @@ export default function Topbar(){
         fetchRequests();
     }, [user])
 
+    document.body.addEventListener('click', ()=>{
+    })
+    
     return (
         <div className='topbar row'>
 
@@ -52,34 +57,28 @@ export default function Topbar(){
                 </Link>
             </div>
 
-            <Popup className='searchPopup' 
-                position="bottom left"
-                trigger={
-                    <div className="topbarCenter col-md-6">
-                        <button type="submit" className='searchBtn'>
-                            <Search className='searchIcon'/>
-                        </button>
-                        <input 
-                            type="text" 
-                            placeholder='Search Nexus Social...' 
-                            className="search" 
-                            ref={ search }
-                            onChangeCapture={ searchHit }
-                        />
-                    </div>
-                }>
-                <ul id='searchedUsers'>
+            <div className="topbarCenter col-md-6">
+                <button type="submit" className='searchBtn'>
+                    <Search className='searchIcon'/>
+                </button>
+                <input 
+                    type="text" 
+                    placeholder='Search Nexus Social...' 
+                    className="search" 
+                    ref={ search }
+                    onKeyUpCapture={searchHit}
+                />
+                <ul className={`searchedUsers ${ searchList ? `` : `d-none` }`}>
                     { usersList && usersList.length > 0 
                         ? usersList.map((user) => (
-                             <FriendInline key={user._id} user={user} />
-                        ))
+                            <FriendInline key={user._id} user={user} setSearchList={setSearchList} />
+                        )) 
                         : <li>No users found</li> }
                 </ul>
-            </Popup>
+            </div>
 
             <div className="topbarRight col-md-4">
                 <div className="topbarLinks">
-
                     <div className="item">Home</div>
                     <div className="item">Explore</div>
                 </div>
@@ -89,16 +88,18 @@ export default function Topbar(){
                         <Popup className='friendsPopup' trigger=
                             { <Person/> }
                             position="bottom left">
-                            <Friendrequests/>
+                            <Friendrequests friendReq={friendReq}/>
                         </Popup>
                         <span className="counter"><span>{ friendReq.length < 10 ? friendReq.length : '9+' }</span></span>
                     </div>
 
                     <div className="item">
-                        <Tooltip title="Chats">
-                            <ChatBubble/>
-                        </Tooltip>
-                        <span className="counter"><span>9+</span></span>
+                        <Link to={ '/messenger' } > 
+                            <Tooltip title="Chats">
+                                <ChatBubble/>
+                            </Tooltip>
+                            <span className="counter"><span>9+</span></span>
+                        </Link>
                     </div>
 
                     <div className="item">
