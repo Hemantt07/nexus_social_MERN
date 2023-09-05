@@ -7,6 +7,7 @@ import Popup from 'reactjs-popup';
 import Friendrequests from './friendrequests';
 import axios from 'axios';
 import FriendInline from './friend-inline';
+import { toast } from 'react-toastify';
 
 export default function Topbar(){
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -23,7 +24,7 @@ export default function Topbar(){
                 const userList = await axios.post('http://localhost:5000/users/?search='+searchKey);
                 setUsersList( userList.data );
             } catch (error) {
-                console.log(error)
+                toast.error(error.response.data)
             }
         }
         searchUser();
@@ -35,7 +36,7 @@ export default function Topbar(){
                 const res = await axios.get( process.env.REACT_APP_BASE_PATH_API+'users/followers/'+user._id );
                 setFriendReq(res.data)
             } catch (error) {
-                console.log(error)
+                toast.error(error.response.data)
             }
         }
 

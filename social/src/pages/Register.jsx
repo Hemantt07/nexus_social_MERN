@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default function Register() {
     const fname = useRef(), lname = useRef(), email = useRef(), password = useRef(), confirmPassword = useRef(), dob = useRef();
@@ -30,7 +31,8 @@ export default function Register() {
                 await axios.post( process.env.REACT_APP_BASE_PATH_API+'mail/admin', user );
                 history('/login');
             } catch (error) {
-                console.log(error);
+                toast.error(error)
+                toast.error(error.response.data);
             }
 
         }

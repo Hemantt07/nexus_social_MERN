@@ -7,6 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 import 'reactjs-popup/dist/index.css';
 import { signal } from "@preact/signals";
 import axios from 'axios';
+import { toast } from "react-toastify";
 
 
 export default function StoriesCarousel() {
@@ -30,14 +31,14 @@ export default function StoriesCarousel() {
             try {
                 await axios.post(process.env.REACT_APP_BASE_PATH_API + 'upload', data);
             } catch (error) {
-                console.log(error);
+                toast.error(error.response.data);
             }
 
             try {
                 await axios.post( process.env.REACT_APP_BASE_PATH_API+'stories/', storyData )
                 window.location.reload();
             } catch (error) {
-                console.log(error);
+                toast.error(error.response.data);
             }
         }
     };
@@ -48,7 +49,7 @@ export default function StoriesCarousel() {
                 const res = await axios.get( process.env.REACT_APP_BASE_PATH_API+'stories/all/' )
                 setStories(res.data)
             } catch (error) {
-                console.log(error);
+                toast.error(error.response.data);
             }
         }
         fetchStories()
@@ -66,7 +67,7 @@ export default function StoriesCarousel() {
             </label>
             <input type="file" name="story-img" id="story-img" ref={ story_img } onChange={ postStory } />
         </div>
-        <Carousel showThumbs={false}>
+        <Carousel showThumbs={false} styles={styles}>
 
           { stories ? stories.map((stori)=>(
 

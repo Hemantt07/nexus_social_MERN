@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../context/AuthContext';
 import FriendInline from './friend-inline';
+import { toast } from 'react-toastify';
 
 export default function Friendrequests() {
     const [friendReq, setFriendReq] = useState([]);
@@ -14,7 +15,7 @@ export default function Friendrequests() {
                 const res = await axios.get( process.env.REACT_APP_BASE_PATH_API+'users/followers/'+user._id );
                 setFriendReq(res.data)
             } catch (error) {
-                console.log(error)
+                toast.error(error.response.data)
             }
         }
 
@@ -23,7 +24,7 @@ export default function Friendrequests() {
                 const res = await axios.get( process.env.REACT_APP_BASE_PATH_API+'users/usersList/all/'+user._id );
                 setAllUsers(res.data)
             } catch (error) {
-                console.log(error)
+                toast.error(error.response.data)
             }
         }
 

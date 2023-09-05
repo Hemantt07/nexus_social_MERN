@@ -995,12 +995,12 @@ h1.error {
     font-size: 29px;
     font-weight: 500;
     line-height: 1;
-    color: var(--primary-text);
+    color: #fff;
     margin: 0;
 }
 
 .profile-section .userProfile .profileDetails .about {
-    color: var(--primary-text);
+    color: #fff;
     font-weight: 400;
     margin: 5px 0;
     width: 80%;
@@ -1017,6 +1017,7 @@ h1.error {
     bottom: 10px;
     right: 30px;
     cursor: pointer;
+    color: #fff;
 }
 
 /* Profile RightBar */
@@ -1087,10 +1088,11 @@ h1.error {
 }
 
 .userfriend .friendlist .usersfriend .friendName {
-   font-size: 16px;
-   font-weight: 400;
-   line-height: 22px;
-   text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: center;
+    word-break: break-word;
 }
 
 /* Login Page */
@@ -1233,6 +1235,7 @@ h1.error {
     font-weight: 400;
     line-height: 1;
     margin: 0;
+    color: #fff;
 }
 
 /* Settings */

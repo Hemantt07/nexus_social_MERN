@@ -3,6 +3,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { Close } from '@mui/icons-material';
+import { toast } from 'react-toastify';
 
 export default function Share() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -47,7 +48,7 @@ export default function Share() {
                 await axios.post( process.env.REACT_APP_BASE_PATH_API+'posts/', newPost )
                 window.location.reload();
             } catch (error) {
-                console.log(error);
+                toast.error(error.response.data);
             }
         }
 

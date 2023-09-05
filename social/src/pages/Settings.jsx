@@ -5,6 +5,7 @@ import { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { countries } from '../data';
+import { toast } from 'react-toastify';
 
 export default function Settings() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -15,7 +16,7 @@ export default function Settings() {
             window.location.href = '/login';
             dispatch({ type: 'LOGOUT', payload: user });
         } catch (error) {
-            console.log(error);
+            toast.error(error.response.data);
         }
     }
     // For update user
@@ -83,7 +84,7 @@ export default function Settings() {
                     dispatch({ type: 'UPDATE', payload: updated_user});
                     window.location.reload();
                 } catch (error) {
-                    console.log(error);
+                    toast.error(error.response.data);
                 }    
             }
         } else {
@@ -93,7 +94,7 @@ export default function Settings() {
                 dispatch({ type: 'UPDATE', payload: updated_user.data});
                 window.location.reload();
             } catch (error) {
-                console.log(error);
+                toast.error(error.response.data);
             }
 
         }

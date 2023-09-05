@@ -9,6 +9,7 @@ import { Settings } from "@mui/icons-material";
 import { useParams } from "react-router";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Profile() {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -50,7 +51,7 @@ export default function Profile() {
   
             setFollower( !follower );
         } catch (error) {
-            console.log(error);
+            toast.error(error.response.data);
         }
     }
 

@@ -8,6 +8,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { saveAs } from 'file-saver'
 import CloseIcon from '@mui/icons-material/Close';
+import { toast } from 'react-toastify';
 
 export default function Post( { post } ) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -22,7 +23,7 @@ export default function Post( { post } ) {
         try {
             await axios.put( `${ process.env.REACT_APP_BASE_PATH_API }posts/${ post._id }/like`, { userId: user._id } );
         } catch (error) {
-            console.log(error);
+            toast.error(error.response.data);
         }
         setActive( !isActive )
         setLike( isLiked ? like-1 : like+1 )
@@ -36,7 +37,7 @@ export default function Post( { post } ) {
                 window.location.reload();
             }
         } catch (error) {
-            console.log(error);
+            toast.error(error.response.data);
         }
     }
     
