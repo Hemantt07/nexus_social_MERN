@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Footer from '../components/footer'
 
 export default function Register() {
     const fname = useRef(), lname = useRef(), email = useRef(), password = useRef(), confirmPassword = useRef(), dob = useRef();
@@ -20,7 +21,9 @@ export default function Register() {
             const user = {
                 firstname: fname.current.value,
                 lastname: lname.current.value,
-                username: ((fname.current.value+lname.current.value).trim()).toLowerCase()+Math.floor(Math.random() * 90 + 10),
+                username: (
+                    (fname.current.value+lname.current.value).trim()
+                    ).toLowerCase() + Math.floor(Math.random() * 90 + 10),
                 email: email.current.value,
                 password: password.current.value,
                 dob: dob.current.value
@@ -34,11 +37,11 @@ export default function Register() {
                 toast.error(error)
                 toast.error(error.response.data);
             }
-
         }
     }
 
     return (
+        <>
         <div className='registerPage row'>
 
             <div className="col-md-6 login-left">
@@ -122,7 +125,8 @@ export default function Register() {
                     </div>
                 </form>
             </div>
-
         </div>
+        <Footer />
+        </>
     )
 }

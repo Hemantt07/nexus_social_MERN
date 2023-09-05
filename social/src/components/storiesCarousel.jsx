@@ -9,10 +9,10 @@ import { signal } from "@preact/signals";
 import axios from 'axios';
 import { toast } from "react-toastify";
 
-
 export default function StoriesCarousel() {
+    <styles />
     const { user } = useContext( AuthContext );
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
     const story_img = useRef(null);
     const story = signal(null);
     const [stories, setStories] = useState(null);
@@ -59,7 +59,7 @@ export default function StoriesCarousel() {
       <>
         <div className='story user'> 
             <div className="storyImg">
-                <img src={ user.profilePicture ? PF+user.profilePicture : `${PF}profiles/default.jpg` } alt="profile" />
+                <img src={ user.profilePicture ? public_folder+user.profilePicture : `${public_folder}profiles/default.jpg` } alt="profile" />
             </div>
             <label className="content"  htmlFor={ `story-img` }>
                 <AddIcon className="profileImg"/>

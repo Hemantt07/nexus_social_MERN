@@ -11,7 +11,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { toast } from 'react-toastify';
 
 export default function Post( { post } ) {
-    const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+    const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
     const [like, setLike] = useState(post.likes.length);
     const [users, setUser] = useState({});
     const { user } = useContext( AuthContext );
@@ -67,7 +67,7 @@ export default function Post( { post } ) {
                         <Link to={`/profile/${users.username}`}>
                         <div className="topLeft">
                             <img 
-                                src={ users.profilePicture ? PF+users.profilePicture : `${PF}profiles/default.jpg` }
+                                src={ users.profilePicture ? public_folder+users.profilePicture : `${public_folder}profiles/default.jpg` }
                                 alt="" className="userDP"
                                 />
                             <span className="userName">
@@ -88,8 +88,8 @@ export default function Post( { post } ) {
                                         </>
                                         : ''
                                     }
-                                    <Link download={ PF+post.img }>
-                                        <li onClick={ ()=> saveAs( PF+post.img, post._id+'.jpg' ) }>
+                                    <Link download={ public_folder+post.img }>
+                                        <li onClick={ ()=> saveAs( public_folder+post.img, post._id+'.jpg' ) }>
                                             Save
                                         </li>
                                     </Link>
@@ -107,7 +107,7 @@ export default function Post( { post } ) {
                         }
                         { post.img ?  
                             <div className="postImg">
-                                <img src={ PF+post.img } alt={`post${post._id}`} />
+                                <img src={ public_folder+post.img } alt={`post${post._id}`} />
                             </div>
                         : '' }
                     </div>
@@ -133,7 +133,7 @@ export default function Post( { post } ) {
                                     <div className="postWrapper">
                                         <div className="postCenter">
                                             <div className="postImg">
-                                                <img src={ PF+post.img } alt={`post${post._id}`} />
+                                                <img src={ public_folder+post.img } alt={`post${post._id}`} />
                                             </div>
                                         </div>
                                     </div>
@@ -148,7 +148,7 @@ export default function Post( { post } ) {
                                                 <Link to={`/profile/${users.username}`}>
                                                 <div className="topLeft">
                                                     <img 
-                                                        src={ users.profilePicture ? PF+users.profilePicture : `${PF}profiles/default.jpg` }
+                                                        src={ users.profilePicture ? public_folder+users.profilePicture : `${public_folder}profiles/default.jpg` }
                                                         alt="" className="userDP"
                                                         />
                                                     <span className="userName">
@@ -169,8 +169,8 @@ export default function Post( { post } ) {
                                                                 </>
                                                                 : ''
                                                             }
-                                                            <Link download={ PF+post.img }>
-                                                                <li onClick={ ()=> saveAs( PF+post.img, post._id+'.jpg' ) }>
+                                                            <Link download={ public_folder+post.img }>
+                                                                <li onClick={ ()=> saveAs( public_folder+post.img, post._id+'.jpg' ) }>
                                                                     Save
                                                                 </li>
                                                             </Link>

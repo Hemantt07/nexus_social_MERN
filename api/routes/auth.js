@@ -40,7 +40,7 @@ router.post("/login",async (req, res)=>{
             res.status(200).json(user)
         } else {
             res.status(401).json("Wrong Password")
-        }       
+        }
 
     } catch (error) {
         res.status(500).json(error);

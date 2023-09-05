@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Register from "./pages/Register";
 import Login from "./pages/login";
+import Messenger from "./pages/Messenger";
 import { AuthContext } from "./context/AuthContext";
 import { 
   BrowserRouter as Router,
@@ -45,6 +46,8 @@ function App() {
                 <Route exact path="/profile/:username?" element={ user.user == null ? <Navigate to='/' /> : <Profile/> } />
 
                 <Route exact path="/settings/:username?" element={ user.user == null ? <Navigate to='/' /> : <Settings/> } />
+
+                <Route exact path="/messenger/:username?" element={ user.user == null ? <Navigate to='/' /> : <Messenger /> } />
 
                 <Route exact path="/*" element={ <Error/> } />
 

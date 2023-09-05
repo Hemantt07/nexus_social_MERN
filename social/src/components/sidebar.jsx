@@ -1,4 +1,5 @@
 import { MoreVert, Replay, SportsEsports, Bookmark, Group, PlayCircle, ChatBubble, RssFeed } from '@mui/icons-material';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
   return (
@@ -12,8 +13,10 @@ export default function Sidebar() {
           </li>
           
           <li className="item">
-            <ChatBubble className="icon" />
-            <span className="text">Chats</span>
+            <Link to={ '/messenger' } >
+              <ChatBubble className="icon" />
+              <span className="text">Chats</span>
+            </Link>
           </li>
           
           <li className="item">
