@@ -873,23 +873,21 @@ h1.error {
 
 /* Profile Page */
 
-.follow-btn {
+.profileDetails .follow-btn {
     display: block;
-    width: max-content;
     background: var(--main-content);
     color: var(--secondary-text);
     padding: 3px 0;
-    width: 85px;
+    width: 110px;
     line-height: 1.4;
     border: none;
     border-radius: 7px;
-    color: var(--secondary-text);
     font-size: 16px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, .56);
     transition: box-shadow .3s;
 }
 
-.unfollow-btn {
+.profileDetails .unfollow-btn {
     display: block;
     width: max-content;
     color: var(--main-content);
@@ -1724,6 +1722,16 @@ h4.title {
 
 .chat-inner ::-webkit-scrollbar-thumb {
     background-color: var(--main-content);
+}
+
+.convo-list {
+    padding: 0;
+}
+
+.convo-list h3 {
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10rem;
 }
 
 .convo-list .convo {

@@ -47,7 +47,7 @@ function App() {
 
                 <Route exact path="/settings/:username?" element={ user.user == null ? <Navigate to='/' /> : <Settings/> } />
 
-                <Route exact path="/messenger/:username?" element={ user.user == null ? <Navigate to='/' /> : <Messenger /> } />
+                <Route exact path="/messenger" element={ user.user == null ? <Navigate to='/' /> : <Messenger /> } />
 
                 <Route exact path="/*" element={ <Error/> } />
 

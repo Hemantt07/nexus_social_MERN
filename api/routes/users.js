@@ -9,9 +9,9 @@ router.post("/", async(req, res) => {
     if ( search !== '' ) {
         try {
             const filteredUsers = allUsers.filter((user) =>{
-                if ( Users.schema.paths['firstname'].length > 0 ) {
+                if ( user.firstname.toLowerCase().includes(search) ) {
                     return user.firstname.toLowerCase().includes(search);
-                } else if ( Users.schema.paths['lastname'] > 0 ){
+                } else if ( user.lastname.toLowerCase().includes(search) ){
                     return user.lastname.toLowerCase().includes(search);
                 } else {
                     return user.username.toLowerCase().includes(search);
@@ -96,8 +96,8 @@ router.get('/usersList/all/:userId', async(req, res)=>{
             .filter((friend) => friend.status === 'fulfilled')
             .filter((friend) => friend.value )
             .map((friend) => {
-                const { _id, username, profilePicture } = friend.value;
-                return { _id, username, profilePicture };
+                const { _id, username, profilePicture, firstname, lastname } = friend.value;
+                return { _id, username, profilePicture, firstname, lastname };
             });
         res.status(200).json(allUsersList);
     } catch (error) {
@@ -143,8 +143,8 @@ router.get('/followers/:userId', async(req, res)=>{
             .filter((friend) => friend.status === 'fulfilled')
             .filter((friend) => friend.value)
             .map((friend) => {
-                const { _id, username, profilePicture } = friend.value;
-                return { _id, username, profilePicture };
+                const { _id, username, profilePicture, firstname, lastname } = friend.value;
+                return { _id, username, profilePicture, firstname, lastname };
             });
 
         res.status(200).json(followersList);

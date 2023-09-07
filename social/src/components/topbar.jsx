@@ -23,7 +23,7 @@ export default function Topbar(){
         const searchKey = search.current.value
         const searchUser = async () => {
             try {
-                const userList = await axios.post('http://localhost:5000/users/?search='+searchKey);
+                const userList = await axios.post(process.env.REACT_APP_BASE_PATH_API+'users/?search='+searchKey);
                 setUsersList( userList.data );
             } catch (error) {
                 toast.error(error.response.data)

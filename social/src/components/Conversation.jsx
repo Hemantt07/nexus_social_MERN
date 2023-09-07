@@ -1,13 +1,15 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
+import { AuthContext } from '../context/AuthContext';
 
 export default function Conversation(props) {
     const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
     const [sender, setSender] = useState({});
+    const {user} = useContext(AuthContext);
     
     useEffect(()=>{
-        const senderId = props.convo.members.find((m) => m !== props.currentUser._id );
+        const senderId = props.convo.members.find((m) => m !== user._id );
         const fetchSender = async ()=>{
             try {
                 const res = await axios.get( `${process.env.REACT_APP_BASE_PATH_API}users/?userId=${senderId}` )
@@ -16,12 +18,12 @@ export default function Conversation(props) {
                 toast.error(error)
             }
         }
-
         fetchSender()
-    },props.convo.members)
+    },[props.convo.members, user._id])
 
     const handleClick = ()=>{
-        props.setConversation(props.convo._id)
+        props.setConversation( props.convo._id )
+        props.setSender( sender )
     }
 
     return (

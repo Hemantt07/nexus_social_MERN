@@ -1,7 +1,7 @@
 import { Send, Favorite, MoreVert, QuestionAnswer } from '@mui/icons-material';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import { format } from 'timeago.js';
+import { formatDistanceToNow } from 'date-fns';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
 import Popup from 'reactjs-popup';
@@ -73,7 +73,7 @@ export default function Post( { post } ) {
                             <span className="userName">
                             { users.firstname+" "+users.lastname }
                             </span>
-                            <span className="date">{ format(post.createdAt) }</span>
+                            <span className="date">{ formatDistanceToNow(new Date(post.createdAt)) }</span>
                         </div>
                         </Link>
                         <div className="topRight">
@@ -154,7 +154,7 @@ export default function Post( { post } ) {
                                                     <span className="userName">
                                                     { users.firstname+" "+users.lastname }
                                                     </span>
-                                                    <span className="date">{ format(post.createdAt) }</span>
+                                                    <span className="date">{ formatDistanceToNow(new Date(post.createdAt)) }</span>
                                                 </div>
                                                 </Link>
                                                 <div className="topRight">

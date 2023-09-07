@@ -11,6 +11,7 @@ export default function Messenger() {
   const {user} = useContext(AuthContext)
   const [conversations, setConversations] = useState([])
   const [conversation, setConversation] = useState()
+  const [sender, setSender] = useState()
   
   useEffect(()=>{
       const fetchConvos = async ()=>{
@@ -37,13 +38,21 @@ export default function Messenger() {
                   conversations.length === 0
                   ? <h3>Start a Conversation</h3>
                   : conversations.map((convo)=>(
-                      <Conversation key={convo._id} convo={convo} currentUser={user} setConversation={setConversation}/>
+                      <Conversation 
+                        key={convo._id} 
+                        convo={convo} 
+                        setConversation={setConversation}
+                        setSender={setSender}
+                      />
                   ))
               }
               </ul>
         </div>
 
-          <Chat conversation={conversation}/>
+          <Chat 
+            conversation={conversation}
+            sender={sender}
+          />
           <FriendsList page="chat" />
       </div>
     </>

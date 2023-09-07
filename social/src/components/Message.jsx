@@ -1,9 +1,10 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext'
 
-export default function Message({ currentUser, message }) {
+export default function Message({ message, sender }) {
     const { user } = useContext( AuthContext );
     const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
+    const currentUser = message.senderId === user._id ? 'receiver' : 'sender'; 
 
     return (
         <>
@@ -14,7 +15,7 @@ export default function Message({ currentUser, message }) {
                     <div className="avatar">
                         <img 
                             src={ user.profilePicture ? public_folder + user.profilePicture : `${public_folder}profiles/default.jpg`  } 
-                            alt="avatar" 
+                            alt="receiverAvatar" 
                         />
                     </div>
                     <div className="message-content">
@@ -24,7 +25,10 @@ export default function Message({ currentUser, message }) {
             :
                 <div className="message sender">
                     <div className="avatar">
-                        <img src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="avatar" />
+                        <img 
+                            src={ sender.profilePicture ? public_folder + sender.profilePicture : `${public_folder}profiles/default.jpg` }  
+                            alt="senderAvatar"
+                        />
                     </div>
                     <div className="message-content">
                         { message.content }

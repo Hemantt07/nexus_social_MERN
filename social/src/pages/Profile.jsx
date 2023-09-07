@@ -17,12 +17,18 @@ export default function Profile() {
     const [user, setUser] = useState([]);
     const [dpublic_folderull, setDpublic_folderull] = useState(false);
     const { user : currentUser, dispatch } = useContext( AuthContext);
-    const [follower, setFollower] = useState( 
+    const [followed, setFollowed] = useState( 
         currentUser.followings.includes( user._id )
     );
 
+    if ( !followed ) {
+        var follower = currentUser.followers.includes( user._id );
+    }
+
+    console.log(follower)
+
     useEffect(()=>{
-        setFollower( currentUser.followings.includes( user._id ) );
+        setFollowed( currentUser.followings.includes( user._id ) );
     }, [currentUser, user._id])
     
     useEffect(()=>{
@@ -37,7 +43,7 @@ export default function Profile() {
 
     const handleFollow = async () => {
         try {
-            if ( follower ) {
+            if ( followed ) {
                 await axios.put( `${ process.env.REACT_APP_BASE_PATH_API }users/${ user._id }/unfollow/`,{ 
                   userId : currentUser._id 
                 } );
@@ -49,7 +55,7 @@ export default function Profile() {
                 dispatch({ type: 'FOLLOW', payload: user._id });
             }
   
-            setFollower( !follower );
+            setFollowed( !followed );
         } catch (error) {
             toast.error(error.response.data);
         }
@@ -113,10 +119,16 @@ export default function Profile() {
                                     { user.username === currentUser.username 
                                         ? '' 
                                         : <button 
-                                            className={ follower ? 'unfollow-btn' : 'follow-btn' } 
+                                            className={ followed ? 'unfollow-btn' : 'follow-btn' } 
                                             onClick={ handleFollow }
                                         >
-                                            { follower ? 'Unfollow' : 'Follow' }
+                                            { 
+                                                followed
+                                                ? 'Unfollow'
+                                                : follower
+                                                  ? 'Follow back'
+                                                  : 'Follow'
+                                            }
                                         </button>
                                     }
 
