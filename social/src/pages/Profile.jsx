@@ -15,7 +15,7 @@ export default function Profile() {
     const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
     const username  = useParams().username;
     const [user, setUser] = useState([]);
-    const [dpublic_folderull, setDpublic_folderull] = useState(false);
+    const [DP, setDP] = useState(false);
     const { user : currentUser, dispatch } = useContext( AuthContext);
     const [followed, setFollowed] = useState( 
         currentUser.followings.includes( user._id )
@@ -24,8 +24,6 @@ export default function Profile() {
     if ( !followed ) {
         var follower = currentUser.followers.includes( user._id );
     }
-
-    console.log(follower)
 
     useEffect(()=>{
         setFollowed( currentUser.followings.includes( user._id ) );
@@ -62,7 +60,7 @@ export default function Profile() {
     }
 
     const openDp = async ()=>{
-        setDpublic_folderull(!dpublic_folderull);
+        setDP(!DP);
         if ( document.body.style.overflow === 'hidden' ) {
             document.body.style.overflow = 'auto';
         } else {
@@ -97,7 +95,7 @@ export default function Profile() {
                                     className="userDP" 
                                     onClick={ openDp }
                                 />
-                                <div className={`full-screen ${dpublic_folderull ? 'open' : ''}`}  onClick={ openDp }>
+                                <div className={`full-screen ${DP ? 'open' : ''}`}  onClick={ openDp }>
                                     <img 
                                         src={ user.profilePicture  ? public_folder+user.profilePicture : `${public_folder}profiles/default.jpg` } 
                                         alt="profile-pic" 

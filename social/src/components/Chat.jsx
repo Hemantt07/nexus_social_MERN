@@ -9,13 +9,15 @@ export default function Chat({conversation, sender}) {
     const [messages, setMessages] = useState([]);
     const [messagesend, setMessagesend] = useState(false);
     const {user} = useContext(AuthContext);
+    const scrollRef = useRef();
+
     const changesize = ()=>{
         document.querySelector('.message-input').addEventListener('input', function () {
             this.style.height = 'auto';
             this.style.height = `${this.scrollHeight}px`;
         })
     }
-    
+
     useEffect(()=>{
         const fetchMessages = async()=>{
             try {
@@ -27,9 +29,11 @@ export default function Chat({conversation, sender}) {
                 toast.error(error.response.data)
             }
         }
+
+        scrollRef.current?.scrollIntoView()
         
         fetchMessages()
-    }, [conversation, messagesend])
+    }, [conversation, messagesend, messages])
 
     
     const content = useRef();
@@ -63,11 +67,12 @@ export default function Chat({conversation, sender}) {
                     {
                         messages.length !== 0 
                         ? messages.map((message) => (
-                            <Message 
-                                key={message._id}
-                                message={message}
-                                sender={sender} 
-                            /> 
+                            <div className="ref" ref={ scrollRef } key={message._id}>
+                                <Message 
+                                    message={message}
+                                    sender={sender} 
+                                /> 
+                            </div>
                         ))
                         : 'No mesages'
                     }
@@ -82,7 +87,7 @@ export default function Chat({conversation, sender}) {
                             rows={1}
                             ref={content}
                         />
-                        <button onClick={createMessage} className='message-button' disabled={ content == '' ? 'disabled' : ''} >
+                        <button onClick={createMessage} className='message-button' disabled={ content === '' ? 'disabled' : ''} >
                             <Send />
                         </button>
                     </div>

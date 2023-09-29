@@ -4,11 +4,15 @@ import { useEffect, useState } from "react";
 export default function Story( {story} ) {
   const public_folder = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState(null);
-  
+  console.log(story)
   useEffect(()=>{
     const fetchUser = async () => {
-        const res = await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?userId='+ story.userId  )
-        setUser(res.data);
+        try {
+          const res = await axios.get(process.env.REACT_APP_BASE_PATH_API+'users/?userId='+ story.userId  )
+          setUser(res.data);
+        } catch (error) {
+          console.log(error)
+        }
     };
     fetchUser();
   }, [ story ]);

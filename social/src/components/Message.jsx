@@ -1,5 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { AuthContext } from '../context/AuthContext'
+import { format } from 'date-fns';
 
 export default function Message({ message, sender }) {
     const { user } = useContext( AuthContext );
@@ -17,9 +18,10 @@ export default function Message({ message, sender }) {
                             src={ user.profilePicture ? public_folder + user.profilePicture : `${public_folder}profiles/default.jpg`  } 
                             alt="receiverAvatar" 
                         />
+                        <span className='time-sent'>{  format( new Date(message.createdAt), 'hh:ss a') }</span>
                     </div>
                     <div className="message-content">
-                       { message.content }
+                       <p>{ message.content }</p>
                     </div>
                 </div>
             :
@@ -29,9 +31,10 @@ export default function Message({ message, sender }) {
                             src={ sender.profilePicture ? public_folder + sender.profilePicture : `${public_folder}profiles/default.jpg` }  
                             alt="senderAvatar"
                         />
+                        <span className='time-sent'>{  format( new Date(message.createdAt), 'hh:ss a') }</span>
                     </div>
                     <div className="message-content">
-                        { message.content }
+                        <p>{ message.content }</p>
                     </div>
                 </div>
             }
